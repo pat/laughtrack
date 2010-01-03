@@ -1,0 +1,22 @@
+%h2= @show.name
+
+- semantic_form_for [:admin, @show] do |form|
+  - form.inputs do
+    = form.input :name, :label => 'Show Name'
+    = form.input :act_name
+  - form.buttons do
+    = form.commit_button 'Save'
+
+%h3= pluralize @show.performances.length, 'Performance'
+
+%ol
+  - @show.performances.each do |performance|
+    %li
+      = performance.happens_at.to_s
+      = performance_sold_out_link performance
+
+- semantic_form_for [:admin, @show, @show.performances.build] do |form|
+  - form.inputs do
+    = form.input :happens_at
+  - form.buttons do
+    = form.commit_button 'Add Performance'

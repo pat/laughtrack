@@ -1,0 +1,15 @@
+- form_tag '', :method => :get do
+  %label{:for => 'query'} Search
+  = text_field_tag 'query', params[:query]
+  %input{:type => 'submit', :value => 'Search'}
+
+%table
+  %thead
+    %th
+      %td Show
+      %td Act
+  %tbody
+    - @shows.each do |show|
+      %tr
+        %td= link_to show.name, [:edit, :admin, show]
+        %td= act_name show.act

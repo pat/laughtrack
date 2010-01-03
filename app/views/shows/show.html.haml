@@ -1,0 +1,12 @@
+%h2= @show.name
+- if @show.act
+  %h3= @show.act.name
+
+%p
+  = "#{@show.sold_out_percent.to_i}% Sold Out"
+
+- if @related.present?
+  %h3 Shows by the same acts and performers
+  %ul.related
+    - @related.each do |show|
+      %li= link_to_show show

@@ -1,0 +1,11 @@
+%h2 Popular Shows
+
+%ol.popular
+  - @popular.each do |show|
+    %li= link_to_show show
+
+%h2 Quality Shows
+
+%ol.rated
+  - @rated.each do |show|
+    %li= link_to_show show
