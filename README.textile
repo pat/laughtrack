@@ -1,0 +1,26 @@
+h1. LaughTrack
+
+A festival buzz tracker. Or at least, it will be. Currently, it's about as far from complete as it could possibly be.
+
+h2. Set Up
+
+* Create the dev and test databases (MySQL or PostgreSQL only).
+* Add your database.yml file, borrowing from the template if you wish.
+* Install Sphinx if you don't have it yet.
+* @rake gems:install@
+* @rake db:migrate db:test:clone@*
+
+You should be good to go.
+
+h2. To Do
+
+* Basic Styling
+* Proper Design
+* Karma Tracking
+* Review Integration
+* Twitter Integration
+* Plenty More
+
+h2. Credits
+
+Built by "Pat Allan":http://freelancing-gods.com. The name was thought of by "Andy Gelme":http://geekscape.org/.
