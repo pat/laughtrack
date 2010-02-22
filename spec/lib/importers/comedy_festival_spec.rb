@@ -1,6 +1,10 @@
 require 'spec/spec_helper'
 
 describe Importers::ComedyFestival do
+  before :each do
+    @domain = 'http://www.comedyfestival.com.au'
+  end
+  
   describe '.import' do
     before :each do
       Importers::ComedyFestival.stub!(:import_2008 => nil, :import_2009 => nil)
@@ -23,7 +27,7 @@ describe Importers::ComedyFestival do
     before :each do
       response = open('spec/fixtures/comedyfestival.2008.html') { |f| f.read }
       FakeWeb.register_uri(:get,
-        %r{http://www.comedyfestival.com.au/season/2008/shows/a-z/.+},
+        %r{#{@domain}/season/2008/shows/a-z/.+},
         :response => response
       )
     end
@@ -46,7 +50,7 @@ describe Importers::ComedyFestival do
       
       ('a'..'z').each do |letter|
         FakeWeb.should have_requested(:get,
-          "http://www.comedyfestival.com.au/season/2008/shows/a-z/#{letter}"
+          "#{@domain}/season/2008/shows/a-z/#{letter}"
         )
       end
     end
@@ -55,7 +59,7 @@ describe Importers::ComedyFestival do
       Importers::ComedyFestival.import_2008
       
       FakeWeb.should have_requested(:get,
-        "http://www.comedyfestival.com.au/season/2008/shows/a-z/other"
+        "#{@domain}/season/2008/shows/a-z/other"
       )
     end
   end
@@ -64,7 +68,7 @@ describe Importers::ComedyFestival do
     before :each do
       response = open('spec/fixtures/comedyfestival.2009.html') { |f| f.read }
       FakeWeb.register_uri(:get,
-        %r{http://www.comedyfestival.com.au/season/2009/shows/a-z/letter/.+},
+        %r{#{@domain}/season/2009/shows/a-z/letter/.+},
         :response => response
       )
     end
@@ -87,7 +91,7 @@ describe Importers::ComedyFestival do
       
       ('a'..'z').each do |letter|
         FakeWeb.should have_requested(:get,
-      "http://www.comedyfestival.com.au/season/2009/shows/a-z/letter/#{letter}"
+          "#{@domain}/season/2009/shows/a-z/letter/#{letter}"
         )
       end
     end
@@ -96,7 +100,68 @@ describe Importers::ComedyFestival do
       Importers::ComedyFestival.import_2009
       
       FakeWeb.should have_requested(:get,
-        "http://www.comedyfestival.com.au/season/2009/shows/a-z/letter/other"
+        "#{@domain}/season/2009/shows/a-z/letter/other"
+      )
+    end
+  end
+  
+  describe '.import_2010' do
+    before :each do
+      response = open('spec/fixtures/comedyfestival.2010.html') { |f| f.read }
+      FakeWeb.register_uri(:get,
+        %r{#{@domain}/2010/season/shows/a-z/letter/([a-z]|other)/?$},
+        :response => response
+      )
+      FakeWeb.register_uri(:get,
+        "#{@domain}/2010/season/shows/a-z/letter/a/page/2/",
+        :body => ''
+      )
+    end
+    
+    it "should create shows for each item found" do
+      Importers::ComedyFestival.import_2010
+      
+      Show.count.should == 20
+    end
+    
+    it "should not overwrite shows of the same name" do
+      Importers::ComedyFestival.import_2010
+      Importers::ComedyFestival.import_2010
+      
+      Show.count.should == 20
+    end
+    
+    it "should request each letter page" do
+      Importers::ComedyFestival.import_2010
+      
+      ('a'..'z').each do |letter|
+        FakeWeb.should have_requested(:get,
+          "#{@domain}/2010/season/shows/a-z/letter/#{letter}"
+        )
+      end
+    end
+    
+    it "should request the 'other' page" do
+      Importers::ComedyFestival.import_2010
+      
+      FakeWeb.should have_requested(:get,
+        "#{@domain}/2010/season/shows/a-z/letter/other"
+      )
+    end
+    
+    it "should parse act details correctly" do
+      Importers::ComedyFestival.import_2010
+      
+      show = Show.find(:first, :conditions => "name LIKE '%Mess Around%'")
+      show.name.should == 'Mess Around'
+      show.act.name.should == 'Adam Hills'
+    end
+    
+    it "should parse additional pages" do
+      Importers::ComedyFestival.import_2010
+      
+      FakeWeb.should have_requested(:get,
+        "#{@domain}/2010/season/shows/a-z/letter/a/page/2/"
       )
     end
   end
