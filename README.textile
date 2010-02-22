@@ -1,26 +1,71 @@
 h1. LaughTrack
 
-A festival buzz tracker. Or at least, it will be. Currently, it's about as far from complete as it could possibly be.
+A festival buzz tracker. Or at least, it will be. Currently, it's a long, long way from complete.
+
+That said, I'm putting it online, because some have expressed an interest in helping out, and I'm not going to turn down such help.
 
 h2. Set Up
 
 * Create the dev and test databases (MySQL or PostgreSQL only).
 * Add your database.yml file, borrowing from the template if you wish.
 * Install Sphinx if you don't have it yet.
+* Install CouchDB if you don't have it yet. You can either "use ports or compile via source":http://wiki.apache.org/couchdb/Installing_on_OSX, or use the "pre-made CouchDBX":http://janl.github.com/couchdbx/.
 * @rake gems:install@
 * @rake db:migrate db:test:clone@*
 
 You should be good to go.
 
+h2. Data
+
+To import show information, jump into script/console and run the following:
+
+<pre><code>Importers::ComedyFestival.import_2010</code></pre>
+
+Once you've done that, you'll probably want to load at least some tweets for shows:
+
+<pre><code>rake twitter:import</code></pre>
+
+This only loads 60 keywords (which, in a fresh dataset, are the act names). You can run it as many times as you like, but Twitter has a (rough) limit of 120 requests per hour. The rake task is smart enough to query the keywords that have the longest time since their previous update.
+
+h2. Administration
+
+You will need to visit "http://localhost:3000/users/new":http://localhost:3000/users/new to create an account, and then look in the logs for the verification link, as the email probably won't make it to your inbox.
+
+There's no distinction yet between normal users and admin users, although we don't have any need for normal users yet (though that will happen eventually).
+
+Once you've got that figured out, then you can tweak some show information at "http://localhost:3000/admin/shows":http://localhost:3000/admin/shows.
+
+h2. Twitter
+
+As mentioned above, importing tweets is done by the following rake task:
+
+<pre><code>rake twitter:import</code></pre>
+
+Each tweet is tied to a specific show in the CouchDB database, which is kinda useful - but keep in mind, the keywords need serious tweaking. I've not done this myself, but there's the beginnings of a system (via the Keyword model and the association with Show).
+
+Keywords are the raw search queries sent to Twitter - and often, the act name will not get us the results we want. For example:
+
+* Tripod - we want the comedy group, not a camera tripod.
+* Adam Hills - we want tweets about his festival show, not Spicks and Specks.
+
+And once we have the tweets, then we need to process their text - which is running it through the "Pedantic":http://github.com/freelancing-god/pedantic gem to give us the important words, which is far more useful for a Bayesian filter.
+
+<pre><code>rake twitter:process</code></pre>
+
+That task should also flag retweets to be ignored.
+
+From there, it's a matter of building up a reliable dataset for the (as yet non-existant) Bayesian filter. You _can_ go to "http://localhost:3000/admin/tweets/unclassified":http://localhost:3000/admin/tweets/unclassified and start marking tweets as positive, negative or ignored, but it's pretty damn daunting.
+
+It would be better to have some way of doing this on the admin pages for shows, while tweaking keywords, etc. Also, would need some way of verifying whether tweets _are_ positive or negative, once the Bayesian filter is operational.
+
 h2. To Do
 
-* Basic Styling
-* Proper Design
-* Karma Tracking
-* Review Integration
-* Twitter Integration
-* Plenty More
+Um. Almost Everything?
+
+I haven't bothered with the design - Ben is working on that.
+
+And I feel that Twitter integration and the design are the key points... once that all flows (relatively), then it'll be at a point where I can approach the Comedy Festival, ask for data feeds, see if they're interesting in supporting the site in other ways.
 
 h2. Credits
 
-Built by "Pat Allan":http://freelancing-gods.com. The name was thought of by "Andy Gelme":http://geekscape.org/.
+Built by "Pat Allan":http://freelancing-gods.com. The name was thought of by "Andy Gelme":http://geekscape.org/. Design is being provided by "Ben Webster":http://www.plus2.com.au/.
