@@ -11,7 +11,15 @@
 
 %ul
   - @show.keywords.each do |keyword|
-    %li=h keyword.words
+    %li
+      =h keyword.words
+      = link_to "Delete", destroy_admin_show_keyword_path(@show, keyword)
+
+- semantic_form_for [:admin, @show, @show.keywords.build] do |form|
+  - form.inputs do
+    = form.input :words, :label => 'Keyword'
+  - form.buttons do
+    = form.commit_button 'Add Keyword'
 
 %h3= pluralize @show.performances.length, 'Performance'
 

@@ -54,3 +54,19 @@ Feature: Managing Shows
     And I follow "Not Sold Out"
     And I go to the show page for "Inflatable"
     Then I should see "0% Sold Out"
+  
+  Scenario: Adding Keywords
+    Given a show "Inflatable" by "Adam Hills"
+      And I have signed in with "user@domain.com/password"
+    When  I go to the admin show page for "Inflatable"
+      And I fill in "Keyword" with "Adam Hills Balloons"
+      And I press "Add Keyword"
+    Then  I should see "Adam Hills Balloons"
+  
+  Scenario: Deleting Keywords
+    Given a show "Inflatable" by "Adam Hills" with the keyword "Balloons"
+    And   I have signed in with "user@domain.com/password"
+    When  I go to the admin show page for "Inflatable"
+      And I follow "Delete"
+    Then  I should not see "Balloons"
+  

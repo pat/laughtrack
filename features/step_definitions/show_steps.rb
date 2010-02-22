@@ -12,6 +12,16 @@ Given /^a show "([^\"]*)" by "([^\"]*)"$/ do |show, act|
   )
 end
 
+Given /^a show "([^\"]*)" by "([^\"]*)" with the keyword "([^\"]*)"$/ do |show, act, keyword|
+  act  = Act.find_by_name(act) || Act.make(:name => act)
+  show = Show.make(
+    :name => show,
+    :act  => act
+  )
+  show.keywords.delete_all
+  show.keywords.create :words => keyword
+end
+
 Given /^"([^\"]*)" by "([^\"]*)" is (\d+)% sold out$/ do |show, act, percent|
   act = Act.find_by_name(act) || Act.make(:name => act)
   Show.make(

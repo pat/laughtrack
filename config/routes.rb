@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
         :sold_out   => :get,
         :available  => :get
       }
+      shows.resources :keywords, :member => {
+        :destroy => :get
+      }
     end
     
     admin.resources :performers
