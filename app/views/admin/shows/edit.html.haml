@@ -7,6 +7,12 @@
   - form.buttons do
     = form.commit_button 'Save'
 
+%h3 Twitter Keywords
+
+%ul
+  - @show.keywords.each do |keyword|
+    %li=h keyword.words
+
 %h3= pluralize @show.performances.length, 'Performance'
 
 %ol

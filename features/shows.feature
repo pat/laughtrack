@@ -1,3 +1,4 @@
+@no-txn
 Feature: Shows
   In order to learn about the shows
   As a visitor
@@ -12,4 +13,14 @@ Feature: Shows
     When I go to the show page for "Open Slather"
     Then I should see "Tosswinkle the Pirate"
     And I should see "Scott Edgar and the Universe"
+  
+  Scenario: Viewing List of Shows
+    Given a show "Open Slather"
+      And a show "Tosswinkle"
+      And a show "Lady Robots"
+      And the show indexes are processed
+    When  I go to the shows page
+    Then  I should see "Open Slather"
+      And I should see "Tosswinkle"
+      And I should see "Lady Robots"
   

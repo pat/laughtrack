@@ -10,3 +10,9 @@
   %ul.related
     - @related.each do |show|
       %li= link_to_show show
+
+%h3 Tweets
+
+%ul
+  - @show.tweets.each do |tweet|
+    %li= tweet.text

@@ -10,6 +10,8 @@ module NavigationHelpers
       new_session_path
     when /the password reset request page/i
       new_password_path
+    when /the shows page/i
+      shows_path
     when /the admin shows page/i
       admin_shows_path
     when /the admin show page for/
