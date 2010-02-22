@@ -20,6 +20,9 @@ Rails::Initializer.run do |config|
   config.gem 'clearance',       :version => '0.8.3'
   config.gem 'thinking-sphinx', :version => '1.3.14', :lib => 'thinking_sphinx'
   config.gem 'formtastic',      :version => '0.9.7'
+  config.gem 'throne',          :version => '0.0.6'
+  config.gem 'pedantic',        :version => '>= 0.1.0'
+  config.gem 'will_paginate',   :version => '2.3.12'
   
   # Testing Gems
   config.gem 'rspec',       :lib => false, :version => '>= 1.2.9'
