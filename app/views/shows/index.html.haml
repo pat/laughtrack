@@ -8,12 +8,12 @@
 %table
   %thead
     %tr
-      %th Show
       %th Act
+      %th Show
   %tbody
     - @shows.each do |show|
       %tr
-        %td= link_to_show show
         %td= act_name show.act
+        %td= link_to_show show
 
 = will_paginate @shows

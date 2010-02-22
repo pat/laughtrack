@@ -15,8 +15,8 @@ class Show < ActiveRecord::Base
   after_create :add_act_keyword
   
   define_index do
-    indexes name
-    indexes act.name, :as => :act
+    indexes name,                  :sortable => true
+    indexes act.name, :as => :act, :sortable => true
   end
   
   def tweets

@@ -17,6 +17,23 @@ describe ShowsController do
       
       get :index, :query => 'foo'
     end
+    
+    it "should sort by act by default" do
+      Show.should_receive(:search) do |query, options|
+        options[:order].should == :act
+      end
+      
+      get :index
+    end
+    
+    it "should sort by relevance if a query is provided" do
+      Show.should_receive(:search) do |query, options|
+        options[:sort_mode].should == :relevance
+        options[:order].should be_nil
+      end
+      
+      get :index, :query => 'foo'
+    end
   end
   
   describe '#show' do
