@@ -12,6 +12,7 @@ h2. Set Up
 * Install CouchDB if you don't have it yet. You can either "use ports or compile via source":http://wiki.apache.org/couchdb/Installing_on_OSX, or use the "pre-made CouchDBX":http://janl.github.com/couchdbx/.
 * @rake gems:install@
 * @rake db:migrate db:test:clone@*
+* Clone "the CouchDB code":http://github.com/freelancing-god/laughtrack-couch and push it to your Couch database.
 
 You should be good to go.
 

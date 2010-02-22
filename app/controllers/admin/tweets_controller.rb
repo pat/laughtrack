@@ -2,7 +2,7 @@ class Admin::TweetsController < ApplicationController
   include LaughTrack::CouchDb
   
   def unclassified
-    @docs = db.function('_design/bayes/_view/unclassified')
+    @docs = db.function('_design/laughtrack/_view/unclassified')
   end
   
   def positive
