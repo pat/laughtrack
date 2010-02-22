@@ -1,6 +1,9 @@
 class Show < ActiveRecord::Base
+  include LaughTrack::CouchDb
+  
   belongs_to :act
   has_many   :performances
+  has_many   :keywords
   
   validates_presence_of :name
   validates_presence_of :act, :if => :confirmed?
@@ -9,9 +12,17 @@ class Show < ActiveRecord::Base
   named_scope :popular, :order => 'sold_out_percent DESC'
   named_scope :rated,   :order => 'rating DESC'
   
+  after_create :add_act_keyword
+  
   define_index do
     indexes name
     indexes act.name, :as => :act
+  end
+  
+  def tweets
+    db.function("_design/laughtrack/_view/by_show", :key => id).collect { |doc|
+      db.get doc.id
+    }
   end
   
   def confirmed?
@@ -31,5 +42,11 @@ class Show < ActiveRecord::Base
       act_ids = act.performers.collect { |perf| perf.act_ids }.flatten.uniq
       Show.find(:all, :conditions => {:act_id => act_ids}) - [self]
     end
+  end
+  
+  private
+  
+  def add_act_keyword
+    keywords.create :words => "\"#{act_name}\"" unless act_name.blank?
   end
 end

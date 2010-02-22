@@ -2,19 +2,24 @@ require 'faker'
 
 Sham.email { |index| "user#{index}@example.com" }
 
-Performer.blueprint do
-  name    { Faker::Name.name }
-  country 'Australia'
-end
-
 Act.blueprint do
   # Act#make is overwritten. See below.
+end
+
+Keyword.blueprint do
+  show  { Show.make }
+  words { 'foo bar' }
 end
 
 Performance.blueprint do
   show       { Show.make }
   happens_at { Time.now  }
   sold_out   { false     }
+end
+
+Performer.blueprint do
+  name    { Faker::Name.name }
+  country 'Australia'
 end
 
 Show.blueprint do

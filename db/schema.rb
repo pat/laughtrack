@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100102071019) do
+ActiveRecord::Schema.define(:version => 20100219060658) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20100102071019) do
 
   add_index "acts_performers", ["act_id"], :name => "index_acts_performers_on_act_id"
   add_index "acts_performers", ["performer_id"], :name => "index_acts_performers_on_performer_id"
+
+  create_table "keywords", :force => true do |t|
+    t.integer  "show_id",     :null => false
+    t.string   "words"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "imported_at"
+  end
+
+  add_index "keywords", ["show_id"], :name => "index_keywords_on_show_id"
 
   create_table "performances", :force => true do |t|
     t.integer  "show_id"

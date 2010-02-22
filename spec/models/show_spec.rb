@@ -1,30 +1,35 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Show do
-  before(:each) do
-    @attributes = {
-      :name => "Inflatable",
-      :act  => Act.make(:name => "Adam Hills")
-    }
+  describe '.create' do
+    it "should add a keyword with the act's name" do
+      show = Show.make
+      show.keywords.first.words.should == "\"#{show.act_name}\""
+    end
+    
+    it "should not create a keyword if the act name is nil" do
+      show = Show.make :act => nil, :status => 'imported'
+      show.keywords.should be_empty
+    end
   end
   
-  describe 'validations' do
+  describe '#valid?' do
     it "should create a new instance given valid attributes" do
-      Show.new(@attributes).should be_valid
+      Show.make_unsaved.should be_valid
     end
 
     it "should be invalid without a name" do
-      show = Show.new @attributes.except(:name)
+      show = Show.make_unsaved :name => nil
       show.should have(1).error_on(:name)
     end
 
     it "should be invalid without an act" do
-      show = Show.new @attributes.except(:act)
+      show = Show.make_unsaved :act => nil
       show.should have(1).error_on(:act)
     end
     
     it "should be valid without an act with a status of imported" do
-      show = Show.new @attributes.except(:act)
+      show = Show.make_unsaved :act => nil
       show.status = 'imported'
       show.should be_valid
     end
