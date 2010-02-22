@@ -4,7 +4,7 @@
     %title LaughTrack
     = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes'
   %body
-    %h1 LaughTrack
+    %h1= link_to 'LaughTrack', '/'
     - flash.each do |key, message|
       %p{:class => key.to_s}= message
     = yield
