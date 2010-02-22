@@ -12,6 +12,14 @@ ActionController::Routing::Routes.draw do |map|
     end
     
     admin.resources :performers
+    
+    admin.resources :tweets, :member => {
+      :positive => :get,
+      :negative => :get,
+      :ignore   => :get
+    }, :collection => {
+      :unclassified => :get
+    }
   end
   
   # Sample of regular route:
