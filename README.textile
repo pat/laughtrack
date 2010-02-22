@@ -18,11 +18,13 @@ You should be good to go.
 
 h2. Data
 
-To import show information, jump into script/console and run the following:
+To import show information, run the following:
 
-<pre><code>Importers::ComedyFestival.import_2010</code></pre>
+<pre><code>rake shows:import:2010</code></pre>
 
-Once you've done that, you'll probably want to load at least some tweets for shows:
+You can run this task multiple times, and it won't duplicate data _unless_ you change show names. And sometimes, you will want to do that. So keep this in mind.
+
+Once you've got the shows loaded, you'll probably want to load at least some tweets for shows:
 
 <pre><code>rake twitter:import</code></pre>
 
