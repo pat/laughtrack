@@ -1,6 +1,4 @@
-class Admin::PerformersController < ApplicationController
-  before_filter :authenticate
-  
+class Admin::PerformersController < Admin::ApplicationController
   def index
     @performers = Performer.search params[:query]
   end

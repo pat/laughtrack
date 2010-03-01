@@ -13,7 +13,7 @@ describe Admin::PerformersController do
     it "should assign the search results" do
       Performer.stub!(:search => [:foo, :bar])
       
-      sign_in
+      sign_in_as_admin
       get :index
       
       assigns[:performers].should == [:foo, :bar]
@@ -29,7 +29,7 @@ describe Admin::PerformersController do
     it_should_behave_like 'a private action'
     
     it "should assign the performer" do
-      sign_in
+      sign_in_as_admin
       get :edit, :id => @performer.id
       
       assigns[:performer].should == @performer
@@ -49,7 +49,7 @@ describe Admin::PerformersController do
     it "should redirect to the index on success" do
       @performer.stub!(:update_attributes => true)
       
-      sign_in
+      sign_in_as_admin
       put :update, :id => @performer.id, :performer => {}
       
       response.should redirect_to(admin_performers_path)
@@ -58,7 +58,7 @@ describe Admin::PerformersController do
     it "should render the edit page on failure" do
       @performer.stub!(:update_attributes => false)
       
-      sign_in
+      sign_in_as_admin
       put :update, :id => @performer.id, :performer => {}
       
       response.should render_template('admin/performers/edit')

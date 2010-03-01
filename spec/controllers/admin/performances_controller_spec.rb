@@ -15,7 +15,7 @@ describe Admin::PerformancesController do
     it_should_behave_like 'a private action'
     
     it "should redirect to the show's edit page on success" do
-      sign_in
+      sign_in_as_admin
       post :create, :show_id => @show.id, :performance => {}
       
       response.should redirect_to(edit_admin_show_path(@show))
@@ -23,7 +23,7 @@ describe Admin::PerformancesController do
     
     it "should render the show's edit page on failure" do
       @show.performances.stub!(:create => false)
-      sign_in
+      sign_in_as_admin
       post :create, :show_id => @show.id, :performance => {}
       
       response.should render_template('admin/performances/../shows/edit')
@@ -44,7 +44,7 @@ describe Admin::PerformancesController do
     it_should_behave_like 'a private action'
     
     it "should mark the performance as sold out" do
-      sign_in
+      sign_in_as_admin
       get :sold_out, :show_id => @show.id, :id => @performance.id
       
       @performance.reload
@@ -52,7 +52,7 @@ describe Admin::PerformancesController do
     end
     
     it "should redirect to the show's edit page" do
-      sign_in
+      sign_in_as_admin
       get :sold_out, :show_id => @show.id, :id => @performance.id
       
       response.should redirect_to(edit_admin_show_path(@show))
@@ -73,7 +73,7 @@ describe Admin::PerformancesController do
     it_should_behave_like 'a private action'
     
     it "should mark the performance as sold out" do
-      sign_in
+      sign_in_as_admin
       get :available, :show_id => @show.id, :id => @performance.id
       
       @performance.reload
@@ -81,7 +81,7 @@ describe Admin::PerformancesController do
     end
     
     it "should redirect to the show's edit page" do
-      sign_in
+      sign_in_as_admin
       get :available, :show_id => @show.id, :id => @performance.id
       
       response.should redirect_to(edit_admin_show_path(@show))

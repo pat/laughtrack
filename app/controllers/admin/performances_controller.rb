@@ -1,6 +1,4 @@
-class Admin::PerformancesController < ApplicationController
-  before_filter :authenticate
-  
+class Admin::PerformancesController < Admin::ApplicationController
   def create
     if show.performances.create params[:performance]
       redirect_to edit_admin_show_path(show)

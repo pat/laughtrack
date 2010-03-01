@@ -45,6 +45,14 @@ Given /^I have signed in with "(.*)\/(.*)"$/ do |email, password|
   And %{I sign in as "#{email}/#{password}"}
 end
 
+Given /^I have signed in as an admin with "(.*)\/(.*)"$/ do |email, password|
+  User.make :admin,
+    :email                 => email,
+    :password              => password,
+    :password_confirmation => password
+  Given %{I sign in as "#{email}/#{password}"}
+end
+
 # Emails
 
 Then /^a confirmation message should be sent to "(.*)"$/ do |email|

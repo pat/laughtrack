@@ -1,6 +1,4 @@
-class Admin::ShowsController < ApplicationController
-  before_filter :authenticate
-  
+class Admin::ShowsController < Admin::ApplicationController
   def index
     @shows = Show.search params[:query]
   end

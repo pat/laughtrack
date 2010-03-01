@@ -1,6 +1,4 @@
-class Admin::KeywordsController < ApplicationController
-  before_filter :authenticate
-  
+class Admin::KeywordsController < Admin::ApplicationController
   def create
     show.keywords.create params[:keyword]
     

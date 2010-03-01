@@ -8,7 +8,7 @@ Feature: Manage Performer Information
     Given a performer "Danny Bhoy"
     And a performer "Danny McGinlay"
     And the performer indexes are processed
-    And I have signed in with "user@domain.com/password"
+    And I have signed in as an admin with "user@domain.com/password"
     When I go to the admin performers page
     And I fill in "Search" with "McGinlay"
     And I press "Search"
@@ -18,7 +18,7 @@ Feature: Manage Performer Information
   Scenario: Editing Performer Information
     Given a performer "Scod Edgar"
     And the performer indexes are processed
-    And I have signed in with "user@domain.com/password"
+    And I have signed in as an admin with "user@domain.com/password"
     When I go to the admin performer page for "Scod Edgar"
     And I fill in "Name" with "Scott Edgar"
     And I press "Save Changes"

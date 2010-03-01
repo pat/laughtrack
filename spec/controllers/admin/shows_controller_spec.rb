@@ -13,7 +13,7 @@ describe Admin::ShowsController do
     it "should assign the search results" do
       Show.stub!(:search => [:foo, :bar])
       
-      sign_in
+      sign_in_as_admin
       get :index
       
       assigns[:shows].should == [:foo, :bar]
@@ -29,7 +29,7 @@ describe Admin::ShowsController do
     it_should_behave_like 'a private action'
     
     it "should assign the requested show" do
-      sign_in
+      sign_in_as_admin
       get :edit, :id => @show.id
       
       assigns[:show].should == @show
@@ -50,12 +50,12 @@ describe Admin::ShowsController do
     it "should update the show" do
       @show.should_receive(:update_attributes)
       
-      sign_in
+      sign_in_as_admin
       put :update, :id => @show.id, :show => {}
     end
     
     it "should redirect to the index action" do
-      sign_in
+      sign_in_as_admin
       put :update, :id => @show.id, :show => {}
       
       response.should redirect_to(admin_shows_path)
@@ -64,7 +64,7 @@ describe Admin::ShowsController do
     it "should render the edit template on failure" do
       @show.stub!(:update_attributes => false)
       
-      sign_in
+      sign_in_as_admin
       put :update, :id => @show.id, :show => {}
       
       response.should render_template('edit')

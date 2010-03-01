@@ -37,6 +37,11 @@ User.blueprint(:confirmed) do
   email_confirmed { true }
 end
 
+User.blueprint(:admin) do
+  email_confirmed { true }
+  admin           { true }
+end
+
 module ActBlueprint
   def make(attributes = {})
     act = make_unsaved attributes
