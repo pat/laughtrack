@@ -14,29 +14,6 @@ Rails::Initializer.run do |config|
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
-  # Application Gems
-  config.gem 'haml',            :version => '>= 2.2.16'
-  config.gem 'nokogiri',        :version => '>= 1.4.1'
-  config.gem 'clearance',       :version => '0.8.3'
-  config.gem 'thinking-sphinx', :version => '1.3.14', :lib => 'thinking_sphinx'
-  config.gem 'formtastic',      :version => '0.9.7'
-  config.gem 'throne',          :version => '0.0.6'
-  config.gem 'pedantic',        :version => '>= 0.1.0'
-  config.gem 'will_paginate',   :version => '2.3.12'
-  
-  # Testing Gems
-  config.gem 'rspec',       :lib => false, :version => '>= 1.2.9'
-  config.gem 'rspec-rails', :lib => false, :version => '>= 1.2.9'
-  config.gem 'fakeweb',     :lib => false, :version => '>= 1.2.7'
-  config.gem 'machinist',
-    :lib      => false,
-    :source   => 'http://gems.github.com',
-    :version  => '>= 1.0.6'
-  config.gem 'fakeweb-matcher',
-    :lib      => false,
-    :source   => 'http://gems.github.com',
-    :version  => '>= 1.1.0'
-  
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
