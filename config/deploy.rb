@@ -37,3 +37,21 @@ end
 after 'deploy:symlink' do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
+
+after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
+
+namespace :laughtrack do
+  task :import_2010 do
+    run "cd #{current_path} && rake shows:import:2010 RAILS_ENV=production"
+  end
+  
+  namespace :twitter do
+    task :import do
+      run "cd #{current_path} && rake twitter:import RAILS_ENV=production"
+    end
+    
+    task :process do
+      run "cd #{current_path} && rake twitter:process RAILS_ENV=production"
+    end
+  end
+end

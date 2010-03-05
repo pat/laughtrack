@@ -1,3 +1,5 @@
 tmp
 *.tmproj
 db/sphinx
+Gemfile.lock
+.bundle
