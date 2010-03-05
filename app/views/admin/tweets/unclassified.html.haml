@@ -1,7 +1,8 @@
 %ul
   - @docs.each do |doc|
     %li
-      = doc.value
-      = link_to "Flag as Positive", positive_admin_tweet_path(doc.key)
-      = link_to "Flag as Negative", negative_admin_tweet_path(doc.key)
-      = link_to "Ignore", ignore_admin_tweet_path(doc.key)
+      %span.text= doc.text
+      = link_to "Flag as Positive", positive_admin_tweet_path(doc._id)
+      = link_to "Flag as Negative", negative_admin_tweet_path(doc._id)
+      = link_to "Ignore", ignore_admin_tweet_path(doc._id)
+      %span.show= "(#{link_to_show doc.show_id})"

@@ -1,8 +1,10 @@
-class Admin::TweetsController < ApplicationController
+class Admin::TweetsController < Admin::ApplicationController
   include LaughTrack::CouchDb
   
   def unclassified
-    @docs = db.function('_design/laughtrack/_view/unclassified')
+    @docs = unclassified_ids.collect { |hash|
+      db.get hash.id
+    }
   end
   
   def positive
@@ -27,5 +29,12 @@ class Admin::TweetsController < ApplicationController
     db.save doc
     
     redirect_to unclassified_admin_tweets_path
+  end
+  
+  private
+  
+  def unclassified_ids
+    @unclassified_ids ||= db.function('_design/laughtrack/_view/unclassified',
+      :limit => 20)
   end
 end

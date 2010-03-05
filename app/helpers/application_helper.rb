@@ -1,6 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def link_to_show(show)
+    show_id, show = show, Show.find(show) if show.is_a?(Fixnum)
     link_to(show.name, show)
   end
   

@@ -6,6 +6,11 @@ describe ApplicationHelper do
       show = Show.make
       helper.link_to_show(show).should == helper.link_to(show.name, show)
     end
+    
+    it "should handle show ids" do
+      show = Show.make
+      helper.link_to_show(show.id).should == helper.link_to(show.name, show)
+    end
   end
   
   describe '#act_name' do
