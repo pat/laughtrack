@@ -28,4 +28,4 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 # For Thoughtbot's Clearance:
-raise "Need to define HOST for Thoughtbot's Clearance"
+HOST = 'laughtrack.com.au'

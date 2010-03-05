@@ -14,15 +14,22 @@ role :app, "laughtrack.com.au"
 role :db,  "laughtrack.com.au", :primary => true
 
 set :deploy_to, "/var/www/#{application}"
+set :bundle,    '/usr/local/ruby-enterprise/bin/bundle'
 
 namespace :deploy do
   task :start do
     #
   end
+  
   task :stop do
     #
   end
+  
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+end
+
+after 'deploy:update' do
+  run "cd #{release_path} && #{bundle} install && #{bundle} lock"
 end
