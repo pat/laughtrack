@@ -35,4 +35,4 @@ Rails::Initializer.run do |config|
 end
 
 # For Thoughtbot's Clearance:
-DO_NOT_REPLY = 'donotreply@freelancing-gods.com'
+DO_NOT_REPLY = 'pat@freelancing-gods.com'
