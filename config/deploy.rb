@@ -33,3 +33,7 @@ end
 after 'deploy:update' do
   run "cd #{release_path} && #{bundle} install && #{bundle} lock"
 end
+
+after 'deploy:symlink' do
+  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+end
