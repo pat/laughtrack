@@ -4,6 +4,7 @@ source :rubyforge
 # Important Stuff
 gem 'rails', '2.3.5'
 gem 'mysql', '2.8.1'
+gem 'json',  '1.2.0'
 
 # Application Gems
 gem 'haml',            '>= 2.2.16'
