@@ -15,6 +15,7 @@ role :db,  "laughtrack.com.au", :primary => true
 
 set :deploy_to, "/var/www/#{application}"
 set :bundle,    '/usr/local/ruby-enterprise/bin/bundle'
+set :whenever,  '/usr/local/ruby-enterprise/bin/whenever'
 
 namespace :deploy do
   task :start do
@@ -32,11 +33,11 @@ end
 
 after 'deploy:update' do
   run "cd #{release_path} && #{bundle} install && #{bundle} lock"
+  laughtrack.update_crontab
 end
 
 after 'deploy:symlink' do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  laughtrack.update_crontab
 end
 
 after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
@@ -61,6 +62,6 @@ namespace :laughtrack do
   
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
+    run "cd #{release_path} && #{whenever} --update-crontab #{application}"
   end
 end
