@@ -36,6 +36,7 @@ end
 
 after 'deploy:symlink' do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  laughtrack.update_crontab
 end
 
 after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
@@ -56,5 +57,10 @@ namespace :laughtrack do
     task :process do
       run "cd #{current_path} && rake twitter:process RAILS_ENV=production"
     end
+  end
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
