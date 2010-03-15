@@ -1,13 +1,16 @@
-%h2 Popular Shows
+#shows
+  .popular
+    %h2= link_to 'Popular Shows', '/'
+    .shows
+      %ol
+        - @popular.each do |show|
+          %li= link_to_show show
 
-%ol.popular
-  - @popular.each do |show|
-    %li= link_to_show show
-
-%h2 Quality Shows
-
-%ol.rated
-  - @rated.each do |show|
-    %li= link_to_show show
+  .quality
+    %h2= link_to 'Quality Shows', '/'
+    .shows
+      %ol
+        - @rated.each do |show|
+          %li= link_to_show show
 
 = link_to "View All Shows", shows_path

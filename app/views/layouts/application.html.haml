@@ -1,10 +1,52 @@
-!!! 5
+!!! XML
+!!!
 %html
   %head
     %title LaughTrack
-    = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes'
+    = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes', 'layout', 'formtastic_changes'
   %body
-    %h1= link_to 'LaughTrack', '/'
-    - flash.each do |key, message|
-      %p{:class => key.to_s}= message
-    = yield
+    #header
+      .wrapper
+        %h1= link_to 'LaughTrack', '/'
+        %ul
+          %li#popular= link_to 'Popular Shows', '/popular', :class => 'active'
+          %li#quality= link_to 'Quality Shows', '/quality'
+          %li#about= link_to 'About Us', '/about'
+        %ol
+          %li= link_to 'Sign in', '/session/new'
+          %li= link_to 'Register', '/users/new'
+    #breadcrumbs
+      .wrapper
+        %ol
+          %li= link_to 'Home', '/'
+          %li= link_to 'Other link', '/'
+        - flash.each do |key, message|
+          %p{:class => key.to_s}= message
+
+    #feature
+      .wrapper
+
+        .feature
+          .pad
+            %h5 Feature show
+            %h2= link_to 'Name of the feature show goes here', '/'
+            %h3 Artists Name
+            %p
+              Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+              = link_to 'View show &rsaquo;', '/'
+        
+        .twitter
+          %h6= link_to 'A little birdy told me', 'http://www.twitter.com/laughtrack'
+          %p
+            %em Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+            %br/
+            %strong
+              12 minutes ago. By: 
+              = link_to '@username', '/'
+              
+    #content
+      .wrapper
+        = yield
+    #footer
+      .wrapper
+        &copy; LaughTrack
