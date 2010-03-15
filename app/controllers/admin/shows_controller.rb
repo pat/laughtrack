@@ -1,6 +1,6 @@
 class Admin::ShowsController < Admin::ApplicationController
   def index
-    @shows = Show.search params[:query]
+    @shows = Show.search params[:query], :page => params[:page]
   end
   
   def edit
