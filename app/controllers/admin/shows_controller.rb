@@ -11,7 +11,8 @@ class Admin::ShowsController < Admin::ApplicationController
     @show = Show.find params[:id]
     
     if @show.update_attributes(params[:show])
-      redirect_to admin_shows_path
+      flash[:notice] = 'Changes saved.'
+      redirect_to edit_admin_show_path(@show)
     else
       render :action => :edit
     end

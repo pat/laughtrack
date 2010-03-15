@@ -21,6 +21,14 @@
   - form.buttons do
     = form.commit_button 'Add Keyword'
 
+%h3 Latest Tweets
+
+%ul
+  - @show.tweets.each do |tweet|
+    %li
+      = tweet.text
+      = "(#{tweet.classification})"
+
 %h3= pluralize @show.performances.length, 'Performance'
 
 %ol
