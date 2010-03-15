@@ -17,6 +17,7 @@ gem 'throne',            '0.0.6'
 gem 'pedantic',          '>= 0.1.0'
 gem 'will_paginate',     '2.3.12'
 gem 'ambethia-smtp-tls', '1.1.2',  :require => 'smtp-tls'
+gem 'whenever',          '0.4.1'
 
 # Testing Gems
 group :test do

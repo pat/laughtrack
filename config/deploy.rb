@@ -15,6 +15,7 @@ role :db,  "laughtrack.com.au", :primary => true
 
 set :deploy_to, "/var/www/#{application}"
 set :bundle,    '/usr/local/ruby-enterprise/bin/bundle'
+set :whenever,  '/usr/local/ruby-enterprise/bin/whenever'
 
 namespace :deploy do
   task :start do
@@ -32,6 +33,7 @@ end
 
 after 'deploy:update' do
   run "cd #{release_path} && #{bundle} install && #{bundle} lock"
+  laughtrack.update_crontab
 end
 
 after 'deploy:symlink' do
@@ -56,5 +58,10 @@ namespace :laughtrack do
     task :process do
       run "cd #{current_path} && rake twitter:process RAILS_ENV=production"
     end
+  end
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && #{whenever} --update-crontab #{application}"
   end
 end

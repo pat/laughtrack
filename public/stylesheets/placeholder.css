@@ -1,0 +1,38 @@
+body {
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+p {
+  margin: 1.5em 0;
+}
+
+li {
+  list-style-type: disc;
+  margin-left: 1.5em;
+}
+
+#window {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#window .formtastic {
+  width: 500px;
+}
+
+.formtastic fieldset.inputs li {
+  margin: 0;
+}

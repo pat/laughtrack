@@ -21,6 +21,14 @@
   - form.buttons do
     = form.commit_button 'Add Keyword'
 
+%h3 Latest Tweets
+
+%ul
+  - @show.tweets.each do |tweet|
+    %li
+      = tweet.text
+      = "(#{tweet.classification})"
+
 %h3= pluralize @show.performances.length, 'Performance'
 
 %ol
@@ -34,3 +42,5 @@
     = form.input :happens_at
   - form.buttons do
     = form.commit_button 'Add Performance'
+
+= link_to 'All Shows', admin_shows_path
