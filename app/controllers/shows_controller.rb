@@ -15,10 +15,23 @@ class ShowsController < ApplicationController
   private
   
   def sort_mode
-    params[:query].blank? ? nil : :relevance
+    case params[:order]
+    when 'asc'
+      :asc
+    when 'desc'
+      :desc
+    else
+      params[:query].blank? ? nil : :relevance
+    end
   end
   
   def order
-    params[:query].blank? ? :act : nil
+    if !params[:sort_by].blank?
+      params[:sort_by].to_sym
+    elsif params[:query].blank?
+      :act
+    else
+      nil
+    end
   end
 end

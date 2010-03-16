@@ -11,7 +11,12 @@
   %tbody
     - @shows.each do |show|
       %tr
-        %td= link_to show.name, [:edit, :admin, show]
+        %td{show_attributes(show)}= link_to show.name, [:edit, :admin, show]
         %td= act_name show.act
+        %td
+          - if show.featured
+            = link_to 'Unfeature', unfeature_admin_show_path(show)
+          - else
+            = link_to 'Feature', feature_admin_show_path(show)
 
 = will_paginate @shows

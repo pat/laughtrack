@@ -1,16 +1,37 @@
+- content_for :feature do
+  #feature
+    .wrapper
+      .feature
+        .pad
+          %h5 Featured Show
+          %h2= link_to_show @featured
+          %h3= @featured.act_name
+          %p
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+            = link_to 'Read More &rsaquo;', @featured
+      
+      .twitter
+        %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack'
+        %p
+          %em Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+          %br/
+          %strong
+            12 minutes ago. By: 
+            = link_to '@username', '/'
+
 #shows
   .popular
-    %h2= link_to 'Popular Shows', '/'
+    %h2= link_to 'Popular Shows', popular_path
     .shows
       %ol
         - @popular.each do |show|
           %li= link_to_show show
+      = link_to "View All Popular Shows &rsaquo;", popular_path
 
   .quality
-    %h2= link_to 'Quality Shows', '/'
+    %h2= link_to 'Quality Shows', quality_path
     .shows
       %ol
         - @rated.each do |show|
           %li= link_to_show show
-
-= link_to "View All Shows", shows_path
+      = link_to "View All Quality Shows &rsaquo;", quality_path

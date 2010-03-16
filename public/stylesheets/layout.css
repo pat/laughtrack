@@ -1,9 +1,9 @@
-body {margin: 0 auto;font-size:12px;line-height: 1.5em;color:#555;background:#eae1c6;font-weight: normal;font-family: Helvetica, Arial, Verdana, sans-serif;text-align:center;}
+body {margin: 0 auto;font-size:16px;line-height: 1.5;color:#555;background:#eae1c6;font-weight: normal;font-family: Helvetica, Arial, Verdana, sans-serif;text-align:center;}
 
 a, a:visited {color:#e8188d;text-decoration: underline;}
 a:hover, a:visited:hover {color:#57a2c2;background: transparent;text-decoration: none;}
 
-p, ul, blockquote, pre, td, th, label {margin: 0;font-size: 1em;line-height: 1.5em;margin-bottom: 1.5em;}
+p, ul, blockquote, pre, td, th, label {margin: 0;font-size: 1em;line-height: 1.5; margin-bottom: 1.5em;}
 
 ul, ol {list-style-type: none;text-align: left;}
 .fleft {float: left;text-align:left;}
@@ -42,7 +42,7 @@ h5 a, h5 a:visited   {text-decoration:none;color: #000;}
 
 /* ---( = begin standard type elements )------------------------------- */
 
-p           { margin: 0 0 1.5em; }
+p           { margin: 0 0 1.5em;}
 p img       { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
 p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
 
@@ -141,3 +141,12 @@ dd          { margin-left: 1.5em;}
     #content .quality .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-quality.gif) repeat top left;overflow:hidden;}
       #content .quality .shows ol {margin: 0;padding: 0;}
         #content .quality .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+  
+  #footer .wrapper { text-align: center; margin-bottom: 2em;}
+  
+  .featured { font-weight: bold; }
+  
+  #content table td,
+  #content table th {
+    padding: 0.2em;
+  }

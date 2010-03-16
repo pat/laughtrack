@@ -34,5 +34,7 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
+Haml::Template.options[:format] = :html5
+
 # For Thoughtbot's Clearance:
 DO_NOT_REPLY = 'pat@freelancing-gods.com'

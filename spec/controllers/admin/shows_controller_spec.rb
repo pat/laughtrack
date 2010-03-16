@@ -58,7 +58,7 @@ describe Admin::ShowsController do
       sign_in_as_admin
       put :update, :id => @show.id, :show => {}
       
-      response.should redirect_to(admin_shows_path)
+      response.should redirect_to(edit_admin_show_path(@show))
     end
     
     it "should render the edit template on failure" do

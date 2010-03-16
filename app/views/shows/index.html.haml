@@ -8,12 +8,16 @@
 %table
   %thead
     %tr
-      %th Act
-      %th Show
+      %th= link_to 'Act', order_params('act')
+      %th= link_to 'Show', order_params('name')
+      %th= link_to 'Sold Out', order_params('sold_out_percent')
+      %th= link_to 'Rating', order_params('rating')
   %tbody
     - @shows.each do |show|
       %tr
         %td= act_name show.act
         %td= link_to_show show
+        %td= number_to_percentage show.sold_out_percent, :precision => 0
+        %td= number_with_precision show.rating, :precision => 2
 
 = will_paginate @shows

@@ -17,4 +17,27 @@ module ApplicationHelper
       link_to 'Sold Out', [:sold_out, :admin, performance.show, performance]
     end
   end
+  
+  def show_attributes(show)
+    {
+      :class => show.featured? ? 'featured' : nil
+    }
+  end
+  
+  def order_params(attribute)
+    {
+      :sort_by => attribute,
+      :order   => order_direction(attribute)
+    }
+  end
+  
+  def order_direction(attribute)
+    if params[:sort_by] == attribute
+      params[:order] == 'asc' ? 'desc' : 'asc'
+    elsif ['sold_out_percent', 'rating'].include? attribute
+      'desc'
+    else
+      'asc'
+    end
+  end
 end

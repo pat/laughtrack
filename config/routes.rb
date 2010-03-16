@@ -4,7 +4,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :shows
   
   map.namespace :admin do |admin|
-    admin.resources :shows do |shows|
+    admin.resources :shows, :member => {
+      :feature    => :get,
+      :unfeature  => :get
+    } do |shows|
       shows.resources :performances, :member => {
         :sold_out   => :get,
         :available  => :get
@@ -24,6 +27,11 @@ ActionController::Routing::Routes.draw do |map|
       :unclassified => :get
     }
   end
+  
+  map.popular 'popular', :controller => 'shows', :action => 'index',
+    :sort_by => 'sold_out_percent', :order => 'asc'
+  map.quality 'quality', :controller => 'shows', :action => 'index',
+    :sort_by => 'rating', :order => 'desc'
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
