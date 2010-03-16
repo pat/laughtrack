@@ -26,4 +26,5 @@ group :test do
   gem 'fakeweb',         '>= 1.2.7'
   gem 'machinist',       '>= 1.0.6'
   gem 'fakeweb-matcher', '>= 1.1.0'
+  gem 'faker',           '0.3.1'
 end
