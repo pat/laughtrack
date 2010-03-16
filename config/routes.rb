@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.popular 'popular', :controller => 'shows', :action => 'index',
-    :sort_by => 'sold_out_percent', :order => 'asc'
+    :sort_by => 'sold_out_percent', :order => 'desc'
   map.quality 'quality', :controller => 'shows', :action => 'index',
     :sort_by => 'rating', :order => 'desc'
   
