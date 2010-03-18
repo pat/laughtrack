@@ -58,6 +58,11 @@ namespace :laughtrack do
     task :process do
       run "cd #{current_path} && rake twitter:process RAILS_ENV=production"
     end
+    
+    desc 'Cache Twitter stats for shows'
+    task :cache do
+      run "cd #{current_path} && rake twitter:cache RAILS_ENV=production"
+    end
   end
   
   desc "Update the crontab file"

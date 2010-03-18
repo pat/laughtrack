@@ -6,9 +6,7 @@
 # set :output, "/path/to/my/cron_log.log"
 
 every 30.minutes do
-  rake "twitter:import"
-  rake "twitter:cache"
-  rake "thinking_sphinx:index"
+  rake "twitter:import twitter:cache thinking_sphinx:index"
 end
 
 # Learn more: http://github.com/javan/whenever
