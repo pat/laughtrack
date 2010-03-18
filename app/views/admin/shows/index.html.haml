@@ -8,11 +8,14 @@
     %tr
       %th Show
       %th Act
+      %th Tweets
+      %th Feature
   %tbody
     - @shows.each do |show|
       %tr
         %td{show_attributes(show)}= link_to show.name, [:edit, :admin, show]
         %td= act_name show.act
+        %td= show.tweet_count
         %td
           - if show.featured
             = link_to 'Unfeature', unfeature_admin_show_path(show)

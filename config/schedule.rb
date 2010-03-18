@@ -7,6 +7,7 @@
 
 every 30.minutes do
   rake "twitter:import"
+  rake "twitter:cache"
 end
 
 # Learn more: http://github.com/javan/whenever

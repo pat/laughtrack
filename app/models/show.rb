@@ -23,6 +23,13 @@ class Show < ActiveRecord::Base
     has sold_out_percent, rating
   end
   
+  def self.update_tweet_counts
+    all.each do |show|
+      show.update_tweet_count
+      show.save
+    end
+  end
+  
   def tweets
     db.function("_design/laughtrack/_view/by_show", :key => id).collect { |doc|
       db.get doc.id
@@ -63,6 +70,10 @@ class Show < ActiveRecord::Base
   
   def unfeature!
     update_attributes(:featured => false)
+  end
+  
+  def update_tweet_count
+    self.tweet_count = db.function("_design/laughtrack/_view/by_show", :key => id).length
   end
   
   private
