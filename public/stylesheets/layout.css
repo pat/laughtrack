@@ -25,11 +25,11 @@ strong {color:#555e46;}
 
 /* ---( = begin baseline type elements )------------------------------- */
 
-h1, h2, h3, h4, h5, h6  {margin:0;padding:0;font-weight: bold;color: #000;}
-h1                      {font-size:3em;line-height:1;margin-bottom:0.5em;}
-h2                      {font-size:2em;margin-bottom:0.75em;}
-h3                      {font-size:1.5em;line-height:1;margin-bottom:1em;}
-h4                      {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;}
+h1, h2, h3, h4, h5, h6  {margin:0;padding:0;font-weight: normal;color:#e8188d}
+h1                      {font-size:3em;line-height:1;margin-bottom:0.5em;font-family: Georgia, Times, serif}
+h2                      {font-size:2em;margin-bottom:0.75em;font-family: Georgia, Times, serif}
+h3                      {font-size:1.5em;line-height:1;margin-bottom:1em;font-family: Georgia, Times, serif}
+h4                      {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;font-family: Georgia, Times, serif}
 h6                      {font-size:1em;font-weight:normal;}
 .small                  {margin: 0;font-size: 0.83em;line-height: 1.8em;margin-bottom: 1.8em;font-family: Arial, "Trebuchet MS", Trebuchet, sans-serif;}
 strong                  {font-weight:bold;}
@@ -38,7 +38,7 @@ h1 a, h1 a:visited,
 h2 a, h2 a:visited,
 h3 a, h3 a:visited,
 h4 a, h4 a:visited,
-h5 a, h5 a:visited   {text-decoration:none;color: #000;}
+h5 a, h5 a:visited   {text-decoration:none;color:#e8188d}
 
 /* ---( = begin standard type elements )------------------------------- */
 
@@ -98,13 +98,13 @@ dd          { margin-left: 1.5em;}
       #header ul li#about a:hover, #header ul li#about a:visited:hover {background-position: -305px -76px;}
       #header ul li#about a.active, #header ul li#about a.active:visited {background-position: -305px -76px;}
       
-#breadcrumbs {clear:both;margin: 0;padding: 0 0 .75em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+#breadcrumbs {clear:both;margin: 0 0 1em 0;padding: 0 0 .75em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
   #breadcrumbs ol {margin: 0;padding: 0;text-transform:uppercase;font-size:0.833em;}
     #breadcrumbs ol li {float: left;margin-right: 2em;}
       #breadcrumbs ol li a, #breadcrumbs ol li a:visited {color: #9a5a1c;}
       #breadcrumbs ol li a:hover, #breadcrumbs ol li a:visited:hover {color: #333;text-decoration: none;}
 
-#feature {clear:both;margin: 2em 0;padding: 1em 0;}
+#feature {clear:both;margin: 0 0 2em 0;padding: 0 0;}
   #feature .feature {float: left;width: 630px;height: 14em;background: url(/images/bg-feature.gif) repeat left top;}
     #feature .feature .pad {padding: 20px 30px;}
       #feature .feature .pad h5 {text-transform:uppercase;font-size:0.833em;font-weight: normal;color: #9a5a1c;}
@@ -113,6 +113,11 @@ dd          { margin-left: 1.5em;}
         #feature .feature .pad h2 a:hover, #feature .feature .pad h2 a:visited:hover {color:#57a2c2}
       #feature .feature .pad h3 {font: oblique 1.25em/1em Georgia, Times, serif;color:#666;}
       #feature .feature .pad p {margin-bottom: 0;}
+      
+      #feature .feature .pad .tickets {clear:both;margin: 1em 0;width: 570px;height:40px;background:#fff;position:relative;}
+        #feature .feature .pad .tickets .sold {display:block;background: url(/images/bg-sold.gif) no-repeat left top;position:absolute;top: 5px;left: 5px;height:30px}
+        #feature .feature .pad .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;}
+      
   #feature .twitter {float: right;width: 310px;height: 14em;background: url(/images/bg-twitters.gif) repeat left bottom;}
     #feature .twitter h6 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #feature .twitter h6 a, #feature .twitter h6 a:visited {display: block;width: 310px;height: 40px;color: #fff;text-indent: -20000em;overflow: hidden;}
@@ -141,12 +146,36 @@ dd          { margin-left: 1.5em;}
     #content .quality .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-quality.gif) repeat top left;overflow:hidden;}
       #content .quality .shows ol {margin: 0;padding: 0;}
         #content .quality .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+    
+    #content .featured { font-weight: bold; }
   
-  #footer .wrapper { text-align: center; margin-bottom: 2em;}
+  #footer {padding-top: 2em;background: url(/images/bg-dots.gif) repeat-x left top;}
+    #footer .wrapper { text-align:  center; margin-bottom: 2em;}
   
-  .featured { font-weight: bold; }
+  
   
   #content table td,
   #content table th {
     padding: 0.2em;
   }
+  
+/* ---( = begin generic form elements )------------------------------- */
+
+legend {margin:0;padding:0;}
+label {margin: 0;padding: 0;font-weight: normal;cursor: pointer;cursor: hand;background: transparent;}
+fieldset ol {clear: both;float:left;overflow:hidden;}
+fieldset ol li {overflow:hidden;position: relative;}
+fieldset ol li input, fieldset ol li.button input {width:auto;}
+
+/* ---( = begin specific form elements )------------------------------- */
+
+fieldset {clear: both;margin: 0 0 1em 0;padding: 0.5em 1em;}
+fieldset ol {overflow:hidden;margin: 0 0 0 0;padding: 0;}
+fieldset ol li {clear:both;margin: 0 0 1em 0;padding-top: 1em;width:100%;}
+fieldset ol li label {display: block; margin: 0;}
+fieldset ol li input, fieldset ol li textarea {width:545px;background: #fff;;border: 1px solid #dadee4;padding: 5px;}
+fieldset ol li.button input {margin-left:170px;width:auto;background:none;border:none;padding:none;}
+fieldset ol li textarea {height: 10em;}
+fieldset ol li span.goback {margin: 0.5em 0 0 0;display: block;}
+fieldset ol li select {padding: 2px;border-top: 1px solid #e1e1e1;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;border-left: 1px solid #e1e1e1;}
+fieldset ol li label span {margin-left: 2em;font-size: 0.95em;}

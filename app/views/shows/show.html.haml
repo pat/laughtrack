@@ -1,18 +1,22 @@
-%h2= @show.name
-- if @show.act
-  %h3= @show.act.name
+#feature
+  .feature
+    .pad
+      %h2= @show.name
+      - if @show.act
+        %h3= @show.act.name
+      
+      .tickets
+        .sold{:style => "width: 80%"}
+        %span= "#{@show.sold_out_percent.to_i}% Sold Out"
 
-%p
-  = "#{@show.sold_out_percent.to_i}% Sold Out"
+      - if @related.present?
+        %h3 Shows by the same acts and performers
+        %ul.related
+          - @related.each do |show|
+            %li= link_to_show show
 
-- if @related.present?
-  %h3 Shows by the same acts and performers
-  %ul.related
-    - @related.each do |show|
-      %li= link_to_show show
+      %h3 Tweets
 
-%h3 Tweets
-
-%ul
-  - @show.tweets.each do |tweet|
-    %li= tweet.text
+      %ol
+        - @show.tweets.each do |tweet|
+          %li= tweet.text
