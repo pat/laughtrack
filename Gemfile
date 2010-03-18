@@ -18,6 +18,7 @@ gem 'pedantic',          '0.1.1'
 gem 'will_paginate',     '2.3.12'
 gem 'ambethia-smtp-tls', '1.1.2',  :require => 'smtp-tls'
 gem 'whenever',          '0.4.1'
+gem 'exceptional',       '2.0.3'
 
 # Testing Gems
 group :test do
