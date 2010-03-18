@@ -8,4 +8,4 @@
       = link_to "Flag as Positive", positive_admin_tweet_path(doc._id)
       = link_to "Flag as Negative", negative_admin_tweet_path(doc._id)
       = link_to "Ignore", ignore_admin_tweet_path(doc._id)
-      %span.show= "(#{link_to_show doc.show_id})"
+      %span.show= "(#{link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id)})"
