@@ -20,7 +20,14 @@ class Show < ActiveRecord::Base
     indexes name,                  :sortable => true
     indexes act.name, :as => :act, :sortable => true
     
-    has sold_out_percent, rating
+    has sold_out_percent, rating, tweet_count, featured
+  end
+  
+  def self.update_tweet_counts
+    all.each do |show|
+      show.update_tweet_count
+      show.save
+    end
   end
   
   def tweets
@@ -63,6 +70,10 @@ class Show < ActiveRecord::Base
   
   def unfeature!
     update_attributes(:featured => false)
+  end
+  
+  def update_tweet_count
+    self.tweet_count = db.function("_design/laughtrack/_view/by_show", :key => id).length
   end
   
   private

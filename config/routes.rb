@@ -5,8 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
     admin.resources :shows, :member => {
-      :feature    => :get,
-      :unfeature  => :get
+      :feature      => :get,
+      :unfeature    => :get,
+      :clear_tweets => :get
     } do |shows|
       shows.resources :performances, :member => {
         :sold_out   => :get,
@@ -22,9 +23,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :tweets, :member => {
       :positive => :get,
       :negative => :get,
-      :ignore   => :get
+      :ignore   => :get,
+      :confirm  => :get
     }, :collection => {
-      :unclassified => :get
+      :unclassified => :get,
+      :unconfirmed  => :get
     }
   end
   

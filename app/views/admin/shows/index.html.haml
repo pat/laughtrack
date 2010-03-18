@@ -6,13 +6,20 @@
 %table
   %thead
     %tr
-      %th Show
-      %th Act
+      %th= link_to 'Act', order_params('act')
+      %th= link_to 'Show', order_params('name')
+      %th= link_to 'Sold Out', order_params('sold_out_percent')
+      %th= link_to 'Rating', order_params('rating')
+      %th= link_to 'Tweets', order_params('tweet_count')
+      %th= link_to 'Feature', order_params('featured')
   %tbody
     - @shows.each do |show|
       %tr
+        %td{show_attributes(show)}= act_name show.act
         %td{show_attributes(show)}= link_to show.name, [:edit, :admin, show]
-        %td= act_name show.act
+        %td= number_to_percentage show.sold_out_percent, :precision => 0
+        %td= number_with_precision show.rating, :precision => 2
+        %td= show.tweet_count
         %td
           - if show.featured
             = link_to 'Unfeature', unfeature_admin_show_path(show)

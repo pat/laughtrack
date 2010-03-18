@@ -8,4 +8,9 @@ namespace :twitter do
   task :process => :environment do
     LaughTrack::Twitter.process
   end
+  
+  desc 'Cache Twitter stats for Shows'
+  task :cache => :environment do
+    Show.update_tweet_counts
+  end
 end
