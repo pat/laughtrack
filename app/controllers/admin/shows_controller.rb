@@ -1,4 +1,6 @@
 class Admin::ShowsController < Admin::ApplicationController
+  include LaughTrack::CouchDb
+  
   def index
     if params[:query].blank?
       @shows = Show.paginate :page => params[:page], :per_page => 20
@@ -14,7 +16,7 @@ class Admin::ShowsController < Admin::ApplicationController
   def update
     if show.update_attributes(params[:show])
       flash[:notice] = 'Changes saved.'
-      redirect_to edit_admin_show_path(@show)
+      redirect_to edit_admin_show_path(show)
     else
       render :action => :edit
     end
@@ -34,6 +36,15 @@ class Admin::ShowsController < Admin::ApplicationController
     show.unfeature!
     
     redirect_to :back
+  end
+  
+  def clear_tweets
+    show.tweets.each do |tweet|
+      tweet.ignore = true
+      db.save tweet
+    end
+    
+    redirect_to edit_admin_show_path(show)
   end
   
   private

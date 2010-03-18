@@ -29,6 +29,8 @@
       = tweet.text
       = "(#{tweet.classification})"
 
+= link_to "Clear All Tweets", clear_tweets_admin_show_path(@show)
+
 %h3= pluralize @show.performances.length, 'Performance'
 
 %ol
