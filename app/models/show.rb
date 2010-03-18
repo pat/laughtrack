@@ -20,7 +20,7 @@ class Show < ActiveRecord::Base
     indexes name,                  :sortable => true
     indexes act.name, :as => :act, :sortable => true
     
-    has sold_out_percent, rating
+    has sold_out_percent, rating, tweet_count, featured
   end
   
   def self.update_tweet_counts

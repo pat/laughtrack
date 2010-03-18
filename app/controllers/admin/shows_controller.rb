@@ -2,11 +2,11 @@ class Admin::ShowsController < Admin::ApplicationController
   include LaughTrack::CouchDb
   
   def index
-    if params[:query].blank?
-      @shows = Show.paginate :page => params[:page], :per_page => 20
-    else
-      @shows = Show.search params[:query], :page => params[:page]
-    end
+    @shows = Show.search params[:query],
+      :page      => params[:page],
+      :include   => :act,
+      :sort_mode => sort_mode,
+      :order     => order
   end
   
   def edit
@@ -51,5 +51,26 @@ class Admin::ShowsController < Admin::ApplicationController
   
   def show
     @show ||= Show.find params[:id]
+  end
+  
+  def sort_mode
+    case params[:order]
+    when 'asc'
+      :asc
+    when 'desc'
+      :desc
+    else
+      params[:query].blank? ? nil : :relevance
+    end
+  end
+  
+  def order
+    if !params[:sort_by].blank?
+      params[:sort_by].to_sym
+    elsif params[:query].blank?
+      :act
+    else
+      nil
+    end
   end
 end
