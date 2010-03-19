@@ -5,10 +5,9 @@
         .pad
           %h5 Featured Show
           %h2= link_to_show @featured
-          %h3= @featured.act_name
-          %p
-            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-            = link_to 'Read More &rsaquo;', @featured
+          - unless @featured.act_name.blank?
+            %h3= @featured.act_name
+          = link_to 'Read More &rsaquo;', @featured
       
       - if @tweet
         .twitter
