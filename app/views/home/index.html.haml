@@ -17,7 +17,7 @@
             %br/
             %strong
               = time_ago_in_words @tweet.created_at
-              by: 
+              ago by: 
               = link_to "@#{@tweet.from_user}", "http://twitter.com/#{@tweet.from_user}"
 
 #shows
