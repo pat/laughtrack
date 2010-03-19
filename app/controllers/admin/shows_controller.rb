@@ -39,10 +39,12 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   def clear_tweets
-    show.tweets.each do |tweet|
+    show.tweets.select { |tweet|
+      tweet.classification.nil?
+    }.each { |tweet|
       tweet.ignore = true
       db.save tweet
-    end
+    }
     
     redirect_to edit_admin_show_path(show)
   end
