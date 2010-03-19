@@ -28,6 +28,9 @@
     %li
       = tweet.text
       = "(#{tweet.classification})"
+      = link_to "Flag as Positive", positive_admin_tweet_path(tweet._id)
+      = link_to "Flag as Negative", negative_admin_tweet_path(tweet._id)
+      = link_to "Ignore", ignore_admin_tweet_path(tweet._id)
 
 = link_to "Clear All Tweets", clear_tweets_admin_show_path(@show)
 
