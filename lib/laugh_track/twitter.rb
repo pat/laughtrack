@@ -10,7 +10,7 @@ class LaughTrack::Twitter
       
       doc.sanitised_text = Pedantic.fix doc.text
       doc.processed      = true
-      doc.ignore         = true if doc.text[/^RT\s/i]
+      doc.ignore         = ignore?(doc.text)
       
       scores = {:positive => 0, :negative => 0}
       scores.keys.each do |key|
@@ -28,6 +28,16 @@ class LaughTrack::Twitter
       doc.classification = scores.sort_by { |a| -a[1] }.first.first.to_s
       
       db.save doc
+    end
+  end
+  
+  def self.ignore?(text)
+    case text
+    when /^RT /i
+    when /I favorited a YouTube video/
+      true
+    else
+      false
     end
   end
 end
