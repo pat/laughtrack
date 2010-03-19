@@ -10,14 +10,16 @@
             Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
             = link_to 'Read More &rsaquo;', @featured
       
-      .twitter
-        %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack'
-        %p
-          %em Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-          %br/
-          %strong
-            12 minutes ago. By: 
-            = link_to '@username', '/'
+      - if @tweet
+        .twitter
+          %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack'
+          %p
+            %em= @tweet.text
+            %br/
+            %strong
+              = time_ago_in_words @tweet.created_at
+              by: 
+              = link_to "@#{@tweet.from_user}", "http://twitter.com/#{@tweet.from_user}"
 
 #shows
   .popular
