@@ -20,7 +20,7 @@ class Show < ActiveRecord::Base
     indexes name,                  :sortable => true
     indexes act.name, :as => :act, :sortable => true
     
-    has sold_out_percent, rating, tweet_count, featured
+    has sold_out_percent, rating, tweet_count, featured, confirmed_tweet_count
   end
   
   def self.update_tweet_counts
@@ -74,6 +74,7 @@ class Show < ActiveRecord::Base
   
   def update_tweet_count
     self.tweet_count = db.function("_design/laughtrack/_view/by_show", :key => id).length
+    self.confirmed_tweet_count = db.function('_design/laughtrack/_view/confirmed_by_show', :key => id).length
   end
   
   private

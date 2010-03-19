@@ -19,7 +19,9 @@
         %td{show_attributes(show)}= link_to show.name, [:edit, :admin, show]
         %td= number_to_percentage show.sold_out_percent, :precision => 0
         %td= number_with_precision show.rating, :precision => 2
-        %td= show.tweet_count
+        %td
+          = "(#{show.confirmed_tweet_count})"
+          = show.tweet_count
         %td
           - if show.featured
             = link_to 'Unfeature', unfeature_admin_show_path(show)
