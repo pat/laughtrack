@@ -159,6 +159,10 @@ dd          { margin-left: 1.5em;}
     padding: 0.2em;
   }
   
+  .unclassified a.show {
+    display: block;
+  }
+  
 /* ---( = begin generic form elements )------------------------------- */
 
 legend {margin:0;padding:0;}

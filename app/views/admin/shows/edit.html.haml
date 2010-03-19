@@ -23,14 +23,22 @@
 
 %h3 Latest Tweets
 
-%ul
-  - @show.tweets.each do |tweet|
-    %li
-      = tweet.text
-      = "(#{tweet.classification})"
-      = link_to "Flag as Positive", positive_admin_tweet_path(tweet._id)
-      = link_to "Flag as Negative", negative_admin_tweet_path(tweet._id)
-      = link_to "Ignore", ignore_admin_tweet_path(tweet._id)
+%table
+  %thead
+    %tr
+      %th Tweet
+      %th Current
+      %th Positive
+      %th Negative
+      %th Ignore
+  %tbody
+    - @show.tweets.each do |tweet|
+      %tr
+        %td= tweet.text
+        %td= tweet.classification
+        %td= link_to "Positive", positive_admin_tweet_path(tweet._id)
+        %td= link_to "Negative", negative_admin_tweet_path(tweet._id)
+        %td= link_to "Ignore", ignore_admin_tweet_path(tweet._id)
 
 = link_to "Clear All Tweets", clear_tweets_admin_show_path(@show)
 

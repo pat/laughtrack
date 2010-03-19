@@ -1,8 +1,16 @@
-%ul
-  - @docs.each do |doc|
-    %li
-      %span.text= doc.text
-      = link_to "Flag as Positive", positive_admin_tweet_path(doc._id)
-      = link_to "Flag as Negative", negative_admin_tweet_path(doc._id)
-      = link_to "Ignore", ignore_admin_tweet_path(doc._id)
-      %span.show= "(#{link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id)})"
+%table.unclassified
+  %thead
+    %tr
+      %th Tweet
+      %th Positive
+      %th Negative
+      %th Ignore
+  %tbody
+    - @docs.each do |doc|
+      %tr
+        %td
+          = doc.text
+          = link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id), :class => 'show'
+        %td= link_to "Positive", positive_admin_tweet_path(doc._id)
+        %td= link_to "Negative", negative_admin_tweet_path(doc._id)
+        %td= link_to "Ignore", ignore_admin_tweet_path(doc._id)
