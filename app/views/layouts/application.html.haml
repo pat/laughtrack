@@ -13,9 +13,7 @@
           %li#about= link_to 'About Us', '/about'
     #breadcrumbs
       .wrapper
-        %ol
-          %li= link_to 'Home', '/'
-          %li= link_to 'Other link', '/'
+        = yield :breadcrumbs
         
         - form_tag '/shows', :method => :get, :class => 'search' do
           %label{:for => 'query'} Search Shows
