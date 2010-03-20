@@ -21,18 +21,31 @@
               = link_to "@#{@tweet.from_user}", "http://twitter.com/#{@tweet.from_user}"
 
 #shows
-  .popular
-    %h2= link_to 'Popular Shows', popular_path
-    .shows
-      %ol
-        - @popular.each do |show|
-          %li= link_to_show show
-      = link_to "View All Popular Shows &rsaquo;", popular_path
-
+  %p.intro
+    LaughTrack tracks the buzz of the
+    %a{:href => 'http://comedyfestival.com.au'} Melbourne International Comedy Festival.
+    We keep an eye on what people are saying about shows on
+    %a{:href => 'http://twitter.com'} Twitter
+    and what tickets they're buying, to give you some idea of what people are enjoying at the festival.
+  
   .quality
     %h2= link_to 'Quality Shows', quality_path
+    
+    %h3 What People are Loving
+    
     .shows
       %ol
         - @rated.each do |show|
           %li= link_to_show show
       = link_to "View All Quality Shows &rsaquo;", quality_path
+    
+  .popular
+    %h2= link_to 'Popular Shows', popular_path
+
+    %h3 What People are Seeing
+
+    .shows
+      %ol
+        - @popular.each do |show|
+          %li= link_to_show show
+      = link_to "View All Popular Shows &rsaquo;", popular_path

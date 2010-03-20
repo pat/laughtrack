@@ -138,7 +138,7 @@ dd          { margin-left: 1.5em;}
 
 #content {clear:both;margin: 0;padding: 1em 0;}
   #content #shows {margin: 0;padding:0;overflow:hidden;}
-  #content .popular {float:left;width:470px;margin:0;padding:0;}
+  #content .popular {float:right;width:470px;margin:0;padding:0;}
     #content .popular h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #content .popular h2 a, #content .popular h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
       #content .popular h2 a, #content .popular h2 a:visited,
@@ -148,7 +148,7 @@ dd          { margin-left: 1.5em;}
         #content .popular .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
           
   
-  #content .quality {float:right;width:470px;margin:0;padding:0;}
+  #content .quality {float:left;width:470px;margin:0;padding:0;}
     #content .quality h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #content .quality h2 a, #content .quality h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
       #content .quality h2 a, #content .quality h2 a:visited,
