@@ -14,7 +14,9 @@
         %ul.related
           - @related.each do |show|
             %li= link_to_show show
-
+      
+      = link_to "The Official Details", @show.url
+      
       %h3 Tweets
 
       %ol
