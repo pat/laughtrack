@@ -6,11 +6,13 @@ That said, I'm putting it online, because some have expressed an interest in hel
 
 h2. Set Up
 
-* Create the dev and test databases (MySQL or PostgreSQL only).
+* Create the dev and test databases (MySQL only at this point - using the @RAND()@ function. Work-arounds for PostgreSQL welcome).
 * Add your database.yml file, borrowing from the template if you wish.
 * Install Sphinx if you don't have it yet.
 * Install CouchDB if you don't have it yet. You can either "use ports or compile via source":http://wiki.apache.org/couchdb/Installing_on_OSX, or use the "pre-made CouchDBX":http://janl.github.com/couchdbx/.
-* @rake gems:install@
+* Make sure you have the Bundler gem (0.9.x - I'm using 0.9.10)
+* @bundle install@
+* @bundle lock@
 * @rake db:migrate db:test:clone@*
 * Clone "the CouchDB code":http://github.com/freelancing-god/laughtrack-couch and push it to your Couch database.
 
