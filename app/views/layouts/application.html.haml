@@ -16,6 +16,11 @@
         %ol
           %li= link_to 'Home', '/'
           %li= link_to 'Other link', '/'
+        
+        - form_tag '/shows', :method => :get, :class => 'search' do
+          %label{:for => 'query'} Search Shows
+          = text_field_tag 'query', params[:query]
+          %input{:type => 'submit', :value => 'Search', :class => 'submit'}
 
     = yield :feature
     

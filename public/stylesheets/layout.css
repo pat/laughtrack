@@ -103,6 +103,16 @@ dd          { margin-left: 1.5em;}
     #breadcrumbs ol li {float: left;margin-right: 2em;}
       #breadcrumbs ol li a, #breadcrumbs ol li a:visited {color: #9a5a1c;}
       #breadcrumbs ol li a:hover, #breadcrumbs ol li a:visited:hover {color: #333;text-decoration: none;}
+  
+  #breadcrumbs .search {
+    float: right;
+  }
+  
+  #breadcrumbs label,
+  #breadcrumbs input.submit {
+    text-transform: uppercase;
+    font-size:0.833em;
+  }
 
 #feature {clear:both;margin: 0 0 2em 0;padding: 0 0;}
   #feature .feature {float: left;width: 630px;background: url(/images/bg-feature.gif) repeat left top;}
