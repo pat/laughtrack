@@ -14,4 +14,20 @@ class ApplicationController < ActionController::Base
   def admin?
     redirect_to new_session_path unless current_user && current_user.admin
   end
+  
+  def render_optional_error_file(status_code)
+    if status_code == :not_found
+      render_404
+    else
+      render_500
+    end
+  end
+  
+  def render_404
+    render :template => '/home/four_oh_four', :status => 404
+  end
+  
+  def render_500
+    render :template => '/home/five_hundred', :status => 500
+  end
 end
