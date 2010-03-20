@@ -73,13 +73,24 @@ class Show < ActiveRecord::Base
   end
   
   def update_tweet_count
-    self.tweet_count = db.function("_design/laughtrack/_view/by_show", :key => id).length
-    self.confirmed_tweet_count = db.function('_design/laughtrack/_view/confirmed_by_show', :key => id).length
+    self.tweet_count            = view("by_show").length
+    self.confirmed_tweet_count  = view("confirmed_by_show").length
+    self.rating = LaughTrack::Wilson.new(
+      positive_count, confirmed_tweet_count
+    ).lower_bound
   end
   
   private
   
   def add_act_keyword
     keywords.create :words => "\"#{act_name}\"" unless act_name.blank?
+  end
+  
+  def view(name)
+    db.function("_design/laughtrack/_view/#{name}", :key => id)
+  end
+  
+  def positive_count
+    view("positive_by_show").length
   end
 end

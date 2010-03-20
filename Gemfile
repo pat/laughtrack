@@ -19,6 +19,7 @@ gem 'will_paginate',     '2.3.12'
 gem 'ambethia-smtp-tls', '1.1.2',  :require => 'smtp-tls'
 gem 'whenever',          '0.4.1'
 gem 'exceptional',       '2.0.3'
+gem 'statistics2',       '0.54'
 
 # Testing Gems
 group :test do
