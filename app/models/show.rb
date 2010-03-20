@@ -31,7 +31,13 @@ class Show < ActiveRecord::Base
   end
   
   def tweets
-    db.function("_design/laughtrack/_view/confirmed_by_show", :key => id).collect { |doc|
+    view('confirmed_by_show').collect { |doc|
+      db.get doc.id
+    }
+  end
+  
+  def unconfirmed_tweets
+    view('unconfirmed_by_show').collect { |doc|
       db.get doc.id
     }
   end

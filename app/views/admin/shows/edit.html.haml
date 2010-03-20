@@ -33,7 +33,7 @@
       %th Negative
       %th Ignore
   %tbody
-    - @show.tweets.each do |tweet|
+    - @show.unconfirmed_tweets.each do |tweet|
       %tr
         %td= tweet.text
         %td= tweet.classification
