@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => "home"
+  map.root :controller => 'home'
+  map.four_oh_four '/404', :controller => 'home', :action => 'four_oh_four'
+  map.five_hundred '/500', :controller => 'home', :action => 'five_hundred'
   
   map.resources :shows
   
