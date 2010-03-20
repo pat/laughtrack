@@ -18,11 +18,3 @@ class AddAndSetShowLink < ActiveRecord::Migration
     remove_column :shows, :url
   end
 end
-
-
-def missing?(url)
-  RestClient.head(url)
-  false
-rescue
-  true
-end
