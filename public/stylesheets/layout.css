@@ -128,7 +128,7 @@ dd          { margin-left: 1.5em;}
         #feature .feature .pad .tickets .sold {display:block;background: url(/images/bg-sold.gif) no-repeat left top;position:absolute;top: 5px;left: 5px;height:30px}
         #feature .feature .pad .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;}
       
-  #feature .twitter {float: right;width: 310px;height: 14em;background: url(/images/bg-twitters.gif) repeat left bottom;}
+  #feature .twitter {float: right;width: 310px;background: url(/images/bg-twitters.gif) repeat left bottom;}
     #feature .twitter h6 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #feature .twitter h6 a, #feature .twitter h6 a:visited {display: block;width: 310px;height: 40px;color: #fff;text-indent: -20000em;overflow: hidden;}
       #feature .twitter h6 a, #feature .twitter h6 a:visited,
