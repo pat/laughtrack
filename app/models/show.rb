@@ -31,7 +31,7 @@ class Show < ActiveRecord::Base
   end
   
   def tweets
-    db.function("_design/laughtrack/_view/by_show", :key => id).collect { |doc|
+    db.function("_design/laughtrack/_view/confirmed_by_show", :key => id).collect { |doc|
       db.get doc.id
     }
   end
@@ -77,7 +77,7 @@ class Show < ActiveRecord::Base
     self.confirmed_tweet_count  = view("confirmed_by_show").length
     self.rating = LaughTrack::Wilson.new(
       positive_count, confirmed_tweet_count
-    ).lower_bound
+    ).lower_bound * 100
   end
   
   private

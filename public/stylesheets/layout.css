@@ -105,7 +105,7 @@ dd          { margin-left: 1.5em;}
       #breadcrumbs ol li a:hover, #breadcrumbs ol li a:visited:hover {color: #333;text-decoration: none;}
 
 #feature {clear:both;margin: 0 0 2em 0;padding: 0 0;}
-  #feature .feature {float: left;width: 630px;height: 14em;background: url(/images/bg-feature.gif) repeat left top;}
+  #feature .feature {float: left;width: 630px;background: url(/images/bg-feature.gif) repeat left top;}
     #feature .feature .pad {padding: 20px 30px;}
       #feature .feature .pad h5 {text-transform:uppercase;font-size:0.833em;font-weight: normal;color: #9a5a1c;}
       #feature .feature .pad h2 {font: normal 2em/1em Georgia, Times, serif;color:#e8188d;margin: 0 0 .25em 0;}
