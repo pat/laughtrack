@@ -31,7 +31,7 @@ namespace :deploy do
   end
 end
 
-after 'deploy:update' do
+after 'deploy:update_code' do
   run "cd #{release_path} && #{bundle} install && #{bundle} lock"
   laughtrack.update_crontab
 end
