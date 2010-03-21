@@ -20,10 +20,8 @@ class Show < ActiveRecord::Base
     indexes name,                  :sortable => true
     indexes act.name, :as => :act, :sortable => true
     
-    has sold_out_percent, rating, tweet_count, featured, confirmed_tweet_count
-    has "tweet_count - confirmed_tweet_count",
-      :as   => :unconfirmed_tweet_count,
-      :type => :integer
+    has sold_out_percent, rating, tweet_count, featured
+    has confirmed_tweet_count, unconfirmed_tweet_count
   end
   
   def self.update_tweet_counts
@@ -82,8 +80,9 @@ class Show < ActiveRecord::Base
   end
   
   def update_tweet_count
-    self.tweet_count            = view("by_show").length
-    self.confirmed_tweet_count  = view("confirmed_by_show").length
+    self.tweet_count              = view("by_show").length
+    self.confirmed_tweet_count    = view("confirmed_by_show").length
+    self.unconfirmed_tweet_count  = view("unconfirmed_by_show").length
     self.rating = LaughTrack::Wilson.new(
       positive_count, confirmed_tweet_count
     ).lower_bound * 100
