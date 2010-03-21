@@ -91,5 +91,74 @@ describe Keyword do
       
       @keyword.imported_at.to_date.should == Date.today
     end
+    
+    context 'auto-classification' do
+      [ 'Tommy tiernan was very funny',
+        'Frank Woodley at the Powerhouse ... performances brilliant.',
+        'Hannah Gadsby Five stars',
+        'Ross Noble is the funniest man I have ever seen!',
+        'ross noble is sooooo funny',
+        'The Axis of Awesome is AMAZING',
+        'the Small Poppies have much inspired silly satire. Worth a watch',
+        'Gala was awesome',
+        'Julian Clary may be crude.. But its Hilarious',
+        "Go see Eric's Tales of the Sea at #adlfringe. It's a real gem.",
+        'Nina Conti is a fantastic performer. Very talented and funny.',
+        'following melinda buttle now? good. she is bloody hilarious.',
+        'Rich Fulcher has got to be one of the funniest men alive.',
+        'Saw Adam Hills at the Fringe Festival tonight and loved his show',
+        'OMFG I LOVE DENISE SCOTT!!! she is the funniest ever!',
+        'Philip Escoffey last night was incredible'
+      ].each do |phrase|
+        it "should mark \"#{phrase}\" as positive" do
+          FakeWeb.register_uri :get, /search\.twitter\.com/,
+            :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
+          
+          @database.should_receive(:save) do |hash|
+            hash[:classification].should == 'positive'
+          end
+          
+          @keyword.import
+        end
+      end
+      
+      [ 'Akmal is not very funny',
+        'Jason Byrne, he was a complete twat',
+        "i'm not a fan of jason byrne."
+      ].each do |phrase|
+        it "should mark \"#{phrase}\" as negative" do
+          FakeWeb.register_uri :get, /search\.twitter\.com/,
+            :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
+          
+          @database.should_receive(:save) do |hash|
+            hash[:classification].should == 'negative'
+          end
+          
+          @keyword.import
+        end
+      end
+    end
+    
+    context 'auto-ignore' do
+      [ 'Goal: Jason Byrne - 32 - Bohemians - http://www.worldsoccertweets.com',
+        "BBC - BBC Comedy Blog: Sarah Millican's Support Group",
+        "RT @ComedyChannel: AUSTRALIA'S FUNNIEST - Comedy Festival",
+        "@dhughesy RT @PeterBlackQUT i still don't know what i did",
+        'I want to see this on Spicks and Specks',
+        'I favorited a YouTube video -- The Axis of Awesome 4 Chords',
+        'Check this video out -- The Axis of Awesome 4 Chords'
+      ].each do |phrase|
+        it "should mark \"#{phrase}\" as ignored" do
+          FakeWeb.register_uri :get, /search\.twitter\.com/,
+            :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
+        
+          @database.should_receive(:save) do |hash|
+            hash[:ignore].should == true
+          end
+        
+          @keyword.import
+        end
+      end
+    end
   end
 end
