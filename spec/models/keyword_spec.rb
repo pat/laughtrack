@@ -108,7 +108,8 @@ describe Keyword do
         'Rich Fulcher has got to be one of the funniest men alive.',
         'Saw Adam Hills at the Fringe Festival tonight and loved his show',
         'OMFG I LOVE DENISE SCOTT!!! she is the funniest ever!',
-        'Philip Escoffey last night was incredible'
+        'Philip Escoffey last night was incredible',
+        'Nina Conti was bloody fantastic! Loved her new set'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as positive" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
@@ -146,7 +147,11 @@ describe Keyword do
         "@dhughesy RT @PeterBlackQUT i still don't know what i did",
         'I want to see this on Spicks and Specks',
         'I favorited a YouTube video -- The Axis of Awesome 4 Chords',
-        'Check this video out -- The Axis of Awesome 4 Chords'
+        'Check this video out -- The Axis of Awesome 4 Chords',
+        'Watching The Bubble. I really like Josie Long.',
+        'I just heard that Henry Rollins was on Rupauls Drag Race.',
+        'I rated a YouTube video',
+        'Colin Lane is hilarious #spicks&specks'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,

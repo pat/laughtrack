@@ -53,7 +53,8 @@ class Keyword < ActiveRecord::Base
     case text
     when /\bRT\b/, /spicks (and|&) specks/i, /I favorited a YouTube video/i,
       /check this video out/i, /Sarah Millican's Support Group/i,
-      /worldsoccertweets/i
+      /worldsoccertweets/i, /the bubble/i, /ru\s?paul/i,
+      /rated a youtube video/i, /#spicks(and|&)specks/i
       true
     else
       false
