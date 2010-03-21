@@ -39,9 +39,7 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   def clear_tweets
-    show.tweets.select { |tweet|
-      tweet.classification.nil?
-    }.each { |tweet|
+    show.unconfirmed_tweets.each { |tweet|
       tweet.ignore = true
       db.save tweet
     }
