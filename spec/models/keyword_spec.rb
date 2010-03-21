@@ -157,7 +157,8 @@ describe Keyword do
         'Green able to play Friday: Oklahoma City Jeff Green scored 25 points',
         'Jason Coleman on The 7pm Project',
         'Nick Sun @ Station 59, 2008: http://url4.eu/1fXfN',
-        'Thank god youre here - Jimeoin: http://url4.eu/1pYPg'
+        'Thank god youre here - Jimeoin: http://url4.eu/1pYPg',
+        'The 100 club: Artists who signed up for comedian Josie Long'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
