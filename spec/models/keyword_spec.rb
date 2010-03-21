@@ -155,7 +155,9 @@ describe Keyword do
         '#nowplaying The Bedroom Philosopher – Northcote (So Hungover)',
         'Jeff Green left a comment for Kay Clover',
         'Green able to play Friday: Oklahoma City Jeff Green scored 25 points',
-        'Jason Coleman on The 7pm Project'
+        'Jason Coleman on The 7pm Project',
+        'Nick Sun @ Station 59, 2008: http://url4.eu/1fXfN',
+        'Thank god youre here - Jimeoin: http://url4.eu/1pYPg'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,

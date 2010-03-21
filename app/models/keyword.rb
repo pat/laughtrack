@@ -56,7 +56,8 @@ class Keyword < ActiveRecord::Base
       /worldsoccertweets/i, /the bubble/i, /ru\s?paul/i,
       /rated a youtube video/i, /#spicks(and|&)specks/i,
       /Northcote \(So Hungover\)/i, /left a comment for/i, /Oklahoma City/i,
-      /scored \d+ points/i, /The 7pm Project/i
+      /scored \d+ points/i, /The 7pm Project/i, /Nick Sun @ Station 59/i,
+      /thank god you'?re here/i
       true
     else
       false
