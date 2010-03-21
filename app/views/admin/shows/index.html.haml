@@ -10,7 +10,7 @@
       %th= link_to 'Show', order_params('name')
       %th= link_to 'Sold Out', order_params('sold_out_percent')
       %th= link_to 'Rating', order_params('rating')
-      %th= link_to 'Tweets', order_params('tweet_count')
+      %th= link_to 'Tweets', order_params('unconfirmed_tweet_count')
       %th= link_to 'Feature', order_params('featured')
   %tbody
     - @shows.each do |show|

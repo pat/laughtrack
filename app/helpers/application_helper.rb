@@ -34,7 +34,7 @@ module ApplicationHelper
   def order_direction(attribute)
     if params[:sort_by] == attribute
       params[:order] == 'asc' ? 'desc' : 'asc'
-    elsif ['sold_out_percent', 'rating', 'tweet_count'].include? attribute
+    elsif ['sold_out_percent', 'rating', 'unconfirmed_tweet_count'].include? attribute
       'desc'
     else
       'asc'
