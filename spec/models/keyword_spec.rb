@@ -160,11 +160,11 @@ describe Keyword do
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
             :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
-        
+          
           @database.should_receive(:save) do |hash|
             hash[:ignore].should == true
           end
-        
+          
           @keyword.import
         end
       end

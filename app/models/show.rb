@@ -21,6 +21,9 @@ class Show < ActiveRecord::Base
     indexes act.name, :as => :act, :sortable => true
     
     has sold_out_percent, rating, tweet_count, featured, confirmed_tweet_count
+    has "tweet_count - confirmed_tweet_count",
+      :as   => :unconfirmed_tweet_count,
+      :type => :integer
   end
   
   def self.update_tweet_counts

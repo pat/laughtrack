@@ -43,6 +43,8 @@ class Admin::ShowsController < Admin::ApplicationController
       tweet.ignore = true
       db.save tweet
     }
+    show.update_tweet_count
+    show.save
     
     redirect_to edit_admin_show_path(show)
   end
