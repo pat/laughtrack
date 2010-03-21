@@ -54,7 +54,9 @@ class Keyword < ActiveRecord::Base
     when /\bRT\b/, /spicks (and|&) specks/i, /I favorited a YouTube video/i,
       /check this video out/i, /Sarah Millican's Support Group/i,
       /worldsoccertweets/i, /the bubble/i, /ru\s?paul/i,
-      /rated a youtube video/i, /#spicks(and|&)specks/i
+      /rated a youtube video/i, /#spicks(and|&)specks/i,
+      /Northcote \(So Hungover\)/i, /left a comment for/i, /Oklahoma City/i,
+      /scored \d+ points/i, /The 7pm Project/i
       true
     else
       false

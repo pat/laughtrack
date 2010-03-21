@@ -151,7 +151,11 @@ describe Keyword do
         'Watching The Bubble. I really like Josie Long.',
         'I just heard that Henry Rollins was on Rupauls Drag Race.',
         'I rated a YouTube video',
-        'Colin Lane is hilarious #spicks&specks'
+        'Colin Lane is hilarious #spicks&specks',
+        '#nowplaying The Bedroom Philosopher – Northcote (So Hungover)',
+        'Jeff Green left a comment for Kay Clover',
+        'Green able to play Friday: Oklahoma City Jeff Green scored 25 points',
+        'Jason Coleman on The 7pm Project'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
