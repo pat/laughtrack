@@ -29,7 +29,8 @@ ActionController::Routing::Routes.draw do |map|
       :confirm  => :get
     }, :collection => {
       :unclassified => :get,
-      :unconfirmed  => :get
+      :unconfirmed  => :get,
+      :confirmed    => :get
     }
   end
   

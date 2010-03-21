@@ -2,15 +2,15 @@ class Admin::TweetsController < Admin::ApplicationController
   include LaughTrack::CouchDb
   
   def unclassified
-    @docs = unclassified_ids.collect { |hash|
-      db.get hash.id
-    }
+    @docs = unclassified_ids.collect { |hash| db.get hash.id }
   end
   
   def unconfirmed
-    @docs = unconfirmed_ids.collect { |hash|
-      db.get hash.id
-    }
+    @docs = unconfirmed_ids.collect { |hash| db.get hash.id }
+  end
+  
+  def confirmed
+    @docs = confirmed_ids.collect { |hash| db.get hash.id }
   end
   
   def positive
@@ -57,5 +57,9 @@ class Admin::TweetsController < Admin::ApplicationController
   def unconfirmed_ids
     @unconfirmed_ids ||= db.function('_design/laughtrack/_view/unconfirmed',
       :limit => 20)
+  end
+  
+  def confirmed_ids
+    @confirmed_ids ||= db.function('_design/laughtrack/_view/confirmed')
   end
 end
