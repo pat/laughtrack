@@ -88,6 +88,14 @@ class Show < ActiveRecord::Base
     ).lower_bound * 100
   end
   
+  def scrape_performances
+    doc = Nokogiri::HTML open(url)
+    time_node = doc.css(".show .rightCol p").detect { |para|
+      para.text[/\d(:\d\d)?[ap]m/]
+    }
+    time_node ? time_node.text : "None: #{act_name} - #{name}"
+  end
+  
   private
   
   def add_act_keyword
