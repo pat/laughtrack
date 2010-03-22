@@ -1,5 +1,6 @@
 %li
-  %span.act_name= show.act.name
+  - unless show.act_name.blank?
+    %span.act_name= show.act.name
   %h3= link_to_show show
   %ul.show_details
     %li= show.performances.first.happens_at.to_formatted_s(:show_date) if show.performances.any?

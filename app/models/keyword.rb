@@ -60,7 +60,8 @@ class Keyword < ActiveRecord::Base
       /rated a youtube video/i, /#spicks(and|&)specks/i,
       /Northcote \(So Hungover\)/i, /left a comment for/i, /Oklahoma City/i,
       /scored \d+ points/i, /The 7pm Project/i, /Nick Sun @ Station 59/i,
-      /thank god you'?re here/i, /the 100 club: Artists/i
+      /thank god you'?re here/i, /the 100 club: Artists/i,
+      /can you please send a autograph picture/i
       true
     else
       false
