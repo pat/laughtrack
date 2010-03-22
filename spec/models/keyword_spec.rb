@@ -109,7 +109,8 @@ describe Keyword do
         'Saw Adam Hills at the Fringe Festival tonight and loved his show',
         'OMFG I LOVE DENISE SCOTT!!! she is the funniest ever!',
         'Philip Escoffey last night was incredible',
-        'Nina Conti was bloody fantastic! Loved her new set'
+        'Nina Conti was bloody fantastic! Loved her new set',
+        '... the Pajama Men. An absolute delight.'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as positive" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,

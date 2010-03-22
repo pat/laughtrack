@@ -42,7 +42,8 @@ class Keyword < ActiveRecord::Base
       'negative'
     when /very funny/i, /brilliant/i, /five stars/i, /funniest/i, /so+ funny/i,
       /amazing/i, /worth( a)? watch/i, /awesome/i, /hilarious/i, /real gem/i,
-      /fantastic/i, /loved (his|her|their|the) show/i, /incredible/i
+      /fantastic/i, /loved (his|her|their|the) show/i, /incredible/i,
+      /absolute delight/i
       'positive'
     else
       nil
