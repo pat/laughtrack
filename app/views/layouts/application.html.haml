@@ -2,7 +2,8 @@
 %html
   %head
     %title LaughTrack
-    = stylesheet_link_tag 'reset', 'formtastic', 'layout', 'formtastic_changes'
+    %link{ :href => "/favicon.ico", :rel => "Shortcut Icon" }
+    = stylesheet_link_tag 'reset', 'formtastic', 'layout', 'formtastic_changes', 'layout_changes'
   %body
     #header
       .wrapper
@@ -11,15 +12,14 @@
           %li#popular= link_to 'Popular Shows', popular_path
           %li#quality= link_to 'Quality Shows', quality_path
           %li#about= link_to 'About Us', '/about'
+        - form_tag '/shows', :method => :get, :class => 'search' do
+          %label{:for => 'query'}
+          = text_field_tag 'query', params[:query], :autocomplete => "off"
+          %input{:type => 'submit', :value => 'Search', :class => 'submit'}
     #breadcrumbs
       .wrapper
         = yield :breadcrumbs
         
-        - form_tag '/shows', :method => :get, :class => 'search' do
-          %label{:for => 'query'} Search Shows
-          = text_field_tag 'query', params[:query]
-          %input{:type => 'submit', :value => 'Search', :class => 'submit'}
-
     = yield :feature
     
     #content

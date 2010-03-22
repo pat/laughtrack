@@ -1,0 +1,45 @@
+
+
+/*text-shadow: #ccc 0 .2em;*/
+
+
+form.search  {
+  position: absolute;
+  margin: 0 -450px 10px 0;
+  padding: 5px 6px;
+  width: 246px;
+  height: 35px;
+  top: 0;
+  right: 50%;
+}
+  form.search #query {
+    float: left;
+    padding: 3px 2px 3px 5px;
+    width: 210px;
+    height: 26px;
+
+    background: #fff;
+    border: none;
+    -moz-border-radius-bottomleft: 7px;
+    -moz-border-radius-topleft: 7px;
+    -webkit-border-bottom-left-radius: 7px;
+    -webkit-border-top-left-radius: 7px;
+
+    font-family: Georgia, Times, serif;
+    color: #9A5A1C;
+    font-size: 1.5em;
+  }
+  form.search input.submit {
+    float: left;
+    padding: 1px;
+    width: 29px;
+    height: 32px;
+    cursor: pointer;
+    text-indent: -9999px;
+    background: #fff url("/images/icons/search.gif") no-repeat scroll 0 50%;
+    border: 0 none;
+    -moz-border-radius-bottomright: 7px;
+    -moz-border-radius-topright: 7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+  }
