@@ -4,18 +4,19 @@
 
 %h2 All Shows
 
-- form_tag '', :method => :get do
-  %label{:for => 'query'} Search
-  = text_field_tag 'query', params[:query]
-  %input{:type => 'submit', :value => 'Search'}
+.search
+  - form_tag '', :method => :get, :class => 'search' do
+    %label{:for => 'query'}
+    = text_field_tag 'query', params[:query], :autocomplete => "off"
+    %input{:type => 'submit', :value => 'Search', :class => 'submit'}
 
 %table
   %thead
     %tr
-      %th= link_to 'Act', order_params('act')
-      %th= link_to 'Show', order_params('name')
-      %th= link_to 'Sold Out', order_params('sold_out_percent')
-      %th= link_to 'Rating', order_params('rating')
+      %th.act.sorted= link_to 'Act', order_params('act')
+      %th.show= link_to 'Show', order_params('name')
+      %th.sold= link_to 'Sold Out', order_params('sold_out_percent')
+      %th.rating= link_to 'Rating', order_params('rating')
   %tbody
     - @shows.each do |show|
       %tr

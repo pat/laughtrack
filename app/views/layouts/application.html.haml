@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title LaughTrack
+    %title= title
     %link{ :href => "/favicon.ico", :rel => "Shortcut Icon" }
     = stylesheet_link_tag 'reset', 'formtastic', 'layout', 'formtastic_changes', 'layout_changes'
   %body
@@ -35,3 +35,6 @@
         = "/"
         = link_to "Pat Allan", "http://freelancing-gods.com"
         2010
+        
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/laughtrack.js", :type => "text/javascript"}

@@ -1,5 +1,14 @@
 class ShowsController < ApplicationController
   def index
+    @title = case request.path
+    when '/popular'
+      'Popular Shows'
+    when '/quality'
+      'Quality Shows'
+    else
+      'All Shows'
+    end
+    
     @shows = Show.search params[:query],
       :page      => params[:page],
       :include   => :act,
@@ -9,6 +18,7 @@ class ShowsController < ApplicationController
   
   def show
     @show    = Show.find params[:id]
+    @title   = @show.name
     @related = @show.related if @show.act
   end
   
