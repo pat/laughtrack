@@ -13,7 +13,7 @@
 
 ol.twitter_stream {
   margin: 1em 0;
-  padding-left: 80px;
+  padding-left: 75px;
 }
   ol.twitter_stream li {
     position: relative;
@@ -31,21 +31,23 @@ ol.twitter_stream {
   }
   ol.twitter_stream li img.twitter_profile {
     float: left;
-    margin: -.8em 0 0 -95px;
+    margin: -.8em 0 0 -90px;
+    width: 48px;
+    height: 48px;
     border: 5px solid #fff;
     -moz-border-radius: .4em;
     -webkit-border-radius: .4em;
   }
     ol.twitter_stream li span.by {
       position: absolute;
-      left: -23px;
+      left: -18px;
       top: 0;
       font-size: 2.5em;
       font-weight: bold;
       color: #fff;
     }
     ol.twitter_stream li a.when {
-      float: right;
+      display: block;
       text-align: right;
       font-size: .9em;
       color: #ccc;
@@ -63,7 +65,50 @@ ol.twitter_stream {
     ol.twitter_stream li a.from_user:hover {
       text-decoration: underline;
     }
+#content .shows ol li {
+	overflow: auto;
+}
+	#content .shows ol li:first-child {
+		margin-top: 0;
+	}
+.shows ol ul.show_details {
+	margin: 0;
+	padding: 0;
+/*	border-top: 1px dotted #999;*/
+}
+	.shows ol h3 {
+		margin-bottom: .3em;
+	}
+		.shows ol h3 a {
+			color: #57a2c2;
+			text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+		}
+			.shows ol h3 a:hover {
+				color: #E8188D;
+			}
+	#content .shows ol ul.show_details li {
+		margin: 0;
+		float: left;
+		clear: none;
+		width: 25%;
+		background: none;
+		font-size: .8em;
+		font-style: italic;
+	}
+		#content .shows ol li span.act_name {
+			font-style: italic;
+		}
+		#content .shows ol ul.show_details li.sold_out {
+			color: #E8188D;
+		}
+		#content .shows ol ul.show_details li a {	
+			color: #57a2c2
+		}
 
+#feature .feature .pad .tickets span {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+}
 
 form.search  {
   position: absolute;
