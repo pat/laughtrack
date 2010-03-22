@@ -172,6 +172,21 @@ describe Keyword do
           @keyword.import
         end
       end
+      
+      [ 'Colin Lane is hilarious #spicks&specks #laughtrack',
+        'Colin Lane is hilarious #spicks&specks #micf'
+      ].each do |phrase|
+        it "should mark \"#{phrase}\" as not ignored" do
+          FakeWeb.register_uri :get, /search\.twitter\.com/,
+            :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
+          
+          @database.should_receive(:save) do |hash|
+            hash[:ignore].should == false
+          end
+          
+          @keyword.import
+        end
+      end
     end
   end
 end

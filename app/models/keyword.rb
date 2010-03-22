@@ -52,6 +52,8 @@ class Keyword < ActiveRecord::Base
   
   def ignore(text)
     case text
+    when /#micf/i, /#laughtrack/i
+      false
     when /\bRT\b/, /spicks (and|&) specks/i, /I favorited a YouTube video/i,
       /check this video out/i, /Sarah Millican's Support Group/i,
       /worldsoccertweets/i, /the bubble/i, /ru\s?paul/i,
