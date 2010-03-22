@@ -24,7 +24,7 @@
       
       %h3 Tweets
 
-      %ol
+      %ol.twitter_stream
         - @show.tweets.each do |tweet|
           %li
             = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
