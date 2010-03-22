@@ -163,15 +163,64 @@ dd          { margin-left: 1.5em;}
     #footer .wrapper { text-align:  center; margin-bottom: 2em;}
   
   
+  #content .search {position:absolute;top: 0;right: 0;}
+    #content .search form.search  {margin: 0 0;padding: 5px 6px;}
+    #content .search form.search #query {
+      float: left;
+      padding: 3px 2px 3px 5px;
+      width: 210px;
+      height: 26px;
+
+      background: #fff;
+      border: none;
+      -moz-border-radius-bottomleft: 7px;
+      -moz-border-radius-topleft: 7px;
+      -webkit-border-bottom-left-radius: 7px;
+      -webkit-border-top-left-radius: 7px;
+
+      font-family: Georgia, Times, serif;
+      color: #9A5A1C;
+      font-size: 1.5em;
+    }
+    #content .search form.search input.submit {
+      float: left;
+      padding: 1px;
+      width: 29px;
+      height: 32px;
+      cursor: pointer;
+      text-indent: -9999px;
+      background: #fff url("/images/icons/search.gif") no-repeat scroll 0 50%;
+      border: 0 none;
+      -moz-border-radius-bottomright: 7px;
+      -moz-border-radius-topright: 7px;
+      -webkit-border-bottom-right-radius: 7px;
+      -webkit-border-top-right-radius: 7px;
+    }
+  #content table {width: 100%;border-collapse: collapse;}
+    #content table thead th {font: normal 1.25em/1em Georgia, Times, serif;color:#666;background: #eb4ca5 url(/images/bg-dots.gif) repeat-x left bottom;padding: .5em 1em;}
+    #content table thead th.act {width: 30%;}    
+    #content table thead th.sold, #content table thead th.rating {width: 80px;}
+    #content table thead th.sorted {background: #e8188d url(/images/bg-dots.gif) repeat-x left bottom;}
+      #content table thead th.sorted a, #content table thead th.sorted a:visited {color: #fff;}
+      #content table thead th a, #content table thead th a:visited {display:block;color: #f89ed0;}
+      #content table tbody td {border-bottom: 1px solid #f5efdd;padding: .5em 1em}
+      #content table tbody tr.even td {background: #efe9d6;}
+      
   
-  #content table td,
-  #content table th {
-    padding: 0.2em;
-  }
   
+
   .unclassified a.show {
     display: block;
   }
+  
+   #content div.pagination {clear:both;margin: 0;padding: 0;background: url(/images/bg-popular.gif) repeat top left;overflow:hidden;}
+    
+    #content div.pagination span {float: left;margin-right: .5em;}
+    #content div.pagination .prev_page {margin-left: 1em;padding: .5em 1em;}
+    #content div.pagination .next_page {padding: .5em 1em;}
+    #content div.pagination span.current {color:#fff;background: #e8188d;overflow:hidden;padding: .5em 1em;}
+    #content div.pagination a, #content div.pagination a:visited {float: left;display:block;margin-right: 1em;padding: .5em 1em;}
+    #content div.pagination a:hover, #content div.pagination a:visited:hover {background: #fff;}
   
 /* ---( = begin generic form elements )------------------------------- */
 
