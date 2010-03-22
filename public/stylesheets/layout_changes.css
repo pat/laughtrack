@@ -16,6 +16,7 @@ ol.twitter_stream {
   padding-left: 80px;
 }
   ol.twitter_stream li {
+    position: relative;
     clear: left;
     margin: 0 0 1em;
     padding: .8em 15px;
@@ -26,13 +27,23 @@ ol.twitter_stream {
     color: #555;
     text-size: .9em;
     -moz-border-radius: .4em;
+    -webkit-border-radius: .4em;
   }
   ol.twitter_stream li img.twitter_profile {
     float: left;
     margin: -.8em 0 0 -95px;
     border: 5px solid #fff;
     -moz-border-radius: .4em;
+    -webkit-border-radius: .4em;
   }
+    ol.twitter_stream li span.by {
+      position: absolute;
+      left: -23px;
+      top: 0;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #fff;
+    }
     ol.twitter_stream li a.when {
       float: right;
       text-align: right;

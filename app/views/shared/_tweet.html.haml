@@ -1,4 +1,5 @@
 = image_tag tweet.profile_image_url, :class => "twitter_profile", :alt => tweet.from_user
+%span.by="◀"
 = link_to tweet.from_user, "http://www.twitter.com/#{tweet.from_user}", :target => "_blank", :class => "from_user"
 = twitify(tweet.text)
 = link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_link(tweet), :class => "when"
