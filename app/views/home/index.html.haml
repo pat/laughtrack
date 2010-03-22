@@ -31,21 +31,21 @@
   .quality
     %h2= link_to 'Quality Shows', quality_path
     
-    %h3 What People are Loving
+    / %h3 What People are Loving
     
     .shows
       %ol
-        - @rated.each do |show|
-          %li= link_to_show show
+        = render :partial => 'shows/show', :collection => @rated
+
+            
       = link_to "View All Quality Shows &rsaquo;", quality_path
     
   .popular
     %h2= link_to 'Popular Shows', popular_path
 
-    %h3 What People are Seeing
+    / %h3 What People are Seeing
 
     .shows
       %ol
-        - @popular.each do |show|
-          %li= link_to_show show
+        = render :partial => 'shows/show', :collection => @popular
       = link_to "View All Popular Shows &rsaquo;", popular_path

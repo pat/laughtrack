@@ -1,0 +1,8 @@
+%li
+  %span.act_name= show.act.name
+  %h3= link_to_show show
+  %ul.show_details
+    %li= show.performances.first.happens_at(:date).to_s(:short) if show.performances.any?
+    %li= show.performances.first.happens_at(:time).to_s(:short) if show.performances.any?
+    %li.sold_out= "#{show.sold_out_percent}% sold out"
+    %li= link_to "view show", show

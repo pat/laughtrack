@@ -65,7 +65,45 @@ ol.twitter_stream {
     ol.twitter_stream li a.from_user:hover {
       text-decoration: underline;
     }
-
+#content .shows ol li {
+	overflow: auto;
+}
+	#content .shows ol li:first-child {
+		margin-top: 0;
+	}
+.shows ol ul.show_details {
+	margin: 0;
+	padding: 0;
+/*	border-top: 1px dotted #999;*/
+}
+	.shows ol h3 {
+		margin-bottom: .3em;
+	}
+		.shows ol h3 a {
+			color: #57a2c2;
+			text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+		}
+			.shows ol h3 a:hover {
+				color: #E8188D;
+			}
+	#content .shows ol ul.show_details li {
+		margin: 0;
+		float: left;
+		clear: none;
+		width: 25%;
+		background: none;
+		font-size: .8em;
+		font-style: italic;
+	}
+		#content .shows ol li span.act_name {
+			font-style: italic;
+		}
+		#content .shows ol ul.show_details li.sold_out {
+			color: #E8188D;
+		}
+		#content .shows ol ul.show_details li a {	
+			color: #57a2c2
+		}
 
 #feature .feature .pad .tickets span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
