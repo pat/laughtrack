@@ -110,6 +110,11 @@ ol.twitter_stream {
   font-weight: bold;
 }
 
+#content #show .show_info.quality .shows {
+	background: url("/images/bg-feature.gif") repeat scroll left top transparent;
+}
+
+
 form.search  {
   position: absolute;
   margin: 0;
