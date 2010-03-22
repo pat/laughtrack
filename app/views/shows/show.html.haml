@@ -3,13 +3,13 @@
     %li= link_to 'Home', '/'
     %li= link_to 'All Shows', shows_path
     
-#feature
-  .feature
-    .pad
+#show
+  .show_info.quality
+    .shows
       %h2= @show.name
       - if @show.act
         %h3= @show.act.name
-      
+
       .tickets
         .sold{:style => "width: 80%"}
         %span= "#{@show.sold_out_percent.to_i}% Sold Out"
@@ -19,9 +19,12 @@
         %ul.related
           - @related.each do |show|
             %li= link_to_show show
-      
+
       = link_to "The Official Details", @show.url
-      
+
+
+  .tweets.popular
+    .shows
       %h3 Tweets
 
       %ol.twitter_stream
