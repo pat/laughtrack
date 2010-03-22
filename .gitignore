@@ -3,3 +3,4 @@ tmp
 db/sphinx
 Gemfile.lock
 .bundle
+config/database.yml
