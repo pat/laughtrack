@@ -50,4 +50,5 @@ module ApplicationHelper
   def tweet_link(tweet)
     "http://twitter.com/#{tweet.from_user}/status/#{tweet.id.to_i}"
   end
+  
 end
