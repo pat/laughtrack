@@ -11,7 +11,7 @@
     - @docs.each do |doc|
       %tr
         %td
-          = doc.text
+          = render :partial => 'shared/tweet', :locals => {:tweet => doc}
           = link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id), :class => 'show'
         %td= doc.classification
         %td= link_to "Confirm", confirm_admin_tweet_path(doc._id)

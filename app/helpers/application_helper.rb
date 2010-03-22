@@ -40,4 +40,14 @@ module ApplicationHelper
       'asc'
     end
   end
+  
+  def twitify(text)
+    auto_link text.
+      gsub(/@(\w+)/, %Q{<a href="http://twitter.com/\\1" class="twitter_name" target="_blank">@\\1</a>}).
+      gsub(/#(\w+)/, %Q{<a href="http://search.twitter.com/search?q=\\1" class="twitter_hash" target="_blank">#\\1</a>})
+  end
+  
+  def tweet_link(tweet)
+    "http://twitter.com/#{tweet.from_user}/status/#{tweet.id.to_i}"
+  end
 end

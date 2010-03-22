@@ -9,7 +9,7 @@
     - @docs.each do |doc|
       %tr
         %td
-          = doc.text
+          = render :partial => 'shared/tweet', :locals => {:tweet => doc}
           = link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id), :class => 'show'
         %td= link_to "Positive", positive_admin_tweet_path(doc._id)
         %td= link_to "Negative", negative_admin_tweet_path(doc._id)
