@@ -5,4 +5,8 @@ class HomeController < ApplicationController
     @featured = Show.featured.random.first || Show.random.first
     @tweet    = @featured.random_tweet
   end
+  
+  def about
+    @title = "About"
+  end
 end
