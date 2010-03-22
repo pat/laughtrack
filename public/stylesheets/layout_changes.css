@@ -1,6 +1,17 @@
 
+#breadcrumbs {
+  background: none;
+}
+  #breadcrumbs ol li a, #breadcrumbs ol li a:visited {
+    color: #9a5a1c;
+    text-decoration: none;
+  }
+  #breadcrumbs ol li a:hover, #breadcrumbs ol li a:visited:hover {
+    color: #333;
+    border-bottom: 1px dotted #333;
+  }
 
-/*text-shadow: #ccc 0 .2em;*/
+
 
 
 form.search  {
