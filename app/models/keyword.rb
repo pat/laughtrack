@@ -17,7 +17,7 @@ class Keyword < ActiveRecord::Base
     logger.debug "IMPORTING #{words}"
     url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
     JSON.load(open(url))['results'].each do |tweet|
-      next if tweet_stored? tweet['id']
+      next if tweet_stored? tweet['id'], show_id
       
       db.save tweet.merge(
         :keywords       => words,
@@ -32,8 +32,8 @@ class Keyword < ActiveRecord::Base
   
   private
   
-  def tweet_stored?(id)
-    !db.function('_design/laughtrack/_view/tweets', :key => id).empty?
+  def tweet_stored?(id, show_id)
+    !db.function('_design/laughtrack/_view/tweets', :key => [id, show_id]).empty?
   end
   
   def classification(text)
