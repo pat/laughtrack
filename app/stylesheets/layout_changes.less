@@ -1,0 +1,208 @@
+
+#breadcrumbs {
+  background: none;
+  ol li a, ol li a:visited {
+    color: #9a5a1c;
+    text-decoration: none;
+  }
+  ol li a:hover, ol li a:visited:hover {
+    color: #333;
+    border-bottom: 1px dotted #333;
+  }
+}
+
+#content .shows ol.twitter_stream {
+  margin: 1em 0;
+  padding-left: 75px;
+  li {
+    position: relative;
+    clear: left;
+    margin: 0 0 1em;
+    padding: .8em 15px;
+    overflow: visible;
+    list-style: none;
+    background: #fff;
+    font-size: .8em;
+    line-height: 1.4;
+    color: #555;
+    text-size: .9em;
+    -moz-border-radius: .4em;
+    -webkit-border-radius: .4em;
+    img.twitter_profile {
+      float: left;
+      margin: -.8em 0 0 -90px;
+      width: 48px;
+      height: 48px;
+      border: 5px solid #fff;
+      -moz-border-radius: .4em;
+      -webkit-border-radius: .4em;
+    }
+    span.arrow {
+      position: absolute;
+      left: -18px;
+      top: 0;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #fff;
+    }
+    a.when {
+      display: block;
+      text-align: right;
+      font-size: .9em;
+      line-height: .5;
+      color: #ccc;
+      text-decoration: none;
+    }
+    a.when:hover {
+      text-decoration: underline;
+    }
+    a.from_user {
+      font-size: 1.5em;
+      color: #57a2c2;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a.from_user:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#content .shows > ol li {
+	overflow: auto;
+}
+	#content .shows ol li:first-child {
+		margin-top: 0;
+	}
+.shows ol ul.show_details {
+	margin: 0;
+	padding: 0;
+/*	border-top: 1px dotted #999;*/
+}
+	.shows ol h3 {
+		margin-bottom: .3em;
+	}
+		.shows ol h3 a {
+			color: #57a2c2;
+			text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+		}
+			.shows ol h3 a:hover {
+				color: #E8188D;
+			}
+	#content .shows ol ul.show_details li {
+		margin: 0;
+		float: left;
+		clear: none;
+		width: 25%;
+		background: none;
+		font-size: .8em;
+		font-style: italic;
+	}
+		#content .shows ol li span.act_name {
+			font-style: italic;
+		}
+		#content .shows ol ul.show_details li.sold_out {
+			color: #E8188D;
+		}
+		#content .shows ol ul.show_details li a {	
+			color: #57a2c2
+		}
+
+#feature .feature .pad .tickets span {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+}
+
+#content #show {
+
+  .show_info, .reviews {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 470px;
+    .shows {
+      margin: 0;
+      overflow:hidden;
+      padding:20px 30px; 
+    }
+  }
+  .reviews {
+    float: right;
+  }
+  .show_info .shows {
+  	background: url("/images/bg-feature.gif") repeat scroll left top transparent;
+  	h2 {
+  	  margin: 0;
+	  }
+  	h3 {
+  	  margin: 0;
+  	  color:#57A2C2;
+      text-shadow:1px 1px 0 rgba(255, 255, 255, 0.7);
+    }
+  	
+  	.tickets {clear:both;margin: 1em 0;width: 100%;height:40px;background:#fff;position:relative;}
+    .tickets .sold {display:block;background: url(/images/bg-sold.gif) no-repeat left top;position:absolute;top: 5px;left: 5px;height:30px}
+    .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;}
+  	
+  }
+  .reviews {
+    h2 {
+      display: block;
+      width: 273px;
+      height: 52px;
+      color: #fff;
+      text-indent: -20000em;
+      overflow: hidden;
+      background: url(/images/titles-quality-shows.gif) no-repeat bottom left;
+    }
+    .shows {
+      margin: 0;
+      background: url("/images/bg-popular.gif") repeat;
+      .twitter_stream {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+
+form.search  {
+  position: absolute;
+  margin: 0;
+  padding: 5px 6px;
+  width: 246px;
+  height: 35px;
+  top: 0;
+  right: 0;
+}
+  form.search #query {
+    float: left;
+    padding: 3px 2px 3px 5px;
+    width: 210px;
+    height: 26px;
+
+    background: #fff;
+    border: none;
+    -moz-border-radius-bottomleft: 7px;
+    -moz-border-radius-topleft: 7px;
+    -webkit-border-bottom-left-radius: 7px;
+    -webkit-border-top-left-radius: 7px;
+
+    font-family: Georgia, Times, serif;
+    color: #9A5A1C;
+    font-size: 1.5em;
+  }
+  form.search input.submit {
+    float: left;
+    padding: 1px;
+    width: 29px;
+    height: 32px;
+    cursor: pointer;
+    text-indent: -9999px;
+    background: #fff url("/images/icons/search.gif") no-repeat scroll 0 50%;
+    border: 0 none;
+    -moz-border-radius-bottomright: 7px;
+    -moz-border-radius-topright: 7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+  }
