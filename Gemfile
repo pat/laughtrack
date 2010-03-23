@@ -21,6 +21,10 @@ gem 'whenever',          '0.4.1'
 gem 'exceptional',       '2.0.3'
 gem 'statistics2',       '0.54'
 
+group :development do
+  gem 'less',             '>= 1.2.21'
+end
+
 # Testing Gems
 group :test do
   gem 'rspec',           '>= 1.2.9'

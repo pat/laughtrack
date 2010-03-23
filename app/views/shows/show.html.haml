@@ -4,15 +4,26 @@
     %li= link_to 'All Shows', shows_path
     
 #show
-  .show_info.quality
+  .show_info
     .shows
-      %h2= @show.name
       - if @show.act
         %h3= @show.act.name
+      %h2= @show.name
+      - if @show.act&&@show.act.performers.length>1&&@show.act.performers.first.name!=@show.act.name
+        = "featuring "
+        = @show.act.performers.collect{|p| p.country=="Australia"||"" ? p.name : "#{p.name}(#{p.country})" }.join(", ")
 
       .tickets
         .sold{:style => "width: 80%"}
         %span= "#{@show.sold_out_percent.to_i}% Sold Out"
+
+      %table.performances
+        - @show.performances.each do |performance|
+          %tr
+            %td= performance.happens_at.to_formatted_s(:show_date)
+            %td= performance.happens_at.to_formatted_s(:show_time)
+            %td= performance.sold_out ? "Sold Out" : "Tickets Available"
+            %td= link_to "show info and tickets", @show.url
 
       - if @related.present?
         %h3 Shows by the same acts and performers
@@ -20,12 +31,10 @@
           - @related.each do |show|
             %li= link_to_show show
 
-      = link_to "The Official Details", @show.url
-
-
-  .tweets.popular
+  .reviews
+    / %h2="Reviews"
     .shows
-      %h3 Tweets
+      / %h3 Tweets
 
       %ol.twitter_stream
         - @show.tweets.each do |tweet|
