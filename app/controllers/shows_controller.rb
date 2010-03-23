@@ -1,4 +1,11 @@
 class ShowsController < ApplicationController
+  # Add view helper modules so we can render pretty json
+  include ApplicationHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::FormOptionsHelper
+  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::TagHelper
+
   def index
     @title = case request.path
     when '/popular'
@@ -20,6 +27,13 @@ class ShowsController < ApplicationController
     @show    = Show.find params[:id]
     @title   = @show.name
     @related = @show.related if @show.act
+  end
+  
+  def tweets
+    @show    = Show.find params[:id]
+    respond_to do |format|
+      format.json { render :json => @show.tweets.collect{|t| t.text=twitify(t.text);t.created_at=time_ago_in_words(Time.parse(t.created_at));t}.to_json }
+    end
   end
   
   private

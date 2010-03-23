@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.five_hundred '/500', :controller => 'home', :action => 'five_hundred'
   map.about '/about',      :controller => 'home', :action => 'about'
   
-  map.resources :shows
+  map.resources :shows, :member => { :tweets => :get }
   
   map.namespace :admin do |admin|
     admin.resources :shows, :member => {
