@@ -1,8 +1,15 @@
 %li
-  %span.act_name= show.act_name unless show.act_name.blank?
+  - unless show.act_name.blank?
+    %span.act_name= show.act_name
   %h3= link_to_show show
   %ul.show_details
-    %li= show.performances.first.happens_at.to_formatted_s(:show_date) if show.performances.any?
-    %li= show.performances.first.happens_at.to_formatted_s(:show_time) if show.performances.any?
-    %li.sold_out= "#{show.sold_out_percent}% sold out"
+    - if show.performances.any?
+      %li= show.performances.first.happens_at.to_formatted_s(:show_date)
+      %li= show.performances.first.happens_at.to_formatted_s(:show_time)
+    %li.rating
+      Rating:
+      = number_with_precision show.rating, :precision => 2
+    %li.sold_out
+      = number_to_percentage show.sold_out_percent, :precision => 2
+      sold out
     %li= link_to "view show &rsaquo;", show
