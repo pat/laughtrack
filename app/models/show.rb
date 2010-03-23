@@ -93,7 +93,40 @@ class Show < ActiveRecord::Base
     time_node = doc.css(".show .rightCol p").detect { |para|
       para.text[/\d(:\d\d)?[ap]m/]
     }
-    time_node ? time_node.text : "None: #{act_name} - #{name}"
+    times = time_node ? time_node.text : nil
+    doc.css(".showCalendar .preview").each { |node|
+      add_scraped_performance node.text.strip.to_i, times
+    }
+    doc.css(".showCalendar .show").each { |node|
+      add_scraped_performance node.text.strip.to_i, times
+    }
+  end
+  
+  def scraped_time(date, times)
+    return nil if times.blank?
+    
+    matches = times.scan(/(\d+(\.\d\d)?[ap]m)/).collect { |match|
+      match.first
+    }
+    
+    if matches.length == 1 && matches.first[/^\d+(\.\d\d)[ap]m$/]
+      parts     = matches.first.split('.')
+      afternoon = parts.last[/\dpm/] ? 12 : 0
+      Time.local date.year, date.month, date.mday, parts.first.to_i + afternoon, parts.last.gsub(/[ap]m/, '')
+    elsif matches.length == 1
+      afternoon = matches.first[/\dpm/] ? 12 : 0
+      Time.local date.year, date.month, date.mday, matches.first.to_i + afternoon, 0
+    else
+      parts = times.split(',')
+      part = parts.detect { |part| days(part).include?(date.wday) }
+      part.nil? ? nil : scraped_time(date, part)
+    end
+    # 
+    # case times
+    # when /^\d+(\.\d\d)pm$/
+    #   parts = times.split('.')
+    #   Time.local date.year, date.month, date.mday, parts.first.to_i + 12, parts.last.gsub(/pm/, '')
+    # end
   end
   
   private
@@ -108,5 +141,23 @@ class Show < ActiveRecord::Base
   
   def positive_count
     view("positive_by_show").length
+  end
+  
+  def add_scraped_performance(day, times)
+    month = day > 20 ? 3 : 4
+    date  = Date.new(2010, month, day)
+  end
+  
+  def days(string)
+    match = string.scan(/(\w\w\w)\-(\w\w\w)/).first
+    if match.nil?
+      [day_integer string[/\b(\w\w\w)\b/]]
+    else
+      (day_integer(match.first)..day_integer(match.last)).to_a
+    end
+  end
+  
+  def day_integer(string)
+    ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].index(string) || (0..6).to_a
   end
 end
