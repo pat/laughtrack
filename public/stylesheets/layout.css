@@ -126,7 +126,7 @@ dd          { margin-left: 1.5em;}
       
       #feature .feature .pad .tickets {clear:both;margin: 1em 0;width: 570px;height:40px;background:#fff;position:relative;}
         #feature .feature .pad .tickets .sold {display:block;background: url(/images/bg-sold.gif) no-repeat left top;position:absolute;top: 5px;left: 5px;height:30px}
-        #feature .feature .pad .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;}
+        #feature .feature .pad .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;color: #555;font-weight:bold;}
       
   #feature .twitter {float: right;width: 310px;background: url(/images/bg-twitters.gif) repeat left bottom;}
     #feature .twitter h6 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
@@ -206,9 +206,6 @@ dd          { margin-left: 1.5em;}
       #content table tbody td {border-bottom: 1px solid #f5efdd;padding: .5em 1em}
       #content table tbody tr.even td {background: #efe9d6;}
       
-  
-  
-
   .unclassified a.show {
     display: block;
   }

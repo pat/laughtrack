@@ -14,7 +14,7 @@
         = @show.act.performers.collect{|p| p.country=="Australia"||"" ? p.name : "#{p.name}(#{p.country})" }.join(", ")
 
       .tickets
-        .sold{:style => "width: 80%"}
+        .sold{:style => "width: #{@show.sold_out_percent.to_i}"}
         %span= "#{@show.sold_out_percent.to_i}% Sold Out"
 
       %table.performances
