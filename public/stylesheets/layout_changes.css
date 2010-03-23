@@ -210,3 +210,7 @@ form.search input.submit {
   -webkit-border-bottom-right-radius: 7px;
   -webkit-border-top-right-radius: 7px;
 }
+img.twitter_profile {
+  height: 48px;
+  width: 48px;
+}
