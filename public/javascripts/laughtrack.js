@@ -18,7 +18,10 @@ function loadTweets(id) {
     function(data) {
       $.each(data, function(i,tweet){
         $('<li/>')
-          .attr("style", "display: none")
+          .attr({
+            style: "display: none",
+            "class": "hidden"
+          })
           .append($('<img/>').attr({ 
               src: tweet.profile_image_url,
               "class": "twitter_profile",
@@ -36,10 +39,15 @@ function loadTweets(id) {
             .html(tweet.created_at+" ago")
           )
           .appendTo("#show_tweets")
-          .fadeIn(800)
-          
-        if ( i == 5 ) return false;
+    
+        if ( i == 20 ) return false;
       });
     }
   );
+  showNextTweet();
+}
+
+function showNextTweet() {
+  $($("#show_tweets li.hidden")[0]).attr("class", "").fadeIn(800);
+  setTimeout( showNextTweet, 1500 );
 }
