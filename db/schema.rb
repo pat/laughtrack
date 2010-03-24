@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100321054020) do
+ActiveRecord::Schema.define(:version => 20100324083529) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(:version => 20100321054020) do
   end
 
   add_index "reviews", ["show_id"], :name => "index_reviews_on_show_id"
+
+  create_table "show_histories", :force => true do |t|
+    t.integer  "show_id",                                                              :null => false
+    t.decimal  "sold_out_percent",      :precision => 6, :scale => 3, :default => 0.0
+    t.decimal  "rating",                :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "confirmed_tweet_count",                               :default => 0
+    t.integer  "positive_tweet_count",                                :default => 0
+    t.date     "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "show_histories", ["show_id"], :name => "index_show_histories_on_show_id"
 
   create_table "shows", :force => true do |t|
     t.string   "name"

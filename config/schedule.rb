@@ -9,4 +9,8 @@ every 30.minutes do
   rake "twitter:import twitter:cache thinking_sphinx:index"
 end
 
+every 1.day, :at => '12:15 am' do
+  rake "shows:histories"
+end
+
 # Learn more: http://github.com/javan/whenever

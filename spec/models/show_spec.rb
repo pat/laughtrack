@@ -134,4 +134,37 @@ describe Show do
       @slather.related.should_not include(@slather)
     end
   end
+  
+  describe '#write_history' do
+    before :each do
+      @show = Show.make(
+        :sold_out_percent      => 20.0,
+        :rating                => 55.0,
+        :confirmed_tweet_count => 50
+      )
+      @show.stub!(:positive_count => 42, :update_tweet_count => nil)
+    end
+    
+    it "should create a new history record" do
+      @show.write_history
+      
+      @show.show_histories.should_not be_empty
+    end
+    
+    it "should store the show's information" do
+      @show.write_history
+      
+      history = @show.show_histories.last
+      history.sold_out_percent.should == 20.0
+      history.rating.should == 55.0
+      history.confirmed_tweet_count.should == 50
+      history.positive_tweet_count.should == 42
+    end
+    
+    it "should update the caches" do
+      @show.should_receive(:update_tweet_count)
+      
+      @show.write_history
+    end
+  end
 end

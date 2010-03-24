@@ -4,6 +4,7 @@ class Show < ActiveRecord::Base
   belongs_to :act
   has_many   :performances
   has_many   :keywords
+  has_many   :show_histories
   
   validates_presence_of :name
   validates_presence_of :act, :if => :confirmed?
@@ -28,6 +29,12 @@ class Show < ActiveRecord::Base
     all.each do |show|
       show.update_tweet_count
       show.save
+    end
+  end
+  
+  def self.write_histories
+    all.each do |show|
+      show.write_history
     end
   end
   
@@ -86,6 +93,18 @@ class Show < ActiveRecord::Base
     self.rating = LaughTrack::Wilson.new(
       positive_count, confirmed_tweet_count
     ).lower_bound * 100
+  end
+  
+  def write_history
+    update_tweet_count
+    
+    show_histories.create(
+      :sold_out_percent       => sold_out_percent,
+      :rating                 => rating,
+      :confirmed_tweet_count  => confirmed_tweet_count,
+      :positive_tweet_count   => positive_count,
+      :day                    => Date.today
+    )
   end
   
   def scrape_performances

@@ -27,6 +27,15 @@ Show.blueprint do
   act  { Act.make({}) }
 end
 
+ShowHistory.blueprint do
+  show                  { Show.make }
+  sold_out_percent      { 0.0 }
+  rating                { 0.0 }
+  confirmed_tweet_count { 9 }
+  positive_tweet_count  { 8 }
+  day                   { Date.new(2010, 04, 01) }
+end
+
 User.blueprint do
   email
   password              { "password" }
