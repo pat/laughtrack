@@ -4,7 +4,8 @@
     %li= link_to 'All Shows', shows_path
 - content_for :footer do
   :javascript
-    var showTweets = new tweetList(#{@show.id}, "show_tweets");
+    var showTweets = new tweetList(#{@show.id}, "show_tweets", 10);
+    $(".more_tweets")[0].onclick = function() { showTweets.nextTweets(15); }
 
 #show
   .show_info
@@ -40,7 +41,7 @@
       / %h3 Tweets
 
       %ol#show_tweets.twitter_stream
-        - @show.tweets.each do |tweet|
-          %li{ :id => tweet.id }
-            = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
+        / - @show.tweets.each do |tweet|
+        /   %li{ :id => tweet.id }
+        /     = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
       = link_to_function "More", "", :class => "more_tweets", :title => "See more tweets"

@@ -14,67 +14,55 @@ jQuery(function($) {
 
 });
 
-$(function() {
-
-  var list_id, tweets = {};
-  
-  tweetList = {function(id) {
-    this.init(id);
-  }
-  $.extend(tweetList.prototype, {
-    init: function(id, list_id){
-      console.log('loaded');
-      $.extend(this, {list_id: function(){ return list_id }});
-      this.loadShowTweets(id);
-      this.moreButton();
-    },
-    list: $("#"+this.list_id),
-    get_list_id: function(){ return this.list_id; },
-    loadShowTweets: function(id) {
-      // $.getJSON('/shows/'+id+'/tweets.json');
-      this.tweets = $.getJSON('/shows/'+id+'/tweets.json').responseText;
-      return true;
-    },
-    nextTweets: function() {
-      $.each(this.tweets, function(i,tweet){
-        if (i > 15) return false;
-        this.addTweet(tweet);
-      });    
-    },
-    addTweet: function(tweet) {
-      $('<li/>')
-        .attr({
-          // style: "display: none",
-          "class": "hidden",
-          id: "tweet_"+tweet.id
-        })
-        .append($('<img/>').attr({ 
-            src: tweet.profile_image_url,
-            "class": "twitter_profile",
-            alt: tweet.from_user
-          })
-        )
-        .append('<span class="arrow">◀</span>')
-        .append('<a target="_blank" class="from_user" href="http://www.twitter.com/'+tweet.from_user+'">'+tweet.from_user+'</a> ')
-        .append(tweet.text)
-        .append($('<a/>')
-          .attr({
-            "class": "when",
-            href: "http://twitter.com/"+tweet.from_user+"/status/"+tweet.id
-            })
-          .html(tweet.created_at+" ago")
-        )
-        .appendTo("#"+this.list_id)
-    },
-    showHidden: function() {
-      $($("#"+this.list_id+" li.hidden")).attr("class", "").fadeIn(800);
-    },
-    moreButton: function() {
-      console.log("id:  "+this.list_id);
-      console.log($("#"+this.list_id).next());
-      if ($("#"+this.list_id).next().className ="more_tweets") {
-        console.log($("#"+this.list_id).next());
+tweetList = Class.create({
+  init: function(id, list_id, init_show){
+    this.list_id = list_id;
+    this.loadShowTweets(id);
+    this.nextTweets(init_show);
+  },
+  last_tweet_displayed: -1,
+  list_id: "test",
+  tweets: {},
+  list: $("#"+this.list_id),
+  get_list_id: function(){ return this.list_id; },
+  loadShowTweets: function(id) {
+    this.tweets = jQuery.parseJSON($.ajax({url: '/shows/'+id+'/tweets.json', dataType: "json", async: false }).responseText);
+  },
+  nextTweets: function(per_page) {
+    for (i=this.last_tweet_displayed+1;i<=this.last_tweet_displayed+per_page;i++) {
+      if (i<this.tweets.length) {
+        this.addTweet(this.tweets[i]);
+        this.last_tweet_displayed = i;
       }
     }
-  });
-};
+    this.showHidden();
+  },
+  addTweet: function(tweet) {
+    $('<li/>')
+      .attr({
+        style: "display: none",
+        "class": "hidden",
+        id: "tweet_"+tweet.id
+      })
+      .append($('<img/>').attr({ 
+          src: tweet.profile_image_url,
+          "class": "twitter_profile",
+          alt: tweet.from_user
+        })
+      )
+      .append('<span class="arrow">◀</span>')
+      .append('<a target="_blank" class="from_user" href="http://www.twitter.com/'+tweet.from_user+'">'+tweet.from_user+'</a> ')
+      .append(tweet.text)
+      .append($('<a/>')
+        .attr({
+          "class": "when",
+          href: "http://twitter.com/"+tweet.from_user+"/status/"+tweet.id
+          })
+        .html(tweet.created_at+" ago")
+      )
+      .appendTo("#"+this.list_id)
+  },
+  showHidden: function() {
+    $($("#"+this.list_id+" li.hidden")).removeClass("hidden").fadeIn(800);
+  }
+});
