@@ -11,7 +11,7 @@
       
       - if @tweet
         .twitter
-          %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack'
+          %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack_au'
           %p
             %em= @tweet.text
             %br/
@@ -46,6 +46,8 @@
     / %h3 What People are Seeing
 
     .shows
-      %ol
-        = render :partial => 'shows/show', :collection => @popular
-      = link_to "View All Popular Shows &rsaquo;", popular_path
+      %p
+        We're currently talking to the Festival team about getting information on all the performances for every festival show, and whether they're sold out or not. This will allow us to give you accurate information on which tickets you should be booking
+        %em quickly!
+      
+      %p In the meantime, please sit tight - we'll have this part of LaughTrack up and running as soon as possible!

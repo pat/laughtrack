@@ -13,16 +13,16 @@
 %table
   %thead
     %tr
-      %th.act.sorted= link_to 'Act', order_params('act')
-      %th.show= link_to 'Show', order_params('name')
-      %th.sold= link_to 'Sold Out', order_params('sold_out_percent')
-      %th.rating= link_to 'Rating', order_params('rating')
+      = sorted_header 'Act', 'act', true
+      = sorted_header 'Show', 'name'
+      = sorted_header 'Sold Out', 'sold_out_percent'
+      = sorted_header 'Rating', 'rating'
   %tbody
     - @shows.each do |show|
       %tr
         %td= act_name show.act
         %td= link_to_show show
-        %td= number_to_percentage show.sold_out_percent, :precision => 0
+        %td ??
         %td= number_with_precision show.rating, :precision => 2
 
 = will_paginate @shows

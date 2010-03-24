@@ -59,4 +59,18 @@ module ApplicationHelper
     "http://twitter.com/#{tweet.from_user}/status/#{tweet.id.to_i}"
   end
   
+  def sorted_header(label, key, default = false)
+    content_tag :th, link_to(label, order_params(key)),
+      :class => sorted_class(key, default)
+  end
+  
+  def sorted_class(key, default)
+    if params['sort_by'].blank? && default
+      'sorted'
+    elsif params['sort_by'] == key
+      'sorted'
+    else
+      ''
+    end
+  end
 end
