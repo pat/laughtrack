@@ -44,4 +44,4 @@
         / - @show.tweets.each do |tweet|
         /   %li{ :id => tweet.id }
         /     = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
-      = link_to "More", show_path(@show), :onclick => "function() {return false}", :class => "more_tweets", :id => "more_tweets", :title => "See more tweets"
+      = link_to "More", "#", :class => "more_tweets", :id => "more_tweets", :title => "See more tweets"

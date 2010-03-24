@@ -120,23 +120,6 @@ a.more_tweets:hover { background: url(/images/sprites.png) no-repeat 0 -61px; }
 #content .shows ol li span.act_name { font-style: italic; }
 #content .shows ol ul.show_details li.sold_out { color: #e8188d; }
 #content .shows ol ul.show_details li a { color: #57a2c2; }
-span.rating {
-  float: right;
-  font-size: 1.6em;
-  line-height: 0.9;
-  padding: 0.4em;
-  color: #e8188d;
-  font-style: italic;
-  font-weight: bold;
-}
-span.rating .out_of {
-  vertical-align: baseline;
-  font-size: 0.5em;
-  position: relative;
-  bottom: -0.4em;
-  right: 1px;
-  font-weight: normal;
-}
 #feature .feature .pad .tickets span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
   font-weight: bold;
@@ -249,4 +232,18 @@ form.search input.submit {
   -moz-border-radius-topright: 7px;
   -webkit-border-bottom-right-radius: 7px;
   -webkit-border-top-right-radius: 7px;
+}
+span.rating {
+  float: right;
+  font-size: 1.6em;
+  line-height: 0.9;
+  color: #e8188d;
+  font-style: italic;
+}
+span.rating .out_of {
+  vertical-align: baseline;
+  font-size: 0.6em;
+  position: relative;
+  bottom: -0.4em;
+  right: 1px;
 }

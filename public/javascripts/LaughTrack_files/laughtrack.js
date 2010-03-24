@@ -20,7 +20,6 @@ tweetList = Class.create({
     this.list_id = list_id;
     this.loadShowTweets(id);
     this.nextTweets(init_show);
-    // this.moreButton();
   },
   last_tweet_displayed: -1,
   list_id: "tweet_list",
@@ -39,7 +38,6 @@ tweetList = Class.create({
       }
     }
     this.showHidden();
-    if (this.last_tweet_displayed+1==this.tweets.length) $("#more_tweets").hide();
   },
   addTweet: function(tweet) {
     $('<li/>')

@@ -1,5 +1,7 @@
 %li
-  %span.rating= show.rating.to_i
+  %span.rating
+    ="#{show.rating.to_i}"
+    %span.out_of>="/100"
   - unless show.act_name.blank?
     %span.act_name= show.act_name
   %h3= link_to_show show

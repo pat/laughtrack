@@ -1,0 +1,241 @@
+body {margin: 0 auto;font-size:16px;line-height: 1.5;color:#555;background:#eae1c6;font-weight: normal;font-family: Helvetica, Arial, Verdana, sans-serif;text-align:center;}
+
+a, a:visited {color:#e8188d;text-decoration: underline;}
+a:hover, a:visited:hover {color:#57a2c2;background: transparent;text-decoration: none;}
+
+p, ul, blockquote, pre, td, th, label {margin: 0;font-size: 1em;line-height: 1.5; margin-bottom: 1.5em;}
+
+ul, ol {list-style-type: none;text-align: left;}
+.fleft {float: left;text-align:left;}
+.fright {float: right;}
+.floatleft {float: left;}
+.floatright {float: right;}
+.clearfloat {clear: both;}
+.alignleft {text-align: left;float: left;}
+.alignright {text-align: right;}
+.oldbrowsers, .hide {display: none}
+.half {width:48%;}
+.half img {width:98%;}
+a img, a img:visited,a img:hover, a img:visited:hover {border: 0;background: transparent;}
+.oldbrowsers, .hide {display: none;}
+div.hr {margin: 1.5em 0;padding: 0;height: 1px;background: #ccc;}
+div.hr hr {display: none;}
+table {border-collapse: collapse;margin-bottom: 1.5em;}
+strong {color:#555e46;}
+
+/* ---( = begin baseline type elements )------------------------------- */
+
+h1, h2, h3, h4, h5, h6  {margin:0;padding:0;font-weight: normal;color:#e8188d}
+h1                      {font-size:3em;line-height:1;margin-bottom:0.5em;font-family: Georgia, Times, serif}
+h2                      {font-size:2em;margin-bottom:0.75em;font-family: Georgia, Times, serif}
+h3                      {font-size:1.5em;line-height:1;margin-bottom:1em;font-family: Georgia, Times, serif}
+h4                      {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;font-family: Georgia, Times, serif}
+h6                      {font-size:1em;font-weight:normal;}
+.small                  {margin: 0;font-size: 0.83em;line-height: 1.8em;margin-bottom: 1.8em;font-family: Arial, "Trebuchet MS", Trebuchet, sans-serif;}
+strong                  {font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+h1 a, h1 a:visited,
+h2 a, h2 a:visited,
+h3 a, h3 a:visited,
+h4 a, h4 a:visited,
+h5 a, h5 a:visited   {text-decoration:none;color:#e8188d}
+
+/* ---( = begin standard type elements )------------------------------- */
+
+p           { margin: 0 0 1.5em;}
+p img       { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
+
+blockquote  { margin: 1.5em; font-style: italic; }
+strong      { font-weight: bold; }
+em,dfn      { font-style: italic; }
+dfn         { font-weight: bold; }
+sup, sub    { line-height: 0; }
+
+abbr, 
+acronym     { border-bottom: 1px dotted; }
+address     { margin: 0 0 1.5em; font-style: italic; }
+
+pre,code    { margin: 1.5em 0; white-space: pre; }
+pre,code,tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
+
+li ul, 
+li ol       { margin:0 1.5em; }
+ul, ol      { margin: 0 1.5em 1.5em 1.5em; }
+
+dl          { margin: 0 0 1.5em 0; }
+dl dt       { font-weight: bold; }
+dd          { margin-left: 1.5em;}
+
+/* ---( = begin gobal elements )------------------------------- */
+
+.wrapper {width:960px;margin: 0 auto;text-align:left;overflow: hidden;position:relative;}
+
+#header {margin: 0;padding: 2em 0 0 0;overflow: hidden;background: url(/images/bg-navbar.gif) repeat-x left bottom;}
+  #header h1 {float: left;margin: 0 0 0 5px;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
+    #header h1 a, #header h1 a:visited {display: block;width: 424px;height: 173px;color: #fff;text-indent: -20000em;overflow: hidden;}
+    #header h1 a, #header h1 a:visited,
+    #header h1 a:hover, #header h1 a:visited:hover {background: url(/images/logo.gif) no-repeat bottom left;}
+  #header ol {position:absolute;top: 1em;right: 2em;margin: 0;padding: 0;text-transform:uppercase;font-size:0.833em;}
+    #header ol li {float: left;margin-left: 1em;}
+  #header ul {float:right;width: 400px;margin: 80px 0 0 0;padding: 0;text-transform:uppercase;font-size:0.833em;}
+    #header ul li {float: left;}
+      #header ul li a, #header ul li a:visited {display:block;margin:0; padding:0;text-decoration:none;color: #fff;}
+      #header ul li a:hover, #header ul li a:visited:hover {text-decoration:none;color:#fff;}
+      #header ul li li.active a, #header ul li li.active a:visited {text-decoration:none;color: #fff;}
+      #header ul li a, #header ul li a:visited {display: block;height: 65px;margin: 0;padding: 0;color: #fff;text-align: center;text-decoration: none;text-indent: -20000px;overflow: hidden;background: url(/images/bg-nav.gif) no-repeat left top;}
+      #header ul li a:focus, #header ul li a:active {outline: none;}
+      
+      #header ul li#popular a, #header ul li#popular a:visited {width: 135px;background-position: 0 0;}
+      #header ul li#popular a:hover, #header ul li#popular a:visited:hover {background-position: 0px -76px;}
+      #header ul li#popular a.active, #popular ul li li#popular a.active:visited {background-position: 0 -76px;}
+      
+      #header ul li#quality a, #header ul li#quality a:visited {width: 140px;background-position: -140px 0;}
+      #header ul li#quality a:hover, #header ul li#quality a:visited:hover {background-position: -140px -76px;}
+      #header ul li#quality a.active, #header ul li#quality a.active:visited {background-position: -140px -76px;}
+      
+      #header ul li#about a, #header ul li#about a:visited {width: 100px;background-position: -305px 0;}
+      #header ul li#about a:hover, #header ul li#about a:visited:hover {background-position: -305px -76px;}
+      #header ul li#about a.active, #header ul li#about a.active:visited {background-position: -305px -76px;}
+      
+#breadcrumbs {clear:both;margin: 0 0 1em 0;padding: 0 0 .75em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+  #breadcrumbs ol {margin: 0;padding: 0;text-transform:uppercase;font-size:0.833em;}
+    #breadcrumbs ol li {float: left;margin-right: 2em;}
+      #breadcrumbs ol li a, #breadcrumbs ol li a:visited {color: #9a5a1c;}
+      #breadcrumbs ol li a:hover, #breadcrumbs ol li a:visited:hover {color: #333;text-decoration: none;}
+  
+  #breadcrumbs .search {
+    float: right;
+  }
+  
+  #breadcrumbs label,
+  #breadcrumbs input.submit {
+    text-transform: uppercase;
+    font-size:0.833em;
+  }
+
+#feature {clear:both;margin: 0 0 2em 0;padding: 0 0;}
+  #feature .feature {float: left;width: 630px;background: url(/images/bg-feature.gif) repeat left top;}
+    #feature .feature .pad {padding: 20px 30px;}
+      #feature .feature .pad h5 {text-transform:uppercase;font-size:0.833em;font-weight: normal;color: #9a5a1c;}
+      #feature .feature .pad h2 {font: normal 2em/1em Georgia, Times, serif;color:#e8188d;margin: 0 0 .25em 0;}
+        #feature .feature .pad h2 a, #feature .feature .pad h2 a:visited {color:#e8188d}
+        #feature .feature .pad h2 a:hover, #feature .feature .pad h2 a:visited:hover {color:#57a2c2}
+      #feature .feature .pad h3 {font: oblique 1.25em/1em Georgia, Times, serif;color:#666;}
+      #feature .feature .pad p {margin-bottom: 0;}
+      
+      #feature .feature .pad .tickets {clear:both;margin: 1em 0;width: 570px;height:40px;background:#fff;position:relative;}
+        #feature .feature .pad .tickets .sold {display:block;background: url(/images/bg-sold.gif) no-repeat left top;position:absolute;top: 5px;left: 5px;height:30px}
+        #feature .feature .pad .tickets span {position:absolute;top: 9px;left: 220px;font-family:Georgia, Times, serif;color: #555;font-weight:bold;}
+      
+  #feature .twitter {float: right;width: 310px;background: url(/images/bg-twitters.gif) repeat left bottom;}
+    #feature .twitter h6 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
+      #feature .twitter h6 a, #feature .twitter h6 a:visited {display: block;width: 310px;height: 40px;color: #fff;text-indent: -20000em;overflow: hidden;}
+      #feature .twitter h6 a, #feature .twitter h6 a:visited,
+      #feature .twitter h6 a:hover, #feature .twitter h6 a:visited:hover {background: url(/images/titles-twitter.gif) no-repeat bottom left;}
+    #feature .twitter p {padding: 20px;}
+      #feature .twitter strong {display: block;margin-top: 1em;}
+
+#content {clear:both;margin: 0;padding: 1em 0;}
+  #content #shows {margin: 0;padding:0;overflow:hidden;}
+  #content .popular {float:right;width:470px;margin:0;padding:0;}
+    #content .popular h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
+      #content .popular h2 a, #content .popular h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
+      #content .popular h2 a, #content .popular h2 a:visited,
+      #content .popular h2 a:hover, #content .popular h2 a:visited:hover {background: url(/images/titles-popular-shows.gif) no-repeat bottom left;}
+    #content .popular .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-popular.gif) repeat top left;overflow:hidden;}
+      #content .popular .shows ol {margin: 0;padding: 0;}
+        #content .popular .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+          
+  
+  #content .quality {float:left;width:470px;margin:0;padding:0;}
+    #content .quality h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
+      #content .quality h2 a, #content .quality h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
+      #content .quality h2 a, #content .quality h2 a:visited,
+      #content .quality h2 a:hover, #content .quality h2 a:visited:hover {background: url(/images/titles-quality-shows.gif) no-repeat bottom left;}
+    #content .quality .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-quality.gif) repeat top left;overflow:hidden;}
+      #content .quality .shows ol {margin: 0;padding: 0;}
+        #content .quality .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
+    
+    #content .featured { font-weight: bold; }
+  
+  #footer {padding-top: 2em;background: url(/images/bg-dots.gif) repeat-x left top;}
+    #footer .wrapper { text-align:  center; margin-bottom: 2em;}
+  
+  
+  #content .search {position:absolute;top: 0;right: 0;}
+    #content .search form.search  {margin: 0 0;padding: 5px 6px;}
+    #content .search form.search #query {
+      float: left;
+      padding: 3px 2px 3px 5px;
+      width: 210px;
+      height: 26px;
+
+      background: #fff;
+      border: none;
+      -moz-border-radius-bottomleft: 7px;
+      -moz-border-radius-topleft: 7px;
+      -webkit-border-bottom-left-radius: 7px;
+      -webkit-border-top-left-radius: 7px;
+
+      font-family: Georgia, Times, serif;
+      color: #9A5A1C;
+      font-size: 1.5em;
+    }
+    #content .search form.search input.submit {
+      float: left;
+      padding: 1px;
+      width: 29px;
+      height: 32px;
+      cursor: pointer;
+      text-indent: -9999px;
+      background: #fff url("/images/icons/search.gif") no-repeat scroll 0 50%;
+      border: 0 none;
+      -moz-border-radius-bottomright: 7px;
+      -moz-border-radius-topright: 7px;
+      -webkit-border-bottom-right-radius: 7px;
+      -webkit-border-top-right-radius: 7px;
+    }
+  #content table {width: 100%;border-collapse: collapse;}
+    #content table thead th {font: normal 1.25em/1em Georgia, Times, serif;color:#666;background: #eb4ca5 url(/images/bg-dots.gif) repeat-x left bottom;padding: .5em 1em;}
+    #content table thead th.act {width: 30%;}    
+    #content table thead th.sold, #content table thead th.rating {width: 80px;}
+    #content table thead th.sorted {background: #e8188d url(/images/bg-dots.gif) repeat-x left bottom;}
+      #content table thead th.sorted a, #content table thead th.sorted a:visited {color: #fff;}
+      #content table thead th a, #content table thead th a:visited {display:block;color: #f89ed0;}
+      #content table tbody td {border-bottom: 1px solid #f5efdd;padding: .5em 1em}
+      #content table tbody tr.even td {background: #efe9d6;}
+      
+  .unclassified a.show {
+    display: block;
+  }
+  
+   #content div.pagination {clear:both;margin: 0;padding: 0;background: url(/images/bg-popular.gif) repeat top left;overflow:hidden;}
+    
+    #content div.pagination span {float: left;margin-right: .5em;}
+    #content div.pagination .prev_page {margin-left: 1em;padding: .5em 1em;}
+    #content div.pagination .next_page {padding: .5em 1em;}
+    #content div.pagination span.current {color:#fff;background: #e8188d;overflow:hidden;padding: .5em 1em;}
+    #content div.pagination a, #content div.pagination a:visited {float: left;display:block;margin-right: 1em;padding: .5em 1em;}
+    #content div.pagination a:hover, #content div.pagination a:visited:hover {background: #fff;}
+  
+/* ---( = begin generic form elements )------------------------------- */
+
+legend {margin:0;padding:0;}
+label {margin: 0;padding: 0;font-weight: normal;cursor: pointer;cursor: hand;background: transparent;}
+fieldset ol {clear: both;float:left;overflow:hidden;}
+fieldset ol li {overflow:hidden;position: relative;}
+fieldset ol li input, fieldset ol li.button input {width:auto;}
+
+/* ---( = begin specific form elements )------------------------------- */
+
+fieldset {clear: both;margin: 0 0 1em 0;padding: 0.5em 1em;}
+fieldset ol {overflow:hidden;margin: 0 0 0 0;padding: 0;}
+fieldset ol li {clear:both;margin: 0 0 1em 0;padding-top: 1em;width:100%;}
+fieldset ol li label {display: block; margin: 0;}
+fieldset ol li input, fieldset ol li textarea {width:545px;background: #fff;;border: 1px solid #dadee4;padding: 5px;}
+fieldset ol li.button input {margin-left:170px;width:auto;background:none;border:none;padding:none;}
+fieldset ol li textarea {height: 10em;}
+fieldset ol li span.goback {margin: 0.5em 0 0 0;display: block;}
+fieldset ol li select {padding: 2px;border-top: 1px solid #e1e1e1;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;border-left: 1px solid #e1e1e1;}
+fieldset ol li label span {margin-left: 2em;font-size: 0.95em;}
