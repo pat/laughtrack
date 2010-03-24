@@ -33,7 +33,7 @@
   position: relative;
   clear: left;
   margin: 0 0 1em;
-  padding: 0.8em 15px;
+  padding: 0.8em 20px 0.8em 15px;
   overflow: visible;
   list-style: none;
   background: #ffffff;
@@ -77,6 +77,17 @@
   text-decoration: none;
 }
 #content .shows ol.twitter_stream li a.from_user:hover { text-decoration: underline; }
+#content .shows ol.twitter_stream li span.review_rating {
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 39px;
+  height: 35px;
+  text-indent: -9999em;
+}
+#content .shows ol.twitter_stream li.positive span.review_rating { background: url(/images/tweets-positive.png) no-repeat; }
+#content .shows ol.twitter_stream li.negative span.review_rating { background: url(/images/tweets-negative.png) no-repeat 100% 0; }
 a.more_tweets {
   display: block;
   width: 55px;
@@ -180,6 +191,10 @@ a.more_tweets:hover { background: url(/images/sprites.png) no-repeat 0 -61px; }
   background: url("/images/bg-popular.gif") repeat;
 }
 #content #show .reviews .shows .twitter_stream { margin-top: 0; }
+table.performances { font-size: 0.8em; }
+table.performances td { line-height: 1.2; }
+table.performances tr.past td { color: #999999; }
+table.performances tr.past td a { color: #999999; }
 form.search {
   position: absolute;
   margin: 0;

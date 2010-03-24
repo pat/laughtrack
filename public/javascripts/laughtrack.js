@@ -14,6 +14,7 @@ jQuery(function($) {
 
 });
 
+// usage:   myList = new tweetList(show_id, id_of_list_element_to_update, number_of_tweets_to_show_off_the_bat)
 tweetList = Class.create({
   init: function(id, list_id, init_show){
     this.list_id = list_id;
@@ -21,7 +22,7 @@ tweetList = Class.create({
     this.nextTweets(init_show);
   },
   last_tweet_displayed: -1,
-  list_id: "test",
+  list_id: "tweet_list",
   tweets: {},
   list: $("#"+this.list_id),
   get_list_id: function(){ return this.list_id; },
@@ -29,7 +30,8 @@ tweetList = Class.create({
     this.tweets = jQuery.parseJSON($.ajax({url: '/shows/'+id+'/tweets.json', dataType: "json", async: false }).responseText);
   },
   nextTweets: function(per_page) {
-    for (i=this.last_tweet_displayed+1;i<=this.last_tweet_displayed+per_page;i++) {
+    var currently_at = this.last_tweet_displayed;
+    for (i=this.last_tweet_displayed+1;i<=currently_at+per_page;i++) {
       if (i<this.tweets.length) {
         this.addTweet(this.tweets[i]);
         this.last_tweet_displayed = i;
@@ -41,9 +43,15 @@ tweetList = Class.create({
     $('<li/>')
       .attr({
         style: "display: none",
-        "class": "hidden",
+        "class": "hidden "+tweet.classification,
         id: "tweet_"+tweet.id
       })
+      .append($('<span/>').attr({ 
+          "class": "review_rating",
+          title: tweet.classification
+        })
+        .append(tweet.classification)
+      )
       .append($('<img/>').attr({ 
           src: tweet.profile_image_url,
           "class": "twitter_profile",

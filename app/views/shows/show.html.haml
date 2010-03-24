@@ -5,7 +5,7 @@
 - content_for :footer do
   :javascript
     var showTweets = new tweetList(#{@show.id}, "show_tweets", 10);
-    $(".more_tweets")[0].onclick = function() { showTweets.nextTweets(15); }
+    $(".more_tweets")[0].onclick = function() { showTweets.nextTweets(15); return false; }
 
 #show
   .show_info
@@ -23,11 +23,11 @@
 
       %table.performances
         - @show.performances.each do |performance|
-          %tr
+          %tr{ :class => ("past" if performance.happens_at<Time.now) }
             %td= performance.happens_at.to_formatted_s(:show_date)
             %td= performance.happens_at.to_formatted_s(:show_time)
-            %td= performance.sold_out ? "Sold Out" : "Tickets Available"
-            %td= link_to "show info and tickets", @show.url
+            %td= performance.sold_out ? "sold out" : link_to( "tickets available", @show.url, :target => "_blank" )
+      = link_to "more info", @show.url, :target => "_blank"
 
       - if @related.present?
         %h3 Shows by the same acts and performers
@@ -44,4 +44,4 @@
         / - @show.tweets.each do |tweet|
         /   %li{ :id => tweet.id }
         /     = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
-      = link_to_function "More", "", :class => "more_tweets", :title => "See more tweets"
+      = link_to "More", show_path(@show), :onclick => "function() {return false}", :class => "more_tweets", :id => "more_tweets", :title => "See more tweets"
