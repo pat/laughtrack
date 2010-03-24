@@ -191,8 +191,9 @@ span.rating .out_of {
 #content #show .show_info .shows .tickets span {
   position: absolute;
   top: 9px;
-  left: 220px;
   font-family: Georgia, Times, serif;
+  width: 100%;
+  text-align: center;
 }
 #content #show .reviews h2 {
   display: block;
