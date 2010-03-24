@@ -31,8 +31,8 @@ class Show < ActiveRecord::Base
     end
   end
   
-  def tweets
-    view('confirmed_by_show').collect { |doc|
+  def tweets(options = {})
+    view('confirmed_by_show', options).collect { |doc|
       db.get doc.id
     }
   end
@@ -102,8 +102,8 @@ class Show < ActiveRecord::Base
     keywords.create :words => "\"#{act_name}\"" unless act_name.blank?
   end
   
-  def view(name)
-    db.function("_design/laughtrack/_view/#{name}", :key => id)
+  def view(name, options = {})
+    db.function("_design/laughtrack/_view/#{name}", options.merge(:key => id))
   end
   
   def positive_count

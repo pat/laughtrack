@@ -77,6 +77,14 @@
   text-decoration: none;
 }
 #content .shows ol.twitter_stream li a.from_user:hover { text-decoration: underline; }
+a.more_tweets {
+  display: block;
+  width: 55px;
+  height: 55px;
+  text-indent: -9999em;
+  background: url(/images/sprites.png) no-repeat 0 0;
+}
+a.more_tweets:hover { background: url(/images/sprites.png) no-repeat 0 -61px; }
 #content .shows > ol li { overflow: auto; }
 #content .shows ol li:first-child { margin-top: 0; }
 .shows ol ul.show_details {
@@ -134,6 +142,7 @@
   margin: 0;
   color: #57a2c2;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+  font-style: italic;
 }
 #content #show .show_info .shows .tickets {
   clear: both;
