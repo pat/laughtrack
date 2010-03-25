@@ -4,7 +4,7 @@
     %li= link_to 'All Shows', shows_path
 - content_for :footer do
   :javascript
-    var showTweets = new tweetList(#{@show.id}, "show_tweets", 10);
+    var showTweets = new tweetList(#{@show.id}, "show_tweets", 10, 15, #{@show.tweets.length});
     $(".more_tweets")[0].onclick = function() { showTweets.nextTweets(15); return false; }
 
 #show
