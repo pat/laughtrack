@@ -52,16 +52,17 @@ class Keyword < ActiveRecord::Base
   
   def ignore(text)
     case text
-    when /#micf/i, /#laughtrack/i
+    when /#micf/i, /#laughtrack/i, /@laughtrack_au/i
       false
-    when /\bRT\b/, /spicks (and|&) specks/i, /I favorited a YouTube video/i,
+    when /\bRT\b/, /spicks (and|&) specks/i, /I favou?rited a YouTube video/i,
       /check this video out/i, /Sarah Millican's Support Group/i,
       /worldsoccertweets/i, /the bubble/i, /ru\s?paul/i,
       /rated a youtube video/i, /#spicks(and|&)specks/i,
       /Northcote \(So Hungover\)/i, /left a comment for/i, /Oklahoma City/i,
       /scored \d+ points/i, /The 7pm Project/i, /Nick Sun @ Station 59/i,
       /thank god you'?re here/i, /the 100 club: Artists/i,
-      /can you please send a autograph picture/i
+      /can you please send a autograph picture/i, /Jag har favoritmarkerat/i,
+      /Thank God Your Here/i
       true
     else
       false

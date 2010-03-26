@@ -160,7 +160,10 @@ describe Keyword do
         'Nick Sun @ Station 59, 2008: http://url4.eu/1fXfN',
         'Thank god youre here - Jimeoin: http://url4.eu/1pYPg',
         'The 100 club: Artists who signed up for comedian Josie Long',
-        'can you please send a autograph picture.tks n God Bless Dave Hughes'
+        'can you please send a autograph picture.tks n God Bless Dave Hughes',
+        'Jag har favoritmarkerat ett videoklipp på YouTube',
+        'I favourited a YouTube video -- The Axis of Awesome 4 Chords',
+        "Josh Lawson was on Thank God Your Here",
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
@@ -175,7 +178,8 @@ describe Keyword do
       end
       
       [ 'Colin Lane is hilarious #spicks&specks #laughtrack',
-        'Colin Lane is hilarious #spicks&specks #micf'
+        'Colin Lane is hilarious #spicks&specks #micf',
+        '@laughtrack_au Frank Woodley hit and miss. Sheer genius at times'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as not ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,
