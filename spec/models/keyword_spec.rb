@@ -164,6 +164,10 @@ describe Keyword do
         'Jag har favoritmarkerat ett videoklipp på YouTube',
         'I favourited a YouTube video -- The Axis of Awesome 4 Chords',
         "Josh Lawson was on Thank God Your Here",
+        'Essence Festival 2010 will be on fire.',
+        'Retro surfboard fun at the Hyundai Malfunction Surf Festival',
+        "I'm not here for your entertainment",
+        'Win free tickets to over 75 #MICF shows'
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,

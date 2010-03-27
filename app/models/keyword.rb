@@ -52,6 +52,8 @@ class Keyword < ActiveRecord::Base
   
   def ignore(text)
     case text
+    when /Win free tickets to over \d\d/i
+      true
     when /#micf/i, /#laughtrack/i, /@laughtrack_au/i
       false
     when /\bRT\b/, /spicks (and|&) specks/i, /I favou?rited a YouTube video/i,
@@ -62,7 +64,8 @@ class Keyword < ActiveRecord::Base
       /scored \d+ points/i, /The 7pm Project/i, /Nick Sun @ Station 59/i,
       /thank god you'?re here/i, /the 100 club: Artists/i,
       /can you please send a autograph picture/i, /Jag har favoritmarkerat/i,
-      /Thank God Your Here/i
+      /Thank God Your Here/i, /essence festival 2010/i, /hyundai malfunction/i,
+      /not here for your entertainment/i
       true
     else
       false
