@@ -2,6 +2,7 @@ class Admin::TweetsController < Admin::ApplicationController
   include LaughTrack::CouchDb
   
   def unclassified
+    @total = db.function('_design/laughtrack/_view/unclassified').length
     @docs = unclassified_ids.collect { |hash| db.get hash.id }
   end
   
