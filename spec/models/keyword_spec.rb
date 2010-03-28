@@ -167,7 +167,8 @@ describe Keyword do
         'Essence Festival 2010 will be on fire.',
         'Retro surfboard fun at the Hyundai Malfunction Surf Festival',
         "I'm not here for your entertainment",
-        'Win free tickets to over 75 #MICF shows'
+        'Win free tickets to over 75 #MICF shows',
+        "This is the Tom Green show. It's not the Green Tom show.",
       ].each do |phrase|
         it "should mark \"#{phrase}\" as ignored" do
           FakeWeb.register_uri :get, /search\.twitter\.com/,

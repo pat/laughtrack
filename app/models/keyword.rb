@@ -65,7 +65,7 @@ class Keyword < ActiveRecord::Base
       /thank god you'?re here/i, /the 100 club: Artists/i,
       /can you please send a autograph picture/i, /Jag har favoritmarkerat/i,
       /Thank God Your Here/i, /essence festival 2010/i, /hyundai malfunction/i,
-      /not here for your entertainment/i
+      /not here for your entertainment/i, /this is the tom green show/i
       true
     else
       false
