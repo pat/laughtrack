@@ -49,6 +49,12 @@ class Admin::ShowsController < Admin::ApplicationController
     redirect_to edit_admin_show_path(show)
   end
   
+  def import_tweet
+    LaughTrack::Tweet.import params[:url], params[:id].to_i
+    
+    redirect_to :back
+  end
+  
   private
   
   def show

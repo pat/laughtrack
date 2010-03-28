@@ -10,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :shows, :member => {
       :feature      => :get,
       :unfeature    => :get,
-      :clear_tweets => :get
+      :clear_tweets => :get,
+      :import_tweet => :post
     } do |shows|
       shows.resources :performances, :member => {
         :sold_out   => :get,
