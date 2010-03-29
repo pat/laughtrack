@@ -96,6 +96,8 @@ class Show < ActiveRecord::Base
     self.tweet_count              = view("by_show").length
     self.confirmed_tweet_count    = view("confirmed_by_show").length
     self.unconfirmed_tweet_count  = view("unconfirmed_by_show").length
+    self.positive_tweet_count     = positive_count
+    
     self.rating = LaughTrack::Wilson.new(
       positive_count, confirmed_tweet_count
     ).lower_bound * 100
@@ -108,7 +110,7 @@ class Show < ActiveRecord::Base
       :sold_out_percent       => sold_out_percent,
       :rating                 => rating,
       :confirmed_tweet_count  => confirmed_tweet_count,
-      :positive_tweet_count   => positive_count,
+      :positive_tweet_count   => positive_tweet_count,
       :day                    => Date.today
     )
   end
