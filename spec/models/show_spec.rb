@@ -134,46 +134,4 @@ describe Show do
       @slather.related.should_not include(@slather)
     end
   end
-  
-  describe '#scraped_time' do
-    it "should return nil if there's no times provided" do
-      Show.make.scraped_time(Date.new(2010, 3, 31), nil).should be_nil
-    end
-    
-    it "should parse a standard time" do
-      time = Show.make.scraped_time(Date.new(2010, 3, 31), "7pm")
-      time.hour.should == 19
-      time.min.should == 0
-    end
-    
-    it "should handle times with minutes" do
-      time = Show.make.scraped_time(Date.new(2010, 3, 31), "7.30pm")
-      time.hour.should == 19
-      time.min.should == 30
-    end
-    
-    it "should handle times in the morning" do
-      time = Show.make.scraped_time(Date.new(2010, 3, 31), "11am")
-      time.hour.should == 11
-      time.min.should == 0
-      
-      time = Show.make.scraped_time(Date.new(2010, 3, 31), "11.30am")
-      time.hour.should == 11
-      time.min.should == 30
-    end
-    
-    it "should handle times with day ranges" do
-      time = Show.make.scraped_time(
-        Date.new(2010, 3, 31), "Tue-Sat 7pm, Sun 6pm"
-      )
-      time.hour.should == 19
-      time.min.should == 0
-      
-      time = Show.make.scraped_time(
-        Date.new(2010, 3, 28), "Tue-Sat 7pm, Sun 6pm"
-      )
-      time.hour.should == 18
-      time.min.should == 0
-    end
-  end
 end

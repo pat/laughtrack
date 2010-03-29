@@ -102,33 +102,6 @@ class Show < ActiveRecord::Base
     }
   end
   
-  def scraped_time(date, times)
-    return nil if times.blank?
-    
-    matches = times.scan(/(\d+(\.\d\d)?[ap]m)/).collect { |match|
-      match.first
-    }
-    
-    if matches.length == 1 && matches.first[/^\d+(\.\d\d)[ap]m$/]
-      parts     = matches.first.split('.')
-      afternoon = parts.last[/\dpm/] ? 12 : 0
-      Time.local date.year, date.month, date.mday, parts.first.to_i + afternoon, parts.last.gsub(/[ap]m/, '')
-    elsif matches.length == 1
-      afternoon = matches.first[/\dpm/] ? 12 : 0
-      Time.local date.year, date.month, date.mday, matches.first.to_i + afternoon, 0
-    else
-      parts = times.split(',')
-      part = parts.detect { |part| days(part).include?(date.wday) }
-      part.nil? ? nil : scraped_time(date, part)
-    end
-    # 
-    # case times
-    # when /^\d+(\.\d\d)pm$/
-    #   parts = times.split('.')
-    #   Time.local date.year, date.month, date.mday, parts.first.to_i + 12, parts.last.gsub(/pm/, '')
-    # end
-  end
-  
   private
   
   def add_act_keyword
@@ -146,6 +119,10 @@ class Show < ActiveRecord::Base
   def add_scraped_performance(day, times)
     month = day > 20 ? 3 : 4
     date  = Date.new(2010, month, day)
+    
+    LaughTrack::TimeParser.new(times).performances_for_day(date).each do |time|
+      performances.create :happens_at => time
+    end
   end
   
   def days(string)
