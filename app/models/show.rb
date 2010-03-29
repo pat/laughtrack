@@ -31,6 +31,12 @@ class Show < ActiveRecord::Base
     end
   end
   
+  def self.scrape_performances
+    all.each do |show|
+      show.scrape_performances
+    end
+  end
+  
   def tweets
     view('confirmed_by_show').collect { |doc|
       db.get doc.id
@@ -93,7 +99,7 @@ class Show < ActiveRecord::Base
     time_node = doc.css(".show .rightCol p").detect { |para|
       para.text[/\d(:\d\d)?[ap]m/]
     }
-    times = time_node ? time_node.text : nil
+    times = time_node ? time_node.text : ""
     doc.css(".showCalendar .preview").each { |node|
       add_scraped_performance node.text.strip.to_i, times
     }
@@ -121,6 +127,8 @@ class Show < ActiveRecord::Base
     date  = Date.new(2010, month, day)
     
     LaughTrack::TimeParser.new(times).performances_for_day(date).each do |time|
+      next if performances.find(:first, :conditions => {:happens_at => time})
+      
       performances.create :happens_at => time
     end
   end
