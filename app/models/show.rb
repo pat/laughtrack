@@ -38,6 +38,12 @@ class Show < ActiveRecord::Base
     end
   end
   
+  def self.scrape_performances
+    all.each do |show|
+      show.scrape_performances
+    end
+  end
+  
   def tweets(options = {})
     view('confirmed_by_show', options).collect { |doc|
       db.get doc.id
@@ -112,7 +118,13 @@ class Show < ActiveRecord::Base
     time_node = doc.css(".show .rightCol p").detect { |para|
       para.text[/\d(:\d\d)?[ap]m/]
     }
-    time_node ? time_node.text : "None: #{act_name} - #{name}"
+    times = time_node ? time_node.text : ""
+    doc.css(".showCalendar .preview").each { |node|
+      add_scraped_performance node.text.strip.to_i, times
+    }
+    doc.css(".showCalendar .show").each { |node|
+      add_scraped_performance node.text.strip.to_i, times
+    }
   end
   
   private
@@ -127,5 +139,29 @@ class Show < ActiveRecord::Base
   
   def positive_count
     view("positive_by_show").length
+  end
+  
+  def add_scraped_performance(day, times)
+    month = day > 20 ? 3 : 4
+    date  = Date.new(2010, month, day)
+    
+    LaughTrack::TimeParser.new(times).performances_for_day(date).each do |time|
+      next if performances.find(:first, :conditions => {:happens_at => time})
+      
+      performances.create :happens_at => time
+    end
+  end
+  
+  def days(string)
+    match = string.scan(/(\w\w\w)\-(\w\w\w)/).first
+    if match.nil?
+      [day_integer string[/\b(\w\w\w)\b/]]
+    else
+      (day_integer(match.first)..day_integer(match.last)).to_a
+    end
+  end
+  
+  def day_integer(string)
+    ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].index(string) || (0..6).to_a
   end
 end
