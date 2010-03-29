@@ -22,7 +22,7 @@
       %tr
         %td= act_name show.act
         %td= link_to_show show
-        %td ??
+        %td= number_to_percentage show.sold_out_percent, :precision => 0
         %td= number_with_precision show.rating, :precision => 2
 
 = will_paginate @shows

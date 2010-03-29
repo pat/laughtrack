@@ -108,6 +108,8 @@ a.more_tweets:hover { background: url(/images/sprites.png) no-repeat 0 -61px; }
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
 }
 .shows ol h3 a:hover { color: #e8188d; }
+.popular .shows ol h3 a { color: #e8188d; }
+.popular .shows ol h3 a:hover { color: #57a2c2; }
 #content .shows ol ul.show_details li {
   margin: 0;
   float: left;
@@ -136,6 +138,23 @@ span.rating .out_of {
   bottom: -0.4em;
   right: 1px;
   font-weight: normal;
+}
+.sold_out {
+  float: right;
+  font-size: 1.6em;
+  line-height: 0.9;
+  padding: 0.4em;
+  color: #57a2c2;
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+}
+.sold_out .suffix {
+  font-size: 0.45em;
+  clear: right;
+  margin: 0.4em;
+  font-weight: normal;
+  display: block;
 }
 #feature .feature .pad .tickets span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);

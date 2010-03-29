@@ -1,12 +1,14 @@
 %li
-  %span.rating
-    ="#{show.rating.to_i}"
-    %span.out_of>="/100"
+  - if focus == :quality
+    %span.rating
+      ="#{show.rating.to_i}"
+      %span.out_of>="/100"
+  - else
+    %span.sold_out
+      = number_to_percentage show.sold_out_percent, :precision => 0
+      %span.suffix Sold Out
   - unless show.act_name.blank?
     %span.act_name= show.act_name
   %h3= link_to_show show
   %ul.show_details
-    - if show.performances.any?
-      %li= show.performances.first.happens_at.to_formatted_s(:show_date)
-      %li= show.performances.first.happens_at.to_formatted_s(:show_time)
     %li= link_to "view show &rsaquo;", show

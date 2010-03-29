@@ -18,15 +18,25 @@
         = @show.act.performers.collect{|p| p.country=="Australia"||"" ? p.name : "#{p.name}(#{p.country})" }.join(", ")
 
       .tickets
-        .sold{:style => "width: 0"}
-        %span ?? Sold Out
+        .sold{:style => "width: #{@show.sold_out_percent}%"}
+        %span
+          = number_to_percentage @show.sold_out_percent, :precision => 0
+          Sold Out
+      
+      %p
+        Our figures on which shows are sold out are incomplete. If you know we're wrong, please
+        = link_to "tell us so.", "/about#contact"
 
       %table.performances
         - @show.performances.each do |performance|
           %tr{ :class => ("past" if performance.happens_at<Time.now) }
             %td= performance.happens_at.to_formatted_s(:show_date)
             %td= performance.happens_at.to_formatted_s(:show_time)
-            %td= performance.sold_out ? "sold out" : link_to( "tickets available", @show.url, :target => "_blank" )
+            %td
+              - if performance.happens_at < Time.now
+                = performance.sold_out ? "Sold Out" : "In the Past"
+              - else
+                = performance.sold_out ? "Sold Out" : link_to( "Tickets Available", @show.url, :target => "_blank" )
       = link_to "more info", @show.url, :target => "_blank"
 
       - if @related.present?

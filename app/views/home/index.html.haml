@@ -35,9 +35,7 @@
     
     .shows
       %ol
-        = render :partial => 'shows/show', :collection => @rated
-
-            
+        = render :partial => 'shows/show', :collection => @rated, :locals => {:focus => :quality}
       = link_to "View All Quality Shows &rsaquo;", quality_path
     
   .popular
@@ -46,8 +44,6 @@
     / %h3 What People are Seeing
 
     .shows
-      %p
-        We're currently talking to the Festival team about getting information on all the performances for every festival show, and whether they're sold out or not. This will allow us to give you accurate information on which tickets you should be booking
-        %em quickly!
-      
-      %p In the meantime, please sit tight - we'll have this part of LaughTrack up and running as soon as possible!
+      %ol
+        = render :partial => 'shows/show', :collection => @popular, :locals => {:focus => :popular}
+      = link_to "View All Popular Shows &rsaquo;", popular_path
