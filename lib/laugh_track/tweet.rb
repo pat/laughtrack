@@ -4,7 +4,7 @@ class LaughTrack::Tweet
   extend LaughTrack::CouchDb
   
   def self.import(url, show_id)
-    match = url.match /\/([\w_]+)\/status\/(\d+)/
+    match = url.match /\/(\w+)\/statuse?s?\/(\d+)/
     user  = match[1]
     id    = match[2].to_i
     
