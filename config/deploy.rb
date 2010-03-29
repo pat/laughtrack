@@ -48,6 +48,11 @@ namespace :laughtrack do
     run "cd #{current_path} && rake shows:import:2010 RAILS_ENV=production"
   end
   
+  desc 'Scrape performances from the MICF website. Ideally, just run once.'
+  task :scrape_performances do
+    run "cd #{current_path} && rake shows:import:performances RAILS_ENV=production"
+  end
+  
   namespace :twitter do
     desc 'Import a batch of tweets'
     task :import do

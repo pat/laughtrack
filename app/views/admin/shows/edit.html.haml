@@ -57,6 +57,7 @@
     %li
       = performance.happens_at.to_s
       = performance_sold_out_link performance
+      = link_to "Delete", destroy_admin_show_performance_path(@show, performance)
 
 - semantic_form_for [:admin, @show, @show.performances.build] do |form|
   - form.inputs do

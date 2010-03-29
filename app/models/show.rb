@@ -2,7 +2,7 @@ class Show < ActiveRecord::Base
   include LaughTrack::CouchDb
   
   belongs_to :act
-  has_many   :performances
+  has_many   :performances, :order => 'happens_at ASC'
   has_many   :keywords
   has_many   :show_histories
   

@@ -19,6 +19,12 @@ class Admin::PerformancesController < Admin::ApplicationController
     redirect_to edit_admin_show_path(show)
   end
   
+  def destroy
+    performance.destroy
+    
+    redirect_to :back
+  end
+  
   private
   
   def show

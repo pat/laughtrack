@@ -15,7 +15,8 @@ ActionController::Routing::Routes.draw do |map|
     } do |shows|
       shows.resources :performances, :member => {
         :sold_out   => :get,
-        :available  => :get
+        :available  => :get,
+        :destroy    => :get
       }
       shows.resources :keywords, :member => {
         :destroy => :get
