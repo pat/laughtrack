@@ -8,7 +8,7 @@ class LaughTrack::Tweet
     user  = match[1]
     id    = match[2].to_i
     
-    api = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{user}"
+    api = "http://api.twitter.com/1/statuses/user_timeline.json?count=200&screen_name=#{user}"
     tweet = JSON.load(open(api)).detect { |hash|
       hash['id'] == id
     }
