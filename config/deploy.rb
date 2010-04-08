@@ -53,6 +53,11 @@ namespace :laughtrack do
     run "cd #{current_path} && rake shows:import:performances RAILS_ENV=production"
   end
   
+  desc 'Validate performance dates'
+  task :validate_performances do
+    run "cd #{current_path} && rake shows:import:validate RAILS_ENV=production"
+  end
+  
   namespace :twitter do
     desc 'Import a batch of tweets'
     task :import do
