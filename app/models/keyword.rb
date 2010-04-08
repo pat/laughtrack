@@ -14,6 +14,8 @@ class Keyword < ActiveRecord::Base
   end
   
   def import
+    return if outside_window?
+    
     logger.debug "IMPORTING #{words}"
     url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
     JSON.load(open(url))['results'].each do |tweet|
@@ -51,8 +53,6 @@ class Keyword < ActiveRecord::Base
   end
   
   def ignore(text)
-    return true if outside_window?
-    
     case text
     when /Win free tickets to over \d\d/i
       true
