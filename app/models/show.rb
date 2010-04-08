@@ -9,12 +9,15 @@ class Show < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :act, :if => :confirmed?
   
-  named_scope :limited,   :limit => 5
-  named_scope :popular,   :order => 'sold_out_percent DESC'
-  named_scope :rated,     :order => 'rating DESC'
-  named_scope :featured,  :conditions => {:featured => true}
-  named_scope :random,    :order => 'RAND() ASC'
-  named_scope :available, :conditions => 'sold_out_percent < 100.0'
+  named_scope :limited,       :limit => 5
+  named_scope :popular,       :order => 'sold_out_percent DESC'
+  named_scope :rated,         :order => 'rating DESC'
+  named_scope :featured,      :conditions => {:featured => true}
+  named_scope :random,        :order => 'RAND() ASC'
+  named_scope :available,     :conditions => 'sold_out_percent < 100.0'
+  named_scope :still_showing, :group  => "shows.id",
+                              :having => "MAX(happens_at) > NOW()",
+                              :joins  => :performances
   
   after_create :add_act_keyword
   
