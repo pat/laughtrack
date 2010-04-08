@@ -155,7 +155,6 @@ class Show < ActiveRecord::Base
   end
   
   def view(name, options = {})
-    Rails.logger.info(options.inspect)
     db.function("_design/laughtrack/_view/#{name}", options.merge(:key => id))
   end
   
