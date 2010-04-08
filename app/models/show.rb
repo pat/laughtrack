@@ -144,6 +144,8 @@ class Show < ActiveRecord::Base
     if performances.length < minimum_shows
       puts "Missing Performances for #{act_name} - #{name}"
     end
+  rescue
+    puts "Error requesting show information for #{act_name} - #{name}"
   end
   
   private
