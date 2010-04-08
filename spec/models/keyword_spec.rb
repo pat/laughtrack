@@ -92,6 +92,27 @@ describe Keyword do
       @keyword.imported_at.to_date.should == Date.today
     end
     
+    it "should not check for shows that have not happened" do
+      @keyword.show.performances.create(:happens_at => 3.days.from_now)
+      @keyword.import
+      
+      FakeWeb.should_not have_requested(:get, /search\.twitter\.com/)
+    end
+    
+    it "should not check for shows that finished five days ago" do
+      @keyword.show.performances.create(:happens_at => 6.days.ago)
+      @keyword.import
+      
+      FakeWeb.should_not have_requested(:get, /search\.twitter\.com/)
+    end
+    
+    it "should check for shows that finished four days ago" do
+      @keyword.show.performances.create(:happens_at => 4.days.ago)
+      @keyword.import
+      
+      FakeWeb.should have_requested(:get, /search\.twitter\.com/)
+    end
+    
     context 'auto-classification' do
       [ 'Tommy tiernan was very funny',
         'Frank Woodley at the Powerhouse ... performances brilliant.',
@@ -175,7 +196,7 @@ describe Keyword do
             :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
           
           @database.should_receive(:save) do |hash|
-            hash[:ignore].should == true
+            hash[:ignore].should be_true
           end
           
           @keyword.import
@@ -191,7 +212,7 @@ describe Keyword do
             :body => "{\"results\":[{\"text\":\"#{phrase}\",\"id\":\"bar\"}]}"
           
           @database.should_receive(:save) do |hash|
-            hash[:ignore].should == false
+            hash[:ignore].should be_false
           end
           
           @keyword.import

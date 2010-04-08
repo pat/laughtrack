@@ -14,6 +14,8 @@ class Keyword < ActiveRecord::Base
   end
   
   def import
+    return if outside_window?
+    
     logger.debug "IMPORTING #{words}"
     url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
     JSON.load(open(url))['results'].each do |tweet|
@@ -70,5 +72,12 @@ class Keyword < ActiveRecord::Base
     else
       false
     end
+  end
+  
+  def outside_window?
+    return false if show.performances.empty?
+    
+    Date.today.to_time < show.performances.first.happens_at ||
+    show.performances.last.happens_at < 5.days.ago
   end
 end
