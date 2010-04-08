@@ -16,30 +16,32 @@ jQuery(function($) {
 
 // usage:   myList = new tweetList(show_id, id_of_list_element_to_update, number_of_tweets_to_show_off_the_bat)
 tweetList = Class.create({
-  init: function(id, list_id, init_show){
+  init: function(id, list_id, init_show, per_page, total_tweets){
+    this.show_id = id;
     this.list_id = list_id;
-    this.loadShowTweets(id);
+    this.per_page = per_page;
+    this.total_tweets = total_tweets;
     this.nextTweets(init_show);
-    // this.moreButton();
   },
-  last_tweet_displayed: -1,
+  show_id: 0,
+  last_tweet_displayed: 0,
   list_id: "tweet_list",
   tweets: {},
+  per_page: 15,
+  total_tweets: 0,
   list: $("#"+this.list_id),
   get_list_id: function(){ return this.list_id; },
-  loadShowTweets: function(id) {
-    this.tweets = jQuery.parseJSON($.ajax({url: '/shows/'+id+'/tweets.json', dataType: "json", async: false }).responseText);
+  loadShowTweets: function(id, limit) {
+    this.tweets = jQuery.parseJSON($.ajax({url: '/shows/'+id+'/tweets.json?paginate[skip]='+this.last_tweet_displayed+'&paginate[limit]='+limit, dataType: "json", async: false }).responseText);
   },
   nextTweets: function(per_page) {
-    var currently_at = this.last_tweet_displayed;
-    for (i=this.last_tweet_displayed+1;i<=currently_at+per_page;i++) {
-      if (i<this.tweets.length) {
-        this.addTweet(this.tweets[i]);
-        this.last_tweet_displayed = i;
-      }
+    this.loadShowTweets(this.show_id, per_page);
+    for (i=0;i<this.tweets.length;i++) {
+      this.addTweet(this.tweets[i]);
+      this.last_tweet_displayed++;
     }
     this.showHidden();
-    if (this.last_tweet_displayed+1==this.tweets.length) $("#more_tweets").hide();
+    if (this.last_tweet_displayed==this.total_tweets) $("#more_tweets").hide();
   },
   addTweet: function(tweet) {
     $('<li/>')

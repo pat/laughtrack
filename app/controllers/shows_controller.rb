@@ -32,7 +32,8 @@ class ShowsController < ApplicationController
   def tweets
     @show    = Show.find params[:id]
     respond_to do |format|
-      format.json { render :json => @show.tweets( params[:since] ? { "startkey" => params[:since], "endkey" => params[:since].to_i+2 } : {} ).collect{|t| t.text=twitify(t.text);t.created_at=time_ago_in_words(Time.parse(t.created_at));t}.to_json }
+      format.json { 
+        render :json => @show.tweets( params[:paginate] ).collect{|t| t.text=twitify(t.text);t.created_at=time_ago_in_words(Time.parse(t.created_at));t}.to_json }
     end
   end
   

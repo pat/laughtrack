@@ -263,6 +263,7 @@ form.search input.submit {
   height: 32px;
   cursor: pointer;
   text-indent: -9999px;
+  text-align: left;
   background: #ffffff url("/images/icons/search.gif") no-repeat scroll 0 50%;
   border: 0 none;
   -moz-border-radius-bottomright: 7px;
