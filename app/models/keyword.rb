@@ -51,6 +51,8 @@ class Keyword < ActiveRecord::Base
   end
   
   def ignore(text)
+    return true if outside_window?
+    
     case text
     when /Win free tickets to over \d\d/i
       true
@@ -70,5 +72,12 @@ class Keyword < ActiveRecord::Base
     else
       false
     end
+  end
+  
+  def outside_window?
+    return false if show.performances.empty?
+    
+    Date.today.to_time < show.performances.first.happens_at ||
+    show.performances.last.happens_at < 5.days.ago
   end
 end
