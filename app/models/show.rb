@@ -45,6 +45,12 @@ class Show < ActiveRecord::Base
     end
   end
   
+  def self.validate_performances
+    all.each do |show|
+      show.validate_performances
+    end
+  end
+  
   def tweets(options = {})
     view('confirmed_by_show', options).collect { |doc|
       db.get doc.id
@@ -128,6 +134,16 @@ class Show < ActiveRecord::Base
     doc.css(".showCalendar .show").each { |node|
       add_scraped_performance node.text.strip.to_i, times
     }
+  end
+  
+  def validate_performances
+    doc = Nokogiri::HTML open(url)
+    minimum_shows = doc.css(".showCalendar .preview").length +
+                    doc.css(".showCalendar .show").length
+    
+    if performances.length < minimum_shows
+      puts "Missing Performances for #{act_name} - #{name}"
+    end
   end
   
   private

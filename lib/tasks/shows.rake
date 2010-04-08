@@ -9,6 +9,11 @@ namespace :shows do
     task :performances => :environment do
       Show.scrape_performances
     end
+    
+    desc 'Validate performance dates'
+    task :validate => :environment do
+      Show.validate_performances
+    end
   end
   
   desc 'Log the show stats histories'
