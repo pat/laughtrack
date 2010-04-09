@@ -14,7 +14,10 @@ class Keyword < ActiveRecord::Base
   end
   
   def import
-    return if outside_window?
+    if outside_window?
+      update_attributes(:imported_at => Time.now)
+      return
+    end
     
     logger.debug "IMPORTING #{words}"
     url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
