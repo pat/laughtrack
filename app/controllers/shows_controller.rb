@@ -33,7 +33,12 @@ class ShowsController < ApplicationController
     @show    = Show.find params[:id]
     respond_to do |format|
       format.json { 
-        render :json => @show.tweets( params[:paginate] ).collect{|t| t.text=twitify(t.text);t.created_at=time_ago_in_words(Time.parse(t.created_at));t}.to_json }
+        render :json => @show.tweets(params[:paginate] || {}).collect{ |tweet|
+          tweet.text       = twitify(tweet.text)
+          tweet.created_at = time_ago_in_words(Time.parse(tweet.created_at))
+          tweet
+        }.to_json
+      }
     end
   end
   
