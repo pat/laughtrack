@@ -1,6 +1,8 @@
 class Show < ActiveRecord::Base
   include LaughTrack::CouchDb
   
+  FestivalStart = Time.local(2010, 3, 23)
+  
   belongs_to :act
   has_many   :performances, :order => 'happens_at ASC'
   has_many   :keywords
@@ -67,9 +69,7 @@ class Show < ActiveRecord::Base
   end
   
   def random_tweet
-    docs = db.function "_design/laughtrack/_view/positive_by_show",
-      :key        => id,
-      :descending => true
+    docs = view("positive_by_show", :descending => true)
     return nil unless docs.first
     
     db.get docs.first.id
@@ -109,7 +109,7 @@ class Show < ActiveRecord::Base
     self.positive_tweet_count     = positive_count
     
     self.rating = LaughTrack::Wilson.new(
-      positive_count, confirmed_tweet_count
+      smart_positive_count, smart_confirmed_tweet_count
     ).lower_bound * 100
   end
   
@@ -161,8 +161,20 @@ class Show < ActiveRecord::Base
     db.function("_design/laughtrack/_view/#{name}", options.merge(:key => id))
   end
   
-  def positive_count
-    view("positive_by_show").length
+  def positive_count(options = {})
+    view("positive_by_show", options).length
+  end
+  
+  def smart_positive_count
+    view("positive_by_show").inject(0.0) do |count, object|
+      count + (Time.parse(object.value) > FestivalStart ? 1.0 : 0.5)
+    end
+  end
+  
+  def smart_confirmed_tweet_count
+    view("confirmed_by_show").inject(0.0) do |count, object|
+      count + (Time.parse(object.value) > FestivalStart ? 1.0 : 0.5)
+    end
   end
   
   def add_scraped_performance(day, times)
