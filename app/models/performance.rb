@@ -3,6 +3,12 @@ class Performance < ActiveRecord::Base
   
   validates_presence_of :show, :happens_at
   
+  named_scope :for, lambda { |date|
+    {:conditions => {:happens_at => date.beginning_of_day..date.end_of_day}}
+  }
+  named_scope :ordered,   :order => 'happens_at ASC'
+  named_scope :available, :conditions => {:sold_out => false}
+  
   after_save :update_show_sold_out_percent
   
   def sold_out!

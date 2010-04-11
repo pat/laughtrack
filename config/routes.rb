@@ -42,6 +42,11 @@ ActionController::Routing::Routes.draw do |map|
   map.quality 'quality', :controller => 'shows', :action => 'index',
     :sort_by => 'rating', :order => 'desc'
   
+  map.performances_by_date 'performances/:year/:month/:date',
+    :controller => 'performances', :action => 'index'
+  map.performances 'performances',
+    :controller => 'performances', :action => 'index'
+  
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

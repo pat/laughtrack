@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100329115820) do
+ActiveRecord::Schema.define(:version => 20100411141754) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20100329115820) do
 
   create_table "performances", :force => true do |t|
     t.integer  "show_id"
-    t.boolean  "sold_out"
+    t.boolean  "sold_out",   :default => false
     t.datetime "happens_at"
     t.datetime "created_at"
     t.datetime "updated_at"

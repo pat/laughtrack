@@ -1,0 +1,20 @@
+%h2 Performances
+
+%table
+  %thead
+    %tr
+      %th Act
+      %th Show
+      %th Time
+      %th Sold Out
+      %th Rating
+  %tbody
+    - @performances.each do |performance|
+      %tr
+        %td= link_to act_name(performance.show.act), performance.show
+        %td= link_to_show performance.show
+        %td= performance.happens_at.to_formatted_s(:show_time)
+        %td= number_to_percentage performance.show.sold_out_percent, :precision => 0
+        %td= number_with_precision performance.show.rating, :precision => 2
+
+= will_paginate @performances
