@@ -9,7 +9,8 @@
               %li
                 %h3=show.act_name
                 %h2=link_to show.name, show
-                %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
+                - if show.performances.next_available
+                  %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
                 %span.rated
                   = "Rated "+show.rating.to_s
                 %span.sold
