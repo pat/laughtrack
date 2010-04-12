@@ -125,6 +125,18 @@ div.calendar table tbody a:hover {
   background: #e8188d;
   color: #ffffff;
 }
+div.calendar table tbody .today a {
+  display: block;
+  padding: 3px 0 2px;
+  text-decoration: none;
+  color: #57a2c2;
+  font-weight: bold;
+  text-align: inherit;
+}
+div.calendar table tbody .today a:hover {
+  background: #e8188d;
+  color: #ffffff;
+}
 div.calendar table tbody .otherMonth { color: #cccccc; }
 div.calendar table tbody .today {
   font-weight: bold;
