@@ -201,7 +201,7 @@ dd          { margin-left: 1.5em;}
     #content table thead th.act {width: 30%;}    
     #content table thead th.sold, #content table thead th.rating {width: 80px;}
     #content table thead th.sorted {background: #e8188d url(/images/bg-dots.gif) repeat-x left bottom;}
-      #content table thead th.sorted a, #content table thead th.sorted a:visited {color: #fff;}
+      #content table thead th, #content table thead th.sorted a, #content table thead th.sorted a:visited {color: #fff;}
       #content table thead th a, #content table thead th a:visited {display:block;color: #f89ed0;}
       #content table tbody td {border-bottom: 1px solid #f5efdd;padding: .5em 1em}
       #content table tbody tr.even td {background: #efe9d6;}
