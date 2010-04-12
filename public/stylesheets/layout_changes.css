@@ -78,6 +78,7 @@ div.calendar .head a {
   text-decoration: none;
   color: #ffffff;
 }
+div.calendar .head a:hover { color: #e8188d; }
 div.calendar .head .next_month { float: right; }
 div.calendar .head .previous_month { float: left; }
 div.calendar table {
@@ -104,8 +105,6 @@ div.calendar table thead .dayName th {
   text-transform: uppercase;
 }
 div.calendar table thead .dayName th abbr { border: none; }
-div.calendar table thead a { text-decoration: none; }
-div.calendar table thead a:hover { color: #e8188d; }
 div.calendar table tbody td {
   text-align: center;
   line-height: 1.8;
