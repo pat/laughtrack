@@ -2,16 +2,16 @@
   %ol
     %li= link_to 'Home', '/'
 
-%h2 Performances
+%h2 Performances for #{@date.strftime("%B %d")}
 
 %table
   %thead
     %tr
-      %th Act
-      %th Show
-      %th Time
-      %th Sold Out
-      %th Rating
+      = sorted_header 'Act', 'act'
+      = sorted_header 'Show', 'show'
+      = sorted_header 'Time', 'time', true
+      = sorted_header 'Sold Out', 'sold_out'
+      = sorted_header 'Rating', 'rating'
   %tbody
     - @performances.each do |performance|
       %tr
