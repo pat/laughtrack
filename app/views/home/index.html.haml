@@ -16,7 +16,11 @@
                   = number_to_percentage show.sold_out_percent, :precision => 0
                   %span.suffix Sold Out
       .calendar
-        = calendar(:year => @calendar_date.year, :month => @calendar_date.month, :next_month_text => link_to("&raquo;", {:action=>'index', :params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B')), :previous_month_text => link_to("&laquo;", {:action=>'index', :params => {:date => @calendar_date.last_month.strftime("%Y-%m")}}, :title => @calendar_date.last_month.strftime('%B'))) do |d|
+        .head
+          = link_to "&raquo;", {:params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B'), :class => "next_month"
+          = link_to "&laquo;", {:params => {:date => @calendar_date.last_month.strftime("%Y-%m")}}, :title => @calendar_date.last_month.strftime('%B'), :class => "previous_month"
+          = @calendar_date.strftime('%B')
+        = calendar :year => @calendar_date.year, :month => @calendar_date.month do |d|
           - if @performance_dates.keys.include?(d)
             - [ link_to( d.mday, performances_by_date_path(:year => @calendar_date.year, :month => @calendar_date.month, :date => d.mday), :id => d.strftime("%m-%d")), {:class => "has_performances"}]
 
@@ -53,7 +57,7 @@
 
 - content_for :footer do
   :javascript
-    $('.calendar thead a, #shows h2 a, #shows h2').tipsy({gravity: 'n'});  
+    $('.calendar .head a, #shows h2 a, #shows h2').tipsy({gravity: 'n'});  
 /   - @performance_dates.each do |happens_at, performances|
 /     :javascript
 /       $('##{happens_at.strftime("%m-%d")}').tipsy({gravity: 'n', html: 'true', fallback: '#{performances.collect{|p| p.show.act_name}.uniq.join("<br>")}'});

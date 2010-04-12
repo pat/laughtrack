@@ -62,10 +62,29 @@ div.calendar h6 {
   background: transparent;
   font-size: 1px;
 }
+div.calendar .head {
+  padding: 0.1em 0.6em 0;
+  margin: -15px -15px 15px;
+  height: 40px;
+  font-family: Georgia;
+  text-align: center;
+  color: #e8188d;
+  font-size: 1.4em;
+  font-weight: bold;
+  background-color: #57a2c2;
+  color: #ffffff;
+}
+div.calendar .head a {
+  text-decoration: none;
+  color: #ffffff;
+}
+div.calendar .head .next_month { float: right; }
+div.calendar .head .previous_month { float: left; }
 div.calendar table {
   margin: 0;
   width: 100%;
 }
+div.calendar table thead tr.even { display: none; }
 div.calendar table thead tr.even th.monthName {
   padding: 0 0 0.5em;
   font-family: Georgia;

@@ -36,11 +36,35 @@ div.calendar {
     background: transparent;
     font-size:1px;
   }
+  .head {
+    padding: 0.1em .6em 0;
+    margin: -15px -15px 15px;
+    height: 40px;
+    font-family: Georgia;
+    text-align: center;
+    color: @pink;
+/*    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);*/
+    font-size: 1.4em;
+    font-weight: bold;
+    background-color: #57A2C2;
+    color: #fff;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .next_month {
+      float: right;
+    }
+    .previous_month {
+      float: left;
+    }
+  }
   table {
     margin: 0;
     width: 100%;
     thead {
       tr.even {
+        display: none;
         th.monthName {
           padding: 0 0 0.5em;
           font-family: Georgia;
