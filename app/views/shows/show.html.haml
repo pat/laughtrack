@@ -51,7 +51,4 @@
       / %h3 Tweets
 
       %ol#show_tweets.twitter_stream
-        / - @show.tweets.each do |tweet|
-        /   %li{ :id => tweet.id }
-        /     = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
       = link_to "More", "#", :class => "more_tweets", :id => "more_tweets", :title => "See more tweets"

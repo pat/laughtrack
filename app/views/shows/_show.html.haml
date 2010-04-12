@@ -1,9 +1,10 @@
 %li
-  - if focus == :quality
+  - if focus.include? :quality
     %span.rating
-      ="#{show.rating.to_i}"
-      %span.out_of>="/100"
-  - else
+      = show.rating.to_i
+      / %span.out_of>="/100"
+      %span.suffix Rating
+  - if focus.include? :popularity
     %span.sold_out
       = number_to_percentage show.sold_out_percent, :precision => 0
       %span.suffix Sold Out

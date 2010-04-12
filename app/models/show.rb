@@ -12,6 +12,7 @@ class Show < ActiveRecord::Base
   validates_presence_of :act, :if => :confirmed?
   
   named_scope :limited,       :limit => 5
+  named_scope :very_limited,  :limit => 3
   named_scope :popular,       :order => 'sold_out_percent DESC'
   named_scope :rated,         :order => 'rating DESC'
   named_scope :featured,      :conditions => {:featured => true}
@@ -20,6 +21,8 @@ class Show < ActiveRecord::Base
   named_scope :still_showing, :group  => "shows.id",
                               :having => "MAX(happens_at) > NOW()",
                               :joins  => :performances
+  named_scope :tonight,       :joins => :performances,
+                              :conditions => [ "DATE(performances.happens_at) = ?", Date.today+1.day ]
   
   after_create :add_act_keyword
   
@@ -126,17 +129,20 @@ class Show < ActiveRecord::Base
   end
   
   def scrape_performances
-    doc = Nokogiri::HTML open(url)
-    time_node = doc.css(".show .rightCol p").detect { |para|
-      para.text[/\d(:\d\d)?[ap]m/]
-    }
-    times = time_node ? time_node.text : ""
-    doc.css(".showCalendar .preview").each { |node|
-      add_scraped_performance node.text.strip.to_i, times
-    }
-    doc.css(".showCalendar .show").each { |node|
-      add_scraped_performance node.text.strip.to_i, times
-    }
+    if url
+      logger.info "\/\/\/ URL#{url}\n"
+      doc = Nokogiri::HTML open(url)
+      time_node = doc.css(".show .rightCol p").detect { |para|
+        para.text[/\d(:\d\d)?[ap]m/]
+      }
+      times = time_node ? time_node.text : ""
+      doc.css(".showCalendar .preview").each { |node|
+        add_scraped_performance node.text.strip.to_i, times
+      }
+      doc.css(".showCalendar .show").each { |node|
+        add_scraped_performance node.text.strip.to_i, times
+      }
+    end
   end
   
   def validate_performances

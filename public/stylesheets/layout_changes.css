@@ -8,7 +8,30 @@
 
 
 
-*/#breadcrumbs { background: none; }
+*/.tipsy {
+  padding: 5px;
+  font-size: 10px;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  background-repeat: no-repeat;
+  background-image: url(/images/tipsy.gif);
+}
+.tipsy-inner {
+  padding: 5px 8px 4px 8px;
+  background-color: black;
+  color: white;
+  max-width: 200px;
+  text-align: center;
+}
+.tipsy-inner {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.tipsy-north { background-position: top center; }
+.tipsy-south { background-position: bottom center; }
+.tipsy-east { background-position: right center; }
+.tipsy-west { background-position: left center; }
+#breadcrumbs { background: none; }
 #breadcrumbs ol li a {
   color: #9a5a1c;
   text-decoration: none;
@@ -25,6 +48,119 @@
   color: #333333;
   border-bottom: 1px dotted #333333;
 }
+div.calendar {
+  float: right;
+  width: 280px;
+  padding: 15px;
+  background: url(/images/bg-twitters.gif) repeat left bottom;
+}
+div.calendar h6 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-indent: -20000em;
+  background: transparent;
+  font-size: 1px;
+}
+div.calendar table {
+  margin: 0;
+  width: 100%;
+}
+div.calendar table thead tr.even th.monthName {
+  padding: 0 0 0.5em;
+  font-family: Georgia;
+  text-align: center;
+  color: #e8188d;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+}
+div.calendar table thead tr.even th {
+  font-size: 1.4em;
+  padding: 0 0.6em;
+}
+div.calendar table thead tr.even th:last-child { text-align: right; }
+div.calendar table thead .dayName th {
+  font-size: 0.7em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+div.calendar table thead .dayName th abbr { border: none; }
+div.calendar table thead a { text-decoration: none; }
+div.calendar table thead a:hover { color: #e8188d; }
+div.calendar table tbody td {
+  text-align: center;
+  line-height: 1.8;
+  border-top: 1px dotted #cccccc;
+  width: 14%;
+}
+div.calendar table tbody tr:first-child td { border: none; }
+div.calendar table tbody a {
+  display: block;
+  padding: 3px 0 2px;
+  text-decoration: none;
+  color: #57a2c2;
+  font-weight: bold;
+  text-align: inherit;
+}
+div.calendar table tbody a:hover {
+  background: #e8188d;
+  color: #ffffff;
+}
+div.calendar table tbody .otherMonth { color: #cccccc; }
+div.calendar table tbody .today {
+  font-weight: bold;
+  color: #ffffff;
+  background: #57a2c2;
+}
+div.calendar table tbody .today:hover { color: #ffffff; }
+div.calendar table tbody .today a {
+  font-weight: bold;
+  color: #ffffff;
+  background: #57a2c2;
+}
+div.calendar table tbody .today a:hover { color: #ffffff; }
+#feature .feature .pad h5 {
+  margin: -20px -30px 1em;
+  padding: 0.5em 1.2em;
+  background: #e8188d;
+  color: #ffffff;
+  font: 1.25em/1em Georgia, Times, serif;
+  text-transform: none;
+  border-bottom: 1px solid #fffced;
+}
+#feature .feature ul.tonight {
+  margin: 0.5em 0;
+  padding: 0;
+  overflow: auto;
+}
+#feature .feature ul.tonight li {
+  padding-left: 25px;
+  width: 30%;
+  float: left;
+  border-left: 1px dotted #cccccc;
+}
+#feature .feature ul.tonight li:first-child {
+  padding-left: 0;
+  border: 0;
+}
+#feature .feature ul.tonight li h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #57a2c2;
+}
+#feature .feature ul.tonight li h2 a {
+  font-size: 0.7em;
+  line-height: 1;
+}
+#feature .feature ul.tonight li h2 { margin-bottom: 0.5em; }
+#feature .feature ul.tonight li > span {
+  padding: 0.3em 0;
+  display: block;
+  font-style: italic;
+  font-size: 0.9em;
+}
+#feature .feature ul.tonight li > span:before { content: "»  "; }
+#feature .feature ul.tonight li .show_details { display: none; }
 #content .shows ol.twitter_stream {
   margin: 1em 0;
   padding-left: 75px;
@@ -114,7 +250,7 @@ a.more_tweets:hover { background: url(/images/sprites.png) no-repeat 0 -61px; }
   margin: 0;
   float: left;
   clear: none;
-  width: 25%;
+  width: 50%;
   background: none;
   font-size: 0.8em;
   font-style: italic;
@@ -152,9 +288,50 @@ span.rating .out_of {
 .sold_out .suffix {
   font-size: 0.45em;
   clear: right;
+  text-align: right;
   margin: 0.4em;
   font-weight: normal;
   display: block;
+}
+.rating .suffix {
+  font-size: 0.45em;
+  clear: right;
+  text-align: right;
+  margin: 0.4em;
+  font-weight: normal;
+  display: block;
+}
+#content .quality {
+  float: left;
+  width: 310px;
+  margin-left: 15px;
+}
+#content .popular {
+  float: left;
+  width: 310px;
+  margin-left: 15px;
+}
+#content .recent {
+  float: left;
+  width: 310px;
+  margin-left: 15px;
+}
+#content .quality { margin-left: 0; }
+#content .recent .shows {
+  margin: 1em 0;
+  padding: 20px 30px;
+  background: url("/images/bg-feature.gif") repeat scroll left top transparent;
+  overflow: hidden;
+}
+#content .recent h2 {
+  margin: 0;
+  height: 52px;
+  background: url("/images/titles-recent_reviews.gif") no-repeat 0 -6px;
+  text-indent: -9999em;
+}
+#content .quality .shows ol {
+  margin: 0;
+  padding: 0;
 }
 #feature .feature .pad .tickets span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);

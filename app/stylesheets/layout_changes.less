@@ -1,3 +1,15 @@
+@blue: #57A2C2;
+@pink: #E8188D;
+@brown: #9A5A1C;
+
+
+.tipsy { padding: 5px; font-size: 10px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(/images/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
 
 #breadcrumbs {
   background: none;
@@ -10,6 +22,150 @@
     border-bottom: 1px dotted #333;
   }
 }
+
+div.calendar {
+  float: right;
+  width: 280px;
+  padding: 15px;
+  background: url(/images/bg-twitters.gif) repeat left bottom;
+  h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-indent: -20000em;
+    background: transparent;
+    font-size:1px;
+  }
+  table {
+    margin: 0;
+    width: 100%;
+    thead {
+      tr.even {
+        th.monthName {
+          padding: 0 0 0.5em;
+          font-family: Georgia;
+          text-align: center;
+          color: @pink;
+          text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+        }
+        th {
+          font-size: 1.4em;
+          padding: 0 .6em;
+/*          background-color: #57A2C2;
+          color: #fff;*/
+          :last-child {
+            text-align: right;
+          }
+        }
+      }
+    	.dayName th {
+    	  font-size: 0.7em;
+        line-height: 1.5;
+        text-align: center;
+        text-transform: uppercase;
+        abbr {
+          border: none;
+        }
+    	}
+      a {
+
+        text-decoration: none;
+        :hover {
+          color: @pink
+        }
+      }
+  	}
+    tbody {
+      td {
+        text-align: center;
+        line-height: 1.8;
+        border-top: 1px dotted #ccc;
+        width: 14%;
+      }
+      tr:first-child td {
+        border: none;
+      }
+      tr.even {
+
+      }
+      a {
+        display: block;
+        padding: 3px 0 2px;
+
+        text-decoration: none;
+        color: @blue;
+        font-weight: bold;
+        text-align: inherit;
+        :hover {
+          background: @pink;
+          color: #fff;
+        }
+      }
+      .otherMonth {
+        color: #ccc;
+      }
+      .today, .today a {
+        font-weight: bold;
+        color: #fff;
+        background: @blue;
+        :hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+#feature .feature .pad h5 {
+  margin: -20px -30px 1em;
+  padding: .5em 1.2em;
+  background: @pink;
+  color: #fff;
+  font: 1.25em/1em Georgia, Times, serif;
+  text-transform: none;
+  border-bottom: 1px solid #FFFCED;
+}
+
+#feature .feature ul.tonight {
+  margin: .5em 0;
+  padding: 0;
+  overflow: auto;
+  li {
+    padding-left: 25px;
+    width: 30%;
+    float: left;
+    border-left: 1px dotted #ccc;
+    :first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    h3 {
+      margin: 0;
+      font-size: 1em;
+      color: @blue;
+    }
+    h2 a {
+      font-size: .7em;
+      line-height: 1;
+    }
+    h2 {
+      margin-bottom: .5em;
+    }
+    > span {
+      padding: .3em 0;
+      display: block;
+      font-style: italic;
+      font-size: .9em;
+      :before {
+        content: "»  "
+      }
+    }
+    .show_details {
+      display: none;
+    }    
+  }
+}
+
 
 #content .shows ol.twitter_stream {
   margin: 1em 0;
@@ -117,10 +273,10 @@
 			text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
 		}
 			.shows ol h3 a:hover {
-				color: #E8188D;
+				color: @pink;
 			}
 	.popular .shows ol h3 a {
-	  color: #E8188D;
+	  color: @pink;
 	}
 	  .popular .shows ol h3 a:hover {
 	    color: #57a2c2
@@ -130,7 +286,7 @@
 		margin: 0;
 		float: left;
 		clear: none;
-		width: 25%;
+		width: 50%;
 		background: none;
 		font-size: .8em;
 		font-style: italic;
@@ -139,7 +295,7 @@
 			font-style: italic;
 		}
 		#content .shows ol ul.show_details li.sold_out {
-			color: #E8188D;
+			color: @pink;
 		}
 		#content .shows ol ul.show_details li a {	
 			color: #57a2c2
@@ -150,7 +306,7 @@
     font-size: 1.6em;
     line-height: 0.9;
     padding: .4em;
-    color: #E8188D;
+    color: @pink;
     font-style: italic;
     font-weight: bold;
     .out_of {
@@ -172,13 +328,45 @@
     font-style: italic;
     font-weight: bold;
     text-align: right;
-    .suffix {
-      font-size: 0.45em;
-      clear: right;
-      margin: 0.4em;
-      font-weight: normal;
-      display: block;
+  }
+
+  .sold_out .suffix, .rating .suffix {
+    font-size: 0.45em;
+    clear: right;
+    text-align: right;
+    margin: 0.4em;
+    font-weight: normal;
+    display: block;
+  }
+
+#content .quality, #content .popular, #content .recent {
+  float: left;
+  width: 310px;
+  margin-left: 15px;
+}
+
+#content .quality {
+  margin-left: 0;
+}
+
+  #content .recent {
+    .shows {
+      margin:1em 0;
+      padding:20px 30px;
+      background:url("/images/bg-feature.gif") repeat scroll left top transparent;
+      overflow:hidden;
     }
+    
+    h2 {
+      margin: 0;
+      height: 52px;
+      background: url("/images/titles-recent_reviews.gif") no-repeat 0 -6px;
+      text-indent: -9999em;
+    }
+  }
+  #content .quality .shows ol {
+    margin:0;
+    padding:0;
   }
 
 #feature .feature .pad .tickets span {
@@ -208,7 +396,7 @@
 	  }
   	h3 {
   	  margin: 0;
-  	  color:#57A2C2;
+  	  color:@blue;
       text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
       font-style: italic;
     }

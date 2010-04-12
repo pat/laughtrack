@@ -3,22 +3,22 @@
     .wrapper
       .feature
         .pad
-          %h5 Featured Show
-          %h2= link_to_show @featured
-          - unless @featured.act_name.blank?
-            %h3= @featured.act_name
-          = link_to 'Read More &rsaquo;', @featured
-      
-      - if @tweet
-        .twitter
-          %h6= link_to 'A little birdy told me', 'http://twitter.com/laughtrack_au'
-          %p
-            %em= @tweet.text
-            %br/
-            %strong
-              = time_ago_in_words @tweet.created_at
-              ago by: 
-              = link_to "@#{@tweet.from_user}", "http://twitter.com/#{@tweet.from_user}"
+          %h5 Tonight's Hot Shows
+          %ul.tonight
+            - @tonight.each do |show|
+              %li
+                %h3=show.act_name
+                %h2=link_to show.name, show
+                %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
+                %span.rated
+                  = "Rated "+show.rating.to_s
+                %span.sold
+                  = number_to_percentage show.sold_out_percent, :precision => 0
+                  %span.suffix Sold Out
+      .calendar
+        = calendar(:year => @calendar_date.year, :month => @calendar_date.month, :next_month_text => link_to("&raquo;", {:action=>'index', :params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B')), :previous_month_text => link_to("&laquo;", {:action=>'index', :params => {:date => @calendar_date.last_month.strftime("%Y-%m")}}, :title => @calendar_date.last_month.strftime('%B'))) do |d|
+          - if @performance_dates.keys.include?(d)
+            - [ link_to( d.mday, performances_by_date_path(:year => @calendar_date.year, :month => @calendar_date.month, :date => d.mday), :id => d.strftime("%m-%d")), {:class => "has_performances"}]
 
 #shows
   %p.intro
@@ -29,21 +29,31 @@
     and what tickets they're buying, to give you some idea of what people are enjoying at the festival.
   
   .quality
-    %h2= link_to 'Quality Shows', quality_path
-    
-    / %h3 What People are Loving
+    %h2= link_to 'Quality Shows', quality_path, :title => "Show with positive reviews"
     
     .shows
       %ol
-        = render :partial => 'shows/show', :collection => @rated, :locals => {:focus => :quality}
+        = render :partial => 'shows/show', :collection => @rated, :locals => {:focus => [:quality]}
       = link_to "View All Quality Shows &rsaquo;", quality_path
     
   .popular
-    %h2= link_to 'Popular Shows', popular_path
-
-    / %h3 What People are Seeing
+    %h2= link_to 'Popular Shows', popular_path, :title => "Show that are selling fast"
 
     .shows
       %ol
-        = render :partial => 'shows/show', :collection => @popular, :locals => {:focus => :popular}
+        = render :partial => 'shows/show', :collection => @popular, :locals => {:focus => [:popularity]}
       = link_to "View All Popular Shows &rsaquo;", popular_path
+
+  .recent
+    %h2{:title => "Show that are selling fast"}= 'Recent reviews'
+
+    .shows
+      %ol.twitter_stream
+        = render :partial => 'shared/tweet', :collection => @recent_tweets
+
+- content_for :footer do
+  :javascript
+    $('.calendar thead a, #shows h2 a, #shows h2').tipsy({gravity: 'n'});  
+/   - @performance_dates.each do |happens_at, performances|
+/     :javascript
+/       $('##{happens_at.strftime("%m-%d")}').tipsy({gravity: 'n', html: 'true', fallback: '#{performances.collect{|p| p.show.act_name}.uniq.join("<br>")}'});

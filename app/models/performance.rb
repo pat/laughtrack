@@ -19,6 +19,10 @@ class Performance < ActiveRecord::Base
     update_attributes(:sold_out => false)
   end
   
+  def self.next_available
+    self.for(Date.today+1.day).ordered.available.first
+  end
+  
   private
   
   def update_show_sold_out_percent

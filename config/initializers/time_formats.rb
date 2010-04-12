@@ -1,2 +1,2 @@
 Time::DATE_FORMATS[:show_date] = lambda { |time| time.strftime("#{time.day.ordinalize} %B") }
-Time::DATE_FORMATS[:show_time] = "%I:%M %p"
+Time::DATE_FORMATS[:show_time] = "%l:%M %p"
