@@ -69,8 +69,8 @@ div.calendar .head {
   font-family: Georgia;
   text-align: center;
   color: #e8188d;
+  line-height: 1.7em;
   font-size: 1.4em;
-  font-weight: bold;
   background-color: #57a2c2;
   color: #ffffff;
 }
