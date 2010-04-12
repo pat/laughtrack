@@ -22,7 +22,7 @@ class Show < ActiveRecord::Base
                               :having => "MAX(happens_at) > NOW()",
                               :joins  => :performances
   named_scope :tonight,       :joins => :performances,
-                              :conditions => [ "DATE(performances.happens_at) = ?", Date.today+1.day ]
+                              :conditions => [ "DATE(performances.happens_at) = ?", Date.today ]
   
   after_create :add_act_keyword
   
