@@ -6,6 +6,7 @@ set :repository,  "git@github.com:freelancing-god/laughtrack.git"
 set :scm,       :git
 set :user,      application
 set :use_sudo,  false
+set :git_enable_submodules, 1
 
 default_run_options[:pty] = true
 
