@@ -12,6 +12,8 @@ jQuery(function($) {
     $(this).removeClass('highlight');
   });
 
+  $("#more_tweets").tipsy({gravity: 'n'});
+
 });
 
 // usage:   myList = new tweetList(show_id, id_of_list_element_to_update, number_of_tweets_to_show_off_the_bat)

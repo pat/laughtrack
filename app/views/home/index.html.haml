@@ -57,7 +57,7 @@
 
 - content_for :footer do
   :javascript
-    $('.calendar .head a, #shows h2 a, #shows h2').tipsy({gravity: 'n'});  
+    $('.calendar .head a, #shows h2 a, #shows h2').tipsy({gravity: 'n'});
 /   - @performance_dates.each do |happens_at, performances|
 /     :javascript
 /       $('##{happens_at.strftime("%m-%d")}').tipsy({gravity: 'n', html: 'true', fallback: '#{performances.collect{|p| p.show.act_name}.uniq.join("<br>")}'});
