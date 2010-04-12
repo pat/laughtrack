@@ -176,7 +176,7 @@ div.calendar table tbody .today a:hover { color: #ffffff; }
   padding: 0.3em 0;
   display: block;
   font-style: italic;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 #feature .feature ul.tonight li > span:before { content: "»  "; }
 #feature .feature ul.tonight li .show_details { display: none; }
