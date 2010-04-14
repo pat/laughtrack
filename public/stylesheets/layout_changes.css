@@ -31,6 +31,11 @@
 .tipsy-south { background-position: bottom center; }
 .tipsy-east { background-position: right center; }
 .tipsy-west { background-position: left center; }
+.wrapper > h2 { text-shadow: 1px 2px #ffffff; }
+#content.text_chunk {
+  padding: 30px 40px;
+  background: url("/images/bg-feature.gif") repeat;
+}
 #breadcrumbs { background: none; }
 #breadcrumbs ol li a {
   color: #9a5a1c;
