@@ -6,7 +6,7 @@
 # set :output, "/path/to/my/cron_log.log"
 
 every 30.minutes do
-  rake "twitter:import twitter:cache thinking_sphinx:index"
+  rake "twitter:cache thinking_sphinx:index"
 end
 
 every 1.day, :at => '12:15 am' do
