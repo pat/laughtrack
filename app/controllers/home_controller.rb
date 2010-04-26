@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   include LaughTrack::CouchDb
   
   def index
-    @popular           = Show.popular.limited.available.still_showing
+    @popular           = Show.popular.limited
     @rated             = Show.rated.limited
     @tonight           = Show.tonight.rated.popular.available.very_limited
     @recent_tweets     = recent_tweets
