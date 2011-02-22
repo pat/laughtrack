@@ -1,7 +1,5 @@
 Given /^a clean slate$/ do
-  Object.subclasses_of(ActiveRecord::Base).each do |model|
-    model.connection.execute "TRUNCATE TABLE #{model.table_name}"
-  end
+  DatabaseCleaner.clean
 end
 
 Given /^the (\w+) indexes are processed$/ do |model|

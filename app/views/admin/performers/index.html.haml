@@ -4,5 +4,5 @@
   %input{:type => 'submit', :value => 'Search'}
 
 %ul
-  - @performers.each do |performer|
+  - performers.each do |performer|
     %li= link_to performer.name, [:edit, :admin, performer]

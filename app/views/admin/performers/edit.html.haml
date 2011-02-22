@@ -1,6 +1,6 @@
-%h2= @performer.name
+%h2= performer.name
 
-- semantic_form_for [:admin, @performer] do |form|
+- semantic_form_for [:admin, performer] do |form|
   - form.inputs do
     = form.input :name
   - form.buttons do

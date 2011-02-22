@@ -3,41 +3,46 @@ require 'spec_helper'
 describe Performance do
   describe '#valid?' do
     it "should be invalid without a show" do
-      performance = Performance.make_unsaved :show => nil
+      performance = Performance.make :show => nil
       performance.should have(1).error_on(:show)
     end
     
     it "should be invalid without a date" do
-      performance = Performance.make_unsaved :happens_at => nil
+      performance = Performance.make :happens_at => nil
       performance.should have(1).error_on(:happens_at)
     end
   end
   
   describe '#save' do
+    let(:show) { Show.make! }
+    
     it "should update the show's sold out percentage" do
-      performance = Performance.make
-      performance.show.sold_out_percent.should == 0.0
+      performance = Performance.make! :show => show
+      show.reload
+      show.sold_out_percent.should == 0.0
       
       performance.sold_out = true
       performance.save
       
-      performance.show.sold_out_percent.should == 100.0
+      show.reload
+      show.sold_out_percent.to_f.should == 100.0
     end
     
     it "should track states of other performances of the same show" do
-      performance = Performance.make
-      performance.show.performances.make
+      performance = Performance.make! :show => show
+      Performance.make! :show => show
       
       performance.sold_out = true
       performance.save
       
-      performance.show.sold_out_percent.should == 50.0
+      show.reload
+      show.sold_out_percent.to_f.should == 50.0
     end
   end
   
   describe '#sold_out!' do
     before :each do
-      @performance = Performance.make_unsaved :sold_out => false
+      @performance = Performance.make :sold_out => false
     end
     
     it "should set the sold_out flag" do
@@ -53,7 +58,7 @@ describe Performance do
   
   describe '#available!' do
     before :each do
-      @performance = Performance.make_unsaved :sold_out => true
+      @performance = Performance.make :sold_out => true
     end
     
     it "should set the sold_out flag" do

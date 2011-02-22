@@ -1,4 +1,7 @@
 class Admin::KeywordsController < Admin::ApplicationController
+  expose(:show)    { Show.find params[:show_id] }
+  expose(:keyword) { show.keywords.find params[:id] }
+  
   def create
     show.keywords.create params[:keyword]
     
@@ -6,14 +9,8 @@ class Admin::KeywordsController < Admin::ApplicationController
   end
   
   def destroy
-    show.keywords.find(params[:id]).destroy
+    keyword.destroy
     
     redirect_to edit_admin_show_path(show)
-  end
-  
-  private
-  
-  def show
-    @show ||= Show.find(params[:show_id])
   end
 end

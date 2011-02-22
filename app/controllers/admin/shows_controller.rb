@@ -1,22 +1,27 @@
 class Admin::ShowsController < Admin::ApplicationController
   include LaughTrack::CouchDb
   
-  def index
-    @shows = Show.search params[:query],
+  expose(:shows) {
+    Show.search params[:query],
       :page      => params[:page],
       :include   => :act,
       :sort_mode => sort_mode,
       :order     => order
+  }
+  expose(:show) { Show.find params[:id] }
+  
+  def index
+    #
   end
   
   def edit
-    @show = show
+    #
   end
   
   def update
     if show.update_attributes(params[:show])
       flash[:notice] = 'Changes saved.'
-      redirect_to edit_admin_show_path(show)
+      redirect_to [:edit, :admin, show]
     else
       render :action => :edit
     end
@@ -56,10 +61,6 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   private
-  
-  def show
-    @show ||= Show.find params[:id]
-  end
   
   def sort_mode
     case params[:order]

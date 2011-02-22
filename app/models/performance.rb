@@ -3,11 +3,12 @@ class Performance < ActiveRecord::Base
   
   validates_presence_of :show, :happens_at
   
-  named_scope :for, lambda { |date|
-    {:conditions => {:happens_at => date.beginning_of_day..date.end_of_day}}
+  scope :for, lambda { |date|
+    where(:happens_at => date.beginning_of_day..date.end_of_day)
   }
-  named_scope :ordered,   :order => 'happens_at ASC'
-  named_scope :available, :conditions => {:sold_out => false}
+  scope :ordered,   order('happens_at ASC')
+  scope :available, where(:sold_out => false)
+  scope :sold_out,  where(:sold_out => true)
   
   after_save :update_show_sold_out_percent
   
@@ -26,8 +27,10 @@ class Performance < ActiveRecord::Base
   private
   
   def update_show_sold_out_percent
-    sold    = show.performances.select { |perf| perf.sold_out }.length
-    percent = sold * 100.0 / show.performances.length
+    return if show.performances.count == 0
+    
+    sold    = show.performances.sold_out.count
+    percent = sold * 100.0 / show.performances.count
     
     show.update_attributes(:sold_out_percent => percent)
   end

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Keyword do
   describe '.import_oldest' do
@@ -33,12 +33,12 @@ describe Keyword do
   
   describe '#valid?' do
     it "should be invalid without a show" do
-      keyword = Keyword.make_unsaved :show => nil
+      keyword = Keyword.make :show => nil
       keyword.should have(1).error_on(:show)
     end
     
     it "should be invalid without any words" do
-      keyword = Keyword.make_unsaved :words => nil
+      keyword = Keyword.make :words => nil
       keyword.should have(1).error_on(:words)
     end
   end
@@ -51,7 +51,7 @@ describe Keyword do
       FakeWeb.register_uri :get, /search\.twitter\.com/,
         :body => '{"results":[{"text":"foo","id":"bar"}]}'
         
-      @keyword = Keyword.make
+      @keyword = Keyword.make!
     end
     
     it "should load the twitter search results" do

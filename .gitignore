@@ -1,7 +1,7 @@
 tmp
 *.tmproj
 db/sphinx
-Gemfile.lock
 .bundle
 config/database.yml
 log/*
+tmp/**/*

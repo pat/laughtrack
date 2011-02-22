@@ -1,71 +1,53 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Admin::ShowsController do
   describe '#index' do
+    let(:action) { get :index }
+    
     before :each do
       Show.stub!(:search => [])
-      
-      @action = lambda { get :index }
     end
     
-    it_should_behave_like 'a private action'
-    
-    it "should assign the search results" do
-      Show.stub!(:search => [:foo, :bar])
-      
-      sign_in_as_admin
-      get :index
-      
-      assigns[:shows].should == [:foo, :bar]
-    end
+    it_is_a_private_action
   end
   
   describe '#edit' do
-    before :each do
-      @show   = Show.make
-      @action = lambda { get :edit, :id => @show.id }
-    end
+    let(:show)   { Show.make! }
+    let(:action) { get :edit, :id => show.id }
     
-    it_should_behave_like 'a private action'
-    
-    it "should assign the requested show" do
-      sign_in_as_admin
-      get :edit, :id => @show.id
-      
-      assigns[:show].should == @show
-    end
+    it_is_a_private_action
   end
   
   describe '#update' do
+    let(:show)   { Show.make! }
+    let(:action) { put :update, :id => show.id, :show => {} }
+    
     before :each do
-      @show = Show.make
-      @show.stub!(:update_attributes => true)
-      Show.stub!(:find => @show)
-      
-      @action = lambda { put :update, :id => @show.id, :show => {} }
+      show.stub!(:update_attributes => true)
+      Show.stub!(:find => show)
     end
     
-    it_should_behave_like 'a private action'
+    it_is_a_private_action
     
     it "should update the show" do
-      @show.should_receive(:update_attributes)
+      show.should_receive(:update_attributes)
       
       sign_in_as_admin
-      put :update, :id => @show.id, :show => {}
+      put :update, :id => show.id, :show => {}
     end
     
     it "should redirect to the index action" do
       sign_in_as_admin
-      put :update, :id => @show.id, :show => {}
+      put :update, :id => show.id, :show => {}
       
-      response.should redirect_to(edit_admin_show_path(@show))
+      response.should redirect_to(edit_admin_show_path(show))
     end
     
     it "should render the edit template on failure" do
-      @show.stub!(:update_attributes => false)
+      show.stub!(:update_attributes => false)
       
       sign_in_as_admin
-      put :update, :id => @show.id, :show => {}
+      put :update, :id => show.id, :show => {}
       
       response.should render_template('edit')
     end

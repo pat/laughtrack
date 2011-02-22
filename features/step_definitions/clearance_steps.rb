@@ -11,7 +11,7 @@ Given /^no user exists with an email of "(.*)"$/ do |email|
 end
 
 Given /^I signed up with "(.*)\/(.*)"$/ do |email, password|
-  User.make(
+  User.make!(
     :email                 => email,
     :password              => password,
     :password_confirmation => password
@@ -19,7 +19,7 @@ Given /^I signed up with "(.*)\/(.*)"$/ do |email, password|
 end 
 
 Given /^I am signed up and confirmed as "(.*)\/(.*)"$/ do |email, password|
-  User.make :confirmed,
+  User.make! :confirmed,
     :email                 => email,
     :password              => password,
     :password_confirmation => password
@@ -46,7 +46,7 @@ Given /^I have signed in with "(.*)\/(.*)"$/ do |email, password|
 end
 
 Given /^I have signed in as an admin with "(.*)\/(.*)"$/ do |email, password|
-  User.make :admin,
+  User.make! :admin,
     :email                 => email,
     :password              => password,
     :password_confirmation => password

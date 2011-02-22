@@ -11,18 +11,19 @@ class Show < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :act, :if => :confirmed?
   
-  named_scope :limited,       :limit => 5
-  named_scope :very_limited,  :limit => 3
-  named_scope :popular,       :order => 'sold_out_percent DESC'
-  named_scope :rated,         :order => 'rating DESC'
-  named_scope :featured,      :conditions => {:featured => true}
-  named_scope :random,        :order => 'RAND() ASC'
-  named_scope :available,     :conditions => 'sold_out_percent < 100.0'
-  named_scope :still_showing, :group  => "shows.id",
-                              :having => "MAX(happens_at) > NOW()",
-                              :joins  => :performances
-  named_scope :tonight,       :joins => :performances,
-                              :conditions => [ "DATE(performances.happens_at) = ?", Date.today ]
+  scope :limited,       limit(5)
+  scope :very_limited,  limit(3)
+  scope :popular,       order('sold_out_percent DESC')
+  scope :rated,         order('rating DESC')
+  scope :featured,      where(:featured => true)
+  scope :random,        order('RAND() ASC')
+  scope :available,     where('sold_out_percent < 100.0')
+  scope :still_showing, joins(:performances).
+    group("shows.id").having("MAX(happens_at) > NOW()")
+  scope :tonight,       lambda {
+    where(["DATE(performances.happens_at) = ?", Date.today]).
+    joins(:performances)
+  }
   
   after_create :add_act_keyword
   
@@ -93,7 +94,7 @@ class Show < ActiveRecord::Base
   def related
     @related ||= begin
       act_ids = act.performers.collect { |perf| perf.act_ids }.flatten.uniq
-      Show.find(:all, :conditions => {:act_id => act_ids}) - [self]
+      Show.where(:act_id => act_ids).to_a - [self]
     end
   end
   
@@ -188,7 +189,7 @@ class Show < ActiveRecord::Base
     date  = Date.new(2010, month, day)
     
     LaughTrack::TimeParser.new(times).performances_for_day(date).each do |time|
-      next if performances.find(:first, :conditions => {:happens_at => time})
+      next if performances.where(:happens_at => time).first
       
       performances.create :happens_at => time
     end

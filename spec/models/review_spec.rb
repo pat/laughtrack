@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Review do
   before(:each) do
     @attributes = {
-      :show   => Show.make,
+      :show   => Show.make!,
       :rating => 3.5,
       :name   => "Review of a Show",
       :source => "The Age"

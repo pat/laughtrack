@@ -1,37 +1,36 @@
 class Admin::PerformancesController < Admin::ApplicationController
-  def create
-    if show.performances.create params[:performance]
-      redirect_to edit_admin_show_path(show)
+  expose(:show)        { Show.find params[:show_id] }
+  expose(:performance) {
+    if params[:id]
+      show.performances.find params[:id]
     else
-      render :action => '../shows/edit'
+      show.performances.build params[:performance]
+    end
+  }
+  
+  def create
+    if performance.save
+      redirect_to [:edit, :admin, show]
+    else
+      render :template => 'admin/shows/edit'
     end
   end
   
   def sold_out
     performance.sold_out!
     
-    redirect_to edit_admin_show_path(show)
+    redirect_to [:edit, :admin, show]
   end
   
   def available
     performance.available!
     
-    redirect_to edit_admin_show_path(show)
+    redirect_to [:edit, :admin, show]
   end
   
   def destroy
     performance.destroy
     
     redirect_to :back
-  end
-  
-  private
-  
-  def show
-    @show ||= Show.find params[:show_id]
-  end
-  
-  def performance
-    @performance ||= show.performances.find params[:id]
   end
 end

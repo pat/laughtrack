@@ -1,78 +1,112 @@
-ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'home'
-  map.four_oh_four '/404', :controller => 'home', :action => 'four_oh_four'
-  map.five_hundred '/500', :controller => 'home', :action => 'five_hundred'
-  map.about '/about',      :controller => 'home', :action => 'about'
+Laughtrack::Application.routes.draw do
+  devise_for :users
+
+  root :to => 'home#index'
   
-  map.resources :shows, :member => { :tweets => :get }
+  match '/404'   => 'home#four_oh_four', :as => :four_oh_four
+  match '/500'   => 'home#five_hundred', :as => :five_hundred
+  match '/about' => 'home#about',        :as => :about
   
-  map.namespace :admin do |admin|
-    admin.resources :shows, :member => {
-      :feature      => :get,
-      :unfeature    => :get,
-      :clear_tweets => :get,
-      :import_tweet => :post
-    } do |shows|
-      shows.resources :performances, :member => {
-        :sold_out   => :get,
-        :available  => :get,
-        :destroy    => :get
-      }
-      shows.resources :keywords, :member => {
-        :destroy => :get
-      }
+  resources :shows do
+    member do
+      get :tweets
     end
-    
-    admin.resources :performers
-    
-    admin.resources :tweets, :member => {
-      :positive => :get,
-      :negative => :get,
-      :ignore   => :get,
-      :confirm  => :get
-    }, :collection => {
-      :unclassified => :get,
-      :unconfirmed  => :get,
-      :confirmed    => :get
-    }
   end
   
-  map.popular 'popular', :controller => 'shows', :action => 'index',
-    :sort_by => 'sold_out_percent', :order => 'desc'
-  map.quality 'quality', :controller => 'shows', :action => 'index',
-    :sort_by => 'rating', :order => 'desc'
+  namespace :admin do
+    resources :shows do
+      member do
+        get  :feature, :unfeature, :clear_tweets
+        post :import_tweets
+      end
+      
+      resources :performances do
+        member do
+          get :sold_out, :available, :destroy
+        end
+      end
+      
+      resources :keywords do
+        member do
+          get :destroy
+        end
+      end
+    end
+    
+    resources :performers
+    
+    resources :tweets do
+      member do
+        get :positive, :negative, :ignore, :confirm
+      end
+      collection do
+        get :unclassified, :unconfirmed, :confirmed
+      end
+    end
+  end
   
-  map.performances_by_date 'performances/:year/:month/:date',
-    :controller => 'performances', :action => 'index'
-  map.performances 'performances',
-    :controller => 'performances', :action => 'index'
+  match '/popular' => 'shows#index', :as => :popular,
+    :defaults => {:sort_by => 'sold_out_percent', :order => 'desc'}
+  match '/quality' => 'shows#index', :as => :quality,
+    :defaults => {:sort_by => 'rating', :order => 'desc'}
   
+  match '/performances/:year/:month/:date' => 'performances#index'
+  match '/performances'                    => 'performances#index'
+  
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
   # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  #   resources :products
 
   # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
   # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
   # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
   #   end
 
   # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
   #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end

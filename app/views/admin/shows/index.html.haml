@@ -13,7 +13,7 @@
       %th= link_to 'Tweets', order_params('unconfirmed_tweet_count')
       %th= link_to 'Feature', order_params('featured')
   %tbody
-    - @shows.each do |show|
+    - shows.each do |show|
       %tr
         %td{show_attributes(show)}= act_name show.act
         %td{show_attributes(show)}= link_to show.name, [:edit, :admin, show]
@@ -28,4 +28,4 @@
           - else
             = link_to 'Feature', feature_admin_show_path(show)
 
-= will_paginate @shows
+= will_paginate shows

@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Importers::GroggySquirrel do
   describe '.import' do

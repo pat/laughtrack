@@ -3,33 +3,33 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Show do
   describe '.create' do
     it "should add a keyword with the act's name" do
-      show = Show.make
+      show = Show.make!
       show.keywords.first.words.should == "\"#{show.act_name}\""
     end
     
     it "should not create a keyword if the act name is nil" do
-      show = Show.make :act => nil, :status => 'imported'
+      show = Show.make! :act => nil, :status => 'imported'
       show.keywords.should be_empty
     end
   end
   
   describe '#valid?' do
     it "should create a new instance given valid attributes" do
-      Show.make_unsaved.should be_valid
+      Show.make.should be_valid
     end
 
     it "should be invalid without a name" do
-      show = Show.make_unsaved :name => nil
+      show = Show.make :name => nil
       show.should have(1).error_on(:name)
     end
 
     it "should be invalid without an act" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.should have(1).error_on(:act)
     end
     
     it "should be valid without an act with a status of imported" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.status = 'imported'
       show.should be_valid
     end
@@ -43,16 +43,16 @@ describe Show do
   
   describe '#limited' do
     it "should return a maximum of five results" do
-      6.times { Show.make }
+      6.times { Show.make! }
       Show.limited.length.should == 5
     end
   end
   
   describe '#popular' do
     it "should return shows ranked by selling out percentage" do
-      a = Show.make :sold_out_percent => 30.0
-      b = Show.make :sold_out_percent => 20.0
-      c = Show.make :sold_out_percent => 40.0
+      a = Show.make! :sold_out_percent => 30.0
+      b = Show.make! :sold_out_percent => 20.0
+      c = Show.make! :sold_out_percent => 40.0
       
       Show.popular.should == [c, a, b]
     end
@@ -60,9 +60,9 @@ describe Show do
   
   describe '#rated' do
     it "should return shows ranked by their rating" do
-      a = Show.make :rating => 3.0
-      b = Show.make :rating => 2.0
-      c = Show.make :rating => 4.0
+      a = Show.make! :rating => 3.0
+      b = Show.make! :rating => 2.0
+      c = Show.make! :rating => 4.0
       
       Show.rated.should == [c, a, b]
     end
@@ -70,41 +70,41 @@ describe Show do
   
   describe '#act_name' do
     it "should return the act's name" do
-      show = Show.make_unsaved
+      show = Show.make
       show.act_name.should == show.act.name
     end
     
     it "should return a blank string if there's no act" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.act_name.should == ''
     end
   end
   
   describe '#act_name=' do
     it "should find and use an act named with the given value" do
-      act = Act.make
-      show = Show.make_unsaved :act => nil
+      act = Act.make!
+      show = Show.make :act => nil
       show.act_name = act.name
       
       show.act.should == act
     end
     
     it "should create a new act if none exist with that name" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.act_name = 'foo'
       
       show.act.name.should == 'foo'
     end
     
     it "should not create an act if the provided value is nil" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.act_name = nil
       
       show.act.should be_nil
     end
     
     it "should not create an act if the provided value is an empty string" do
-      show = Show.make_unsaved :act => nil
+      show = Show.make :act => nil
       show.act_name = ''
       
       show.act.should be_nil
@@ -113,13 +113,13 @@ describe Show do
   
   describe '#related' do
     before :each do
-      scod        = Performer.make :name => 'Scott Edgar'
-      tripod      = Act.make :performers => [scod], :name => 'Tripod'
-      scott_edgar = Act.make :performers => [scod], :name => 'Scott Edgar and the Universe'
+      scod        = Performer.make! :name => 'Scott Edgar'
+      tripod      = Act.make! :performers => [scod], :name => 'Tripod'
+      scott_edgar = Act.make! :performers => [scod], :name => 'Scott Edgar and the Universe'
       
-      @slather    = Show.make :act => tripod, :name => 'Open Slather'
-      @tosswinkle = Show.make :act => tripod, :name => 'Tosswinkle the Pirate'
-      @universe   = Show.make :act => scott_edgar, :name => 'Scott Edgar and the Universe'
+      @slather    = Show.make! :act => tripod, :name => 'Open Slather'
+      @tosswinkle = Show.make! :act => tripod, :name => 'Tosswinkle the Pirate'
+      @universe   = Show.make! :act => scott_edgar, :name => 'Scott Edgar and the Universe'
     end
     
     it "should return shows by the same act" do
@@ -137,12 +137,13 @@ describe Show do
   
   describe '#write_history' do
     before :each do
-      @show = Show.make(
+      @show = Show.make!(
         :sold_out_percent      => 20.0,
         :rating                => 55.0,
-        :confirmed_tweet_count => 50
+        :confirmed_tweet_count => 50,
+        :positive_tweet_count  => 42
       )
-      @show.stub!(:positive_count => 42, :update_tweet_count => nil)
+      @show.stub!(:update_tweet_count => nil)
     end
     
     it "should create a new history record" do

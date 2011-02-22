@@ -8,7 +8,7 @@ class Keyword < ActiveRecord::Base
   validates_presence_of :show, :words
   
   def self.import_oldest
-    Keyword.all(:limit => 60, :order => 'imported_at ASC').each do |keyword|
+    Keyword.limit(60).order('imported_at ASC').each do |keyword|
       keyword.import
     end
   end

@@ -1,39 +1,13 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe HomeController do
   describe '#index' do
+    let(:popular) { stub('popular') }
+    let(:rated)   { stub('rated') }
+    
     before :each do
-      @popular = stub('popular')
-      @popular.stub!(:limited => @popular)
-      
-      @rated = stub('rated')
-      @rated.stub!(:limited => @rated)
-      
-      Show.stub!(:popular => @popular, :rated => @rated)
-    end
-    
-    it "should set the popular shows" do
-      get :index
-      
-      assigns[:popular].should == @popular
-    end
-    
-    it "should limit the number of popular shows" do
-      @popular.should_receive(:limited)
-      
-      get :index
-    end
-    
-    it "should set the highly rated shows" do
-      get :index
-      
-      assigns[:rated].should == @rated
-    end
-    
-    it "should limit the number of rated shows" do
-      @rated.should_receive(:limited)
-      
-      get :index
-    end
+      FakeWeb.register_uri :get, /http:\/\/127\.0\.0\.1:5984\/laughtrack/,
+        :body => '{"total_rows": 0, "rows": [], "offset": 0}'
+    end    
   end
 end

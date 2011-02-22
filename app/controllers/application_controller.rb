@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
+  # include Clearance::Authentication
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
   
   def admin?
-    redirect_to new_session_path unless current_user && current_user.admin
+    redirect_to new_user_session_path unless current_user && current_user.admin?
   end
   
   def render_optional_error_file(status_code)
