@@ -33,7 +33,8 @@ Performer.blueprint do
 end
 
 Show.blueprint do
-  name { "Show #{serial_number}" }
+  festival { object.festival || Festival.make! }
+  name     { "Show #{serial_number}" }
   act
 end
 

@@ -14,19 +14,9 @@ describe Show do
   end
   
   describe '#valid?' do
-    it "should create a new instance given valid attributes" do
-      Show.make.should be_valid
-    end
-
-    it "should be invalid without a name" do
-      show = Show.make :name => nil
-      show.should have(1).error_on(:name)
-    end
-
-    it "should be invalid without an act" do
-      show = Show.make :act => nil
-      show.should have(1).error_on(:act)
-    end
+    it_requires_a  :festival
+    it_requires_a  :name
+    it_requires_an :act
     
     it "should be valid without an act with a status of imported" do
       show = Show.make :act => nil

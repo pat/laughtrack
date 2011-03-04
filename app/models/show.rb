@@ -1,14 +1,14 @@
 class Show < ActiveRecord::Base
-  FestivalStart = Time.local(2010, 3, 23)
-  
+  belongs_to :festival
   belongs_to :act
   has_many   :performances, :order => 'happens_at ASC'
   has_many   :keywords
   has_many   :show_histories
   has_many   :tweets
   
-  validates_presence_of :name
-  validates_presence_of :act, :if => :confirmed?
+  validates :festival, :presence => true
+  validates :name,     :presence => true
+  validates :act,      :presence => true, :if => :confirmed?
   
   scope :limited,       limit(5)
   scope :very_limited,  limit(3)
@@ -150,13 +150,13 @@ class Show < ActiveRecord::Base
   
   def smart_positive_count
     tweets.positive.confirmed.count.inject(0.0) do |count, tweet|
-      count + (tweet.created_at > FestivalStart ? 1.0 : 0.5)
+      count + 1
     end
   end
   
   def smart_confirmed_tweet_count
     tweets.confirmed.count.inject(0.0) do |count, object|
-      count + (tweet.created_at > FestivalStart ? 1.0 : 0.5)
+      count + 1
     end
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304040123) do
+ActiveRecord::Schema.define(:version => 20110304051757) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -99,10 +99,12 @@ ActiveRecord::Schema.define(:version => 20110304040123) do
     t.string   "url"
     t.integer  "unconfirmed_tweet_count"
     t.integer  "positive_tweet_count"
+    t.integer  "festival_id",                                                                    :null => false
   end
 
   add_index "shows", ["act_id"], :name => "index_shows_on_act_id"
   add_index "shows", ["featured"], :name => "index_shows_on_featured"
+  add_index "shows", ["festival_id"], :name => "index_shows_on_festival_id"
 
   create_table "tweets", :force => true do |t|
     t.string   "tweet_id"
