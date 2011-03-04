@@ -17,6 +17,7 @@ describe Show do
     it_requires_a  :festival
     it_requires_a  :name
     it_requires_an :act
+    it_requires_an :micf_id
     
     it "should be valid without an act with a status of imported" do
       show = Show.make :act => nil

@@ -9,6 +9,7 @@ class Show < ActiveRecord::Base
   validates :festival, :presence => true
   validates :name,     :presence => true
   validates :act,      :presence => true, :if => :confirmed?
+  validates :micf_id,  :presence => true, :uniqueness => true
   
   scope :limited,       limit(5)
   scope :very_limited,  limit(3)

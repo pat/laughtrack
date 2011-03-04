@@ -36,6 +36,7 @@ Show.blueprint do
   festival { object.festival || Festival.make! }
   name     { "Show #{serial_number}" }
   act
+  micf_id  { serial_number }
 end
 
 ShowHistory.blueprint do
