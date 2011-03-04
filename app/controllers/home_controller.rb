@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @popular           = Show.popular.limited
-    @rated             = Show.rated.limited
-    @tonight           = Show.tonight.rated.popular.available.very_limited
+    @popular           = festival.shows.popular.limited
+    @rated             = festival.shows.rated.limited
+    @tonight           = festival.shows.tonight.rated.popular.available.very_limited
     @recent_tweets     = recent_tweets
     @calendar_date     = Time.parse("#{params[:date]}-01") || Time.now
     @performance_dates = Performance.

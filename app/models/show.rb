@@ -30,7 +30,7 @@ class Show < ActiveRecord::Base
     indexes name,                  :sortable => true
     indexes act.name, :as => :act, :sortable => true
     
-    has sold_out_percent, rating, tweet_count, featured
+    has sold_out_percent, rating, tweet_count, featured, festival_id
     has confirmed_tweet_count, unconfirmed_tweet_count
   end
   

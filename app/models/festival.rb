@@ -3,4 +3,6 @@ class Festival < ActiveRecord::Base
   validates :year,      :presence => true
   validates :starts_on, :presence => true
   validates :ends_on,   :presence => true
+  
+  scope :latest, order('ends_on DESC')
 end

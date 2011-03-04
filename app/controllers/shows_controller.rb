@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
       'All Shows'
     end
     
-    @shows = Show.search params[:query],
+    @shows = festival.shows.search params[:query],
       :page      => params[:page],
       :include   => :act,
       :sort_mode => sort_mode,
@@ -24,13 +24,13 @@ class ShowsController < ApplicationController
   end
   
   def show
-    @show    = Show.find params[:id]
+    @show    = festival.shows.find params[:id]
     @title   = @show.name
     @related = @show.related if @show.act
   end
   
   def tweets
-    @show    = Show.find params[:id]
+    @show    = festival.shows.find params[:id]
     respond_to do |format|
       format.json { 
         render :json => @show.tweets.confirmed.collect{ |tweet|
