@@ -39,7 +39,7 @@
     .shows
       %ol
         = render :partial => 'shows/show', :collection => @rated, :locals => {:focus => [:quality]}
-      = link_to "View All Quality Shows &rsaquo;", quality_path
+      = link_to "View All Quality Shows &rsaquo;".html_safe, quality_path
     
   .popular
     %h2= link_to 'Popular Shows', popular_path, :title => "Show that are selling fast"
@@ -47,7 +47,7 @@
     .shows
       %ol
         = render :partial => 'shows/show', :collection => @popular, :locals => {:focus => [:popularity]}
-      = link_to "View All Popular Shows &rsaquo;", popular_path
+      = link_to "View All Popular Shows &rsaquo;".html_safe, popular_path
 
   .recent
     %h2{:title => "Show that are selling fast"}= 'Recent reviews'
