@@ -1,11 +1,11 @@
 %h2= show.name
 
-- semantic_form_for [:admin, show] do |form|
-  - form.inputs do
-    = form.input :name, :label => 'Show Name'
+= semantic_form_for [:admin, show] do |form|
+  = form.inputs do
+    = form.input :name
     = form.input :act_name
     = form.input :url
-  - form.buttons do
+  = form.buttons do
     = form.commit_button 'Save'
 
 %h3 Twitter Keywords
@@ -14,12 +14,12 @@
   - show.keywords.each do |keyword|
     %li
       =h keyword.words
-      = link_to "Delete", destroy_admin_show_keyword_path(show, keyword)
+      = link_to "Delete", [:delete, :admin, show, keyword]
 
-- semantic_form_for [:admin, show, show.keywords.build] do |form|
-  - form.inputs do
+= semantic_form_for [:admin, show, show.keywords.build] do |form|
+  = form.inputs do
     = form.input :words, :label => 'Keyword'
-  - form.buttons do
+  = form.buttons do
     = form.commit_button 'Add Keyword'
 
 %h3 Latest Tweets
@@ -33,7 +33,7 @@
       %th Negative
       %th Ignore
   %tbody
-    - show.unconfirmed_tweets.each do |tweet|
+    - show.tweets.unconfirmed.each do |tweet|
       %tr
         %td= render :partial => 'shared/tweet', :locals => {:tweet => tweet}
         %td= tweet.classification
@@ -45,7 +45,7 @@
 
 %h3 Import a Tweet
 
-- form_tag import_tweet_admin_show_path(show), :method => :post do
+= form_tag import_tweets_admin_show_path(show), :method => :post do
   %label{:for => 'url'} URL
   = text_field_tag :url, params[:url]
   %input{:type => 'submit', :value => 'Import'}
@@ -57,12 +57,12 @@
     %li
       = performance.happens_at.to_s
       = performance_sold_out_link performance
-      = link_to "Delete", destroy_admin_show_performance_path(show, performance)
+      = link_to "Delete", [:delete, :admin, show, performance]
 
-- semantic_form_for [:admin, show, show.performances.build] do |form|
-  - form.inputs do
+= semantic_form_for [:admin, show, show.performances.build] do |form|
+  = form.inputs do
     = form.input :happens_at
-  - form.buttons do
+  = form.buttons do
     = form.commit_button 'Add Performance'
 
 = link_to 'All Shows', admin_shows_path

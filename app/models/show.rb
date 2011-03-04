@@ -1,12 +1,11 @@
 class Show < ActiveRecord::Base
-  include LaughTrack::CouchDb
-  
   FestivalStart = Time.local(2010, 3, 23)
   
   belongs_to :act
   has_many   :performances, :order => 'happens_at ASC'
   has_many   :keywords
   has_many   :show_histories
+  has_many   :tweets
   
   validates_presence_of :name
   validates_presence_of :act, :if => :confirmed?
@@ -60,25 +59,6 @@ class Show < ActiveRecord::Base
     end
   end
   
-  def tweets(options = {})
-    view('confirmed_by_show', options).collect { |doc|
-      db.get doc.id
-    }
-  end
-  
-  def unconfirmed_tweets
-    view('unconfirmed_by_show').collect { |doc|
-      db.get doc.id
-    }
-  end
-  
-  def random_tweet
-    docs = view("positive_by_show", :descending => true)
-    return nil unless docs.first
-    
-    db.get docs.first.id
-  end
-  
   def confirmed?
     status == 'confirmed'
   end
@@ -107,9 +87,9 @@ class Show < ActiveRecord::Base
   end
   
   def update_tweet_count
-    self.tweet_count              = view("by_show").length
-    self.confirmed_tweet_count    = view("confirmed_by_show").length
-    self.unconfirmed_tweet_count  = view("unconfirmed_by_show").length
+    self.tweet_count              = tweets.count
+    self.confirmed_tweet_count    = tweets.confirmed.count
+    self.unconfirmed_tweet_count  = tweets.unconfirmed.count
     self.positive_tweet_count     = positive_count
     
     self.rating = LaughTrack::Wilson.new(
@@ -164,23 +144,19 @@ class Show < ActiveRecord::Base
     keywords.create :words => "\"#{act_name}\"" unless act_name.blank?
   end
   
-  def view(name, options = {})
-    db.function("_design/laughtrack/_view/#{name}", options.merge(:key => id))
-  end
-  
   def positive_count(options = {})
-    view("positive_by_show", options).length
+    tweets.positive.confirmed.count
   end
   
   def smart_positive_count
-    view("positive_by_show").inject(0.0) do |count, object|
-      count + (Time.parse(object.value) > FestivalStart ? 1.0 : 0.5)
+    tweets.positive.confirmed.count.inject(0.0) do |count, tweet|
+      count + (tweet.created_at > FestivalStart ? 1.0 : 0.5)
     end
   end
   
   def smart_confirmed_tweet_count
-    view("confirmed_by_show").inject(0.0) do |count, object|
-      count + (Time.parse(object.value) > FestivalStart ? 1.0 : 0.5)
+    tweets.confirmed.count.inject(0.0) do |count, object|
+      count + (tweet.created_at > FestivalStart ? 1.0 : 0.5)
     end
   end
   

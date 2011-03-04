@@ -7,7 +7,7 @@ end
 # Database
 
 Given /^no user exists with an email of "(.*)"$/ do |email|
-  assert_nil User.find_by_email(email)
+  User.where(:email => email).count.should == 0
 end
 
 Given /^I signed up with "(.*)\/(.*)"$/ do |email, password|
@@ -102,7 +102,7 @@ When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
   When %{I go to the sign in page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
-  And %{I press "Sign In"}
+  And %{I press "Sign in"}
 end
 
 When /^I sign out$/ do

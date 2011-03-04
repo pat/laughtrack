@@ -30,7 +30,7 @@ describe Admin::KeywordsController do
   describe '#destroy' do
     let(:show)    { Show.make! }
     let(:keyword) { show.keywords.make! }
-    let(:action)  { get :destroy, :show_id => show.id, :id => keyword.id }
+    let(:action)  { get :delete, :show_id => show.id, :id => keyword.id }
     
     before :each do
       Show.stub!(:find => show)
@@ -43,12 +43,12 @@ describe Admin::KeywordsController do
       keyword.should_receive(:destroy)
       
       sign_in_as_admin
-      get :destroy, :show_id => show.id, :id => keyword.id
+      get :delete, :show_id => show.id, :id => keyword.id
     end
     
     it "should redirect to the show's edit page" do
       sign_in_as_admin
-      get :destroy, :show_id => show.id, :id => keyword.id
+      get :delete, :show_id => show.id, :id => keyword.id
       
       response.should redirect_to(edit_admin_show_path(show))
     end

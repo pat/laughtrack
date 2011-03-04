@@ -1,6 +1,4 @@
 class HomeController < ApplicationController
-  include LaughTrack::CouchDb
-  
   def index
     @popular           = Show.popular.limited
     @rated             = Show.rated.limited
@@ -19,12 +17,6 @@ class HomeController < ApplicationController
   private
   
   def recent_tweets
-    tweet_pointers.collect { |pointer| db.get pointer.id }
-  end
-  
-  def tweet_pointers
-    db.function "_design/laughtrack/_view/confirmed_by_time",
-      :limit      => 5,
-      :descending => true
+    Tweet.confirmed.limit(5).order('created_at DESC')
   end
 end

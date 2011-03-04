@@ -12,7 +12,7 @@
           %li#popular= link_to 'Popular Shows', popular_path
           %li#quality= link_to 'Quality Shows', quality_path
           %li#about= link_to 'About Us', '/about'
-        - form_tag '/shows', :method => :get, :class => 'search' do
+        = form_tag '/shows', :method => :get, :class => 'search' do
           %label{:for => 'query'}
           = text_field_tag 'query', params[:query], :autocomplete => "off"
           %input{:type => 'submit', :value => 'Search', :class => 'submit'}

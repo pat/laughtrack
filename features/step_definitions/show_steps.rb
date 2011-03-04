@@ -18,7 +18,6 @@ Given /^a show "([^\"]*)" by "([^\"]*)" with the keyword "([^\"]*)"$/ do |show, 
     :name => show,
     :act  => act
   )
-  show.keywords.delete_all
   show.keywords.create :words => keyword
 end
 
@@ -41,9 +40,11 @@ Given /^"([^\"]*)" by "([^\"]*)" has an average rating of (\d[\.\d]*)$/ do |show
 end
 
 Given /^a performance of "([^\"]*)"$/ do |show|
-  Show.find_by_name(show).performances.make!
+  show = Show.find_by_name(show)
+  Performance.make! :show => show
 end
 
 Given /^a sold out performance of "([^\"]*)"$/ do |show|
-  Show.find_by_name(show).performances.make! :sold_out => true
+  show = Show.find_by_name(show)
+  Performance.make! :sold_out => true, :show => show
 end

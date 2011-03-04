@@ -28,7 +28,7 @@ class Admin::PerformancesController < Admin::ApplicationController
     redirect_to [:edit, :admin, show]
   end
   
-  def destroy
+  def delete
     performance.destroy
     
     redirect_to :back

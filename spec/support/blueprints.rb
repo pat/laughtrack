@@ -9,6 +9,13 @@ Act.blueprint do
   name { "Act #{serial_number}" }
 end
 
+Festival.blueprint do
+  name      { 'A Festival Somewhere' }
+  year      { Time.now.year }
+  starts_on { 5.days.ago.to_date }
+  ends_on   { 10.days.from_now.to_date }
+end
+
 Keyword.blueprint do
   show
   words { 'foo bar' }
@@ -31,12 +38,23 @@ Show.blueprint do
 end
 
 ShowHistory.blueprint do
-  show                  { Show.make! }
+  show
   sold_out_percent      { 0.0 }
   rating                { 0.0 }
   confirmed_tweet_count { 9 }
   positive_tweet_count  { 8 }
   day                   { Date.new(2010, 04, 01) }
+end
+
+Tweet.blueprint do
+  tweet_id          { '101010101' }
+  from_user_id      { '10101' }
+  profile_image_url { 'http://path/to/image.png' }
+  source            { 'http://path/to/app' }
+  text              { 'foo bar baz comedy FTW!' }
+  from_user         { 'pat' }
+  raw               { 'raw json' }
+  keyword
 end
 
 User.blueprint do

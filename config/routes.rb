@@ -22,14 +22,12 @@ Laughtrack::Application.routes.draw do
       
       resources :performances do
         member do
-          get :sold_out, :available, :destroy
+          get :sold_out, :available, :delete
         end
       end
       
       resources :keywords do
-        member do
-          get :destroy
-        end
+        member { get :delete }
       end
     end
     
@@ -50,7 +48,8 @@ Laughtrack::Application.routes.draw do
   match '/quality' => 'shows#index', :as => :quality,
     :defaults => {:sort_by => 'rating', :order => 'desc'}
   
-  match '/performances/:year/:month/:date' => 'performances#index'
+  match '/performances/:year/:month/:date' => 'performances#index',
+    :as => :performances_by_date
   match '/performances'                    => 'performances#index'
   
   # The priority is based upon order of creation:

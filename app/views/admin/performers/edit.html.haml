@@ -1,7 +1,7 @@
 %h2= performer.name
 
-- semantic_form_for [:admin, performer] do |form|
-  - form.inputs do
+= semantic_form_for [:admin, performer] do |form|
+  = form.inputs do
     = form.input :name
-  - form.buttons do
+  = form.buttons do
     = form.commit_button 'Save Changes'

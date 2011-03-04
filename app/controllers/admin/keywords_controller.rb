@@ -8,7 +8,7 @@ class Admin::KeywordsController < Admin::ApplicationController
     redirect_to edit_admin_show_path(show)
   end
   
-  def destroy
+  def delete
     keyword.destroy
     
     redirect_to edit_admin_show_path(show)

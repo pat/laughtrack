@@ -26,10 +26,10 @@ Feature: The Home Page
     And "Rabbit Faced Story Soup" by "Laura Solon" has an average rating of 3
     And "1999" by "Sammy J" has an average rating of 4
     When I go to the home page
-    Then I should see "Inflatable" within ".rated"
-    And I should see "The Hotel" within ".rated"
-    And I should see "Randy's Postcards from Purgatory" within ".rated"
-    And I should see "The Last Stand to Reason" within ".rated"
-    And I should see "1999" within ".rated"
-    And I should not see "Rabbit Faced Story Soup" within ".rated"
+    Then I should see "Inflatable" within ".quality"
+    And I should see "The Hotel" within ".quality"
+    And I should see "Randy's Postcards from Purgatory" within ".quality"
+    And I should see "The Last Stand to Reason" within ".quality"
+    And I should see "1999" within ".quality"
+    And I should not see "Rabbit Faced Story Soup" within ".quality"
   

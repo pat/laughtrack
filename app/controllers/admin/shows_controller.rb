@@ -1,6 +1,4 @@
 class Admin::ShowsController < Admin::ApplicationController
-  include LaughTrack::CouchDb
-  
   expose(:shows) {
     Show.search params[:query],
       :page      => params[:page],
@@ -28,7 +26,7 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   def feature
-    if show.random_tweet
+    if show.tweets.positive.confirmed.count > 0
       show.feature!
     else
       flash[:notice] = 'No tweets, so cannot feature.'
@@ -44,9 +42,8 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   def clear_tweets
-    show.unconfirmed_tweets.each { |tweet|
-      tweet.ignore = true
-      db.save tweet
+    show.tweets.unconfirmed.each { |tweet|
+      tweet.update_attributes :ignore => true
     }
     show.update_tweet_count
     show.save
@@ -55,7 +52,7 @@ class Admin::ShowsController < Admin::ApplicationController
   end
   
   def import_tweet
-    LaughTrack::Tweet.import params[:url], params[:id].to_i
+    Tweet.import params[:url], params[:id].to_i
     
     redirect_to :back
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206061901) do
+ActiveRecord::Schema.define(:version => 20110304040123) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20110206061901) do
 
   add_index "acts_performers", ["act_id"], :name => "index_acts_performers_on_act_id"
   add_index "acts_performers", ["performer_id"], :name => "index_acts_performers_on_performer_id"
+
+  create_table "festivals", :force => true do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.date     "starts_on"
+    t.date     "ends_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "keywords", :force => true do |t|
     t.integer  "show_id",     :null => false
@@ -94,6 +103,32 @@ ActiveRecord::Schema.define(:version => 20110206061901) do
 
   add_index "shows", ["act_id"], :name => "index_shows_on_act_id"
   add_index "shows", ["featured"], :name => "index_shows_on_featured"
+
+  create_table "tweets", :force => true do |t|
+    t.string   "tweet_id"
+    t.string   "to_user_id"
+    t.string   "from_user_id"
+    t.string   "profile_image_url"
+    t.string   "source"
+    t.string   "text"
+    t.string   "from_user"
+    t.integer  "keyword_id"
+    t.integer  "show_id"
+    t.string   "classification"
+    t.boolean  "ignore",            :default => false, :null => false
+    t.boolean  "confirmed",         :default => false, :null => false
+    t.text     "raw"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["classification"], :name => "index_tweets_on_classification"
+  add_index "tweets", ["confirmed"], :name => "index_tweets_on_confirmed"
+  add_index "tweets", ["from_user_id"], :name => "index_tweets_on_from_user_id"
+  add_index "tweets", ["ignore"], :name => "index_tweets_on_ignore"
+  add_index "tweets", ["keyword_id"], :name => "index_tweets_on_keyword_id"
+  add_index "tweets", ["show_id"], :name => "index_tweets_on_show_id"
+  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",    :null => false

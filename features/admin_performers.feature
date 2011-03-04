@@ -10,8 +10,8 @@ Feature: Manage Performer Information
     And the performer indexes are processed
     And I have signed in as an admin with "user@domain.com/password"
     When I go to the admin performers page
-    And I fill in "Search" with "McGinlay"
-    And I press "Search"
+    And I fill in "Search" with "McGinlay" within "#content"
+    And I press "Search" within "#content"
     Then I should see "Danny McGinlay"
     But I should not see "Danny Bhoy"
   

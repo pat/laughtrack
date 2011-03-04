@@ -18,8 +18,8 @@
                   %span.suffix Sold Out
       .calendar
         .head
-          = link_to "&raquo;", {:params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B'), :class => "next_month"
-          = link_to "&laquo;", {:params => {:date => @calendar_date.last_month.strftime("%Y-%m")}}, :title => @calendar_date.last_month.strftime('%B'), :class => "previous_month"
+          = link_to "&raquo;".html_safe, {:params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B'), :class => "next_month"
+          = link_to "&laquo;".html_safe, {:params => {:date => @calendar_date.prev_month.strftime("%Y-%m")}}, :title => @calendar_date.prev_month.strftime('%B'), :class => "previous_month"
           = @calendar_date.strftime('%B')
         = calendar :year => @calendar_date.year, :month => @calendar_date.month do |d|
           - if @performance_dates.keys.include?(d)
