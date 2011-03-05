@@ -1,5 +1,11 @@
 namespace :shows do
   namespace :import do
+    desc 'Import the 2011 shows from the Comedy Festival website'
+    task '2011' => :environment do
+      importer = Importers::FestivalTwo
+      importer.download and importer.import
+    end
+    
     desc 'Import the 2010 shows from the Comedy Festival website'
     task '2010' => :environment do
       Importers::ComedyFestival.import_2010
