@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304053405) do
+ActiveRecord::Schema.define(:version => 20110305015230) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20110304053405) do
     t.integer  "positive_tweet_count"
     t.integer  "festival_id",                                                                    :null => false
     t.integer  "micf_id",                                                                        :null => false
+    t.string   "heading_one"
+    t.string   "heading_two"
   end
 
   add_index "shows", ["act_id"], :name => "index_shows_on_act_id"
