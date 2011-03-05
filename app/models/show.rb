@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Show < ActiveRecord::Base
   belongs_to :festival
   belongs_to :act
@@ -137,6 +139,14 @@ class Show < ActiveRecord::Base
     end
   rescue
     puts "Error requesting show information for #{act_name} - #{name}"
+  end
+  
+  def update_url
+    response = Net::HTTP.get_response URI.parse(url)
+    if response.kind_of?(Net::HTTPRedirection)
+      self.url = response['location'] || response.body.match(/<a href=\"([^>]+)\">/i)[1]
+      save
+    end
   end
   
   private
