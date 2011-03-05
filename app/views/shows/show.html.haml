@@ -24,8 +24,7 @@
           Sold Out
       
       %p
-        Our figures on which shows are sold out are incomplete. If you know we're wrong, please
-        = link_to "tell us so.", "/about#contact"
+        Our figures on which shows are sold out are incomplete. If you know we're wrong, please #{ link_to "tell us so", "/about#contact" }.
 
       %table.performances
         - @show.performances.each do |performance|
