@@ -233,9 +233,25 @@ fieldset {clear: both;margin: 0 0 1em 0;padding: 0.5em 1em;}
 fieldset ol {overflow:hidden;margin: 0 0 0 0;padding: 0;}
 fieldset ol li {clear:both;margin: 0 0 1em 0;padding-top: 1em;width:100%;}
 fieldset ol li label {display: block; margin: 0;}
-fieldset ol li input, fieldset ol li textarea {width:545px;background: #fff;;border: 1px solid #dadee4;padding: 5px;}
+form.formtastic fieldset ol li.string input,
+form.formtastic fieldset ol li.url input,
+form.formtastic fieldset ol li textarea {width:545px;background: #fff;;border: 1px solid #dadee4;padding: 5px;}
 fieldset ol li.button input {margin-left:170px;width:auto;background:none;border:none;padding:none;}
 fieldset ol li textarea {height: 10em;}
 fieldset ol li span.goback {margin: 0.5em 0 0 0;display: block;}
 fieldset ol li select {padding: 2px;border-top: 1px solid #e1e1e1;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;border-left: 1px solid #e1e1e1;}
 fieldset ol li label span {margin-left: 2em;font-size: 0.95em;}
+form.formtastic fieldset label abbr {
+  display: none;
+}
+form.formtastic fieldset ol li.datetime ol {
+  width: 600px;
+}
+form.formtastic fieldset ol li.datetime li {
+  display: inline;
+  float: none;
+  clear: none;
+}
+form.formtastic fieldset ol li.datetime select {
+  display: inline;
+}

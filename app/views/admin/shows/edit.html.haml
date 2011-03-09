@@ -52,12 +52,22 @@
 
 %h3= pluralize show.performances.length, 'Performance'
 
-%ol
-  - show.performances.each do |performance|
-    %li
-      = performance.happens_at.to_s
-      = performance_sold_out_link performance
-      = link_to "Delete", [:delete, :admin, show, performance]
+%table
+  %thead
+    %tr
+      %th Date
+      %th Time
+      %th Sold Out
+      %th
+  %tbody
+    - show.performances.each do |performance|
+      %tr
+        %td= performance.happens_at.strftime('%a %B %d')
+        %td= performance.happens_at.strftime('%H:%M')
+        %td= performance_sold_out_link performance
+        %td= link_to "Delete", [:delete, :admin, show, performance]
+
+%h3 Add a Performance
 
 = semantic_form_for [:admin, show, show.performances.build] do |form|
   = form.inputs do
