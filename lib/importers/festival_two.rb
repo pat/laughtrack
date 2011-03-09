@@ -15,14 +15,14 @@ module Importers
         show = festival.shows.where(:micf_id => show_row[5]).first
         show ||= festival.shows.build
         show.attributes = {
-          :name        => show_row[0],
-          :act_name    => show_row[1],
           :heading_one => show_row[2],
           :heading_two => show_row[3],
-          :url         => show_row[4],
           :micf_id     => show_row[5]
         }
-        show.name = show.act_name if show.name.blank?
+        show.name     = show_row[0]   if show.name.blank?
+        show.name     = show.act_name if show.name.blank?
+        show.act_name = show_row[1]   if show.act_name.blank?
+        show.url      = show_row[4]   if show.url.blank?
         show.save!
       end
       
