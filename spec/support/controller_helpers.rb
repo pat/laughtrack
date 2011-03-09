@@ -10,27 +10,27 @@ module ControllerHelpers
       it "should not be publicly accessible" do
         action
         
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(new_admin_session_path)
       end
       
       it "should not be accessible if logged in as a normal user" do
         sign_in User.make!
         action
         
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(new_admin_session_path)
       end
       
       it "should be accessible if logged in as an administrator" do
-        sign_in User.make!(:admin)
+        sign_in Admin.make!
         action
         
-        response.should_not redirect_to(new_user_session_path)
+        response.should_not redirect_to(new_admin_session_path)
       end
     end
   end
   
-  def sign_in_as_admin(user = User.make!(:admin))
-    sign_in user
+  def sign_in_as_admin(admin = Admin.make!)
+    sign_in admin
   end
 end
 

@@ -8,6 +8,8 @@ module NavigationHelpers
       new_user_registration_path
     when /the sign in page/i
       new_user_session_path
+    when /the admin login page/i
+      new_admin_session_path
     when /the password reset request page/i
       new_password_path
     when /the shows page/i

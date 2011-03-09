@@ -9,6 +9,12 @@ Act.blueprint do
   name { "Act #{serial_number}" }
 end
 
+Admin.blueprint do
+  email                 { "admin#{serial_number}@example.com" }
+  password              { "password" }
+  password_confirmation { object.password }
+end
+
 Festival.blueprint do
   name      { 'A Festival Somewhere' }
   year      { Time.now.year }
@@ -33,10 +39,12 @@ Performer.blueprint do
 end
 
 Show.blueprint do
-  festival { object.festival || Festival.make! }
-  name     { "Show #{serial_number}" }
+  festival    { object.festival || Festival.latest.first || Festival.make! }
+  name        { "Show #{serial_number}" }
   act
-  micf_id  { serial_number }
+  heading_one { object.act_name }
+  heading_two { object.name }
+  micf_id     { serial_number }
 end
 
 ShowHistory.blueprint do
@@ -67,11 +75,6 @@ end
 
 User.blueprint(:confirmed) do
   confirmed_at { object.skip_confirmation!; 1.day.ago }
-end
-
-User.blueprint(:admin) do
-  confirmed_at { object.skip_confirmation!; 1.day.ago }
-  admin        { true }
 end
 
 module ActBlueprint

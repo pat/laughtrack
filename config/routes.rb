@@ -1,4 +1,5 @@
 Laughtrack::Application.routes.draw do
+  devise_for :admins, :skip => :registration
   devise_for :users
 
   root :to => 'home#index'

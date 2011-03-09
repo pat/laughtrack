@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def admin?
-    redirect_to new_user_session_path unless current_user && current_user.admin?
-  end
-  
   def render_optional_error_file(status_code)
     if status_code == :not_found
       render_404

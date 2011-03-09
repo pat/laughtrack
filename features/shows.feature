@@ -4,6 +4,9 @@ Feature: Shows
   As a visitor
   I want to read information related to shows
   
+  Background:
+    Given a festival "MICF" in 2011
+  
   Scenario: Viewing other shows by the same act or performers
     Given a show "Open Slather" by "Tripod"
     And a show "Tosswinkle the Pirate" by "Tripod"

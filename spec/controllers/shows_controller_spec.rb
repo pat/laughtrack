@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe ShowsController do
+  let!(:festival) { Festival.make! }
+  
+  before :each do
+    Festival.stub! :find => festival
+  end
+  
   describe '#index' do
     it "should use the given search parameters" do
       Show.should_receive(:search) do |query, options|
@@ -33,7 +39,7 @@ describe ShowsController do
     
     before :each do
       show.stub!(:related => [:foo, :bar])
-      Show.stub!(:find => show)
+      festival.shows.stub!(:find => show)
     end
     
     it "should assign the related shows from the requested show" do

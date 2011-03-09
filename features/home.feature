@@ -3,6 +3,9 @@ Feature: The Home Page
   As a visitor
   I want to see popular and highly rated shows on the home page
   
+  Background:
+    Given a festival "MICF" in 2011
+  
   Scenario: Listing of Popular Shows
     Given "Inflatable" by "Adam Hills" is 80% sold out
     And "The Hotel" by "Mark Watson" is 60% sold out

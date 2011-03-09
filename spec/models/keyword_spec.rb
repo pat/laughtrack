@@ -40,7 +40,7 @@ describe Keyword do
     end
     
     it "should update the imported_at time" do
-      keyword.imported_at = 3.day.ago
+      keyword.imported_at = 3.days.ago
       
       keyword.import
       
