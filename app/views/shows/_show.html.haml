@@ -8,8 +8,8 @@
     %span.sold_out
       = number_to_percentage show.sold_out_percent, :precision => 0
       %span.suffix Sold Out
-  - unless show.act_name.blank?
-    %span.act_name= show.act_name
+  - unless show.heading_two.blank?
+    %span.act_name= show.heading_one
   %h3= link_to_show show
   %ul.show_details
     %li= link_to "view show &rsaquo;".html_safe, show

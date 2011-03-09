@@ -8,9 +8,9 @@ module ApplicationHelper
     end
   end
   
-  def link_to_show(show)
+  def link_to_show(show, options = {})
     show_id, show = show, Show.find(show) if show.is_a?(Fixnum)
-    link_to(show.name, show)
+    link_to heading_for_show(show, options), show
   end
   
   def act_name(act)
@@ -71,6 +71,18 @@ module ApplicationHelper
       'sorted'
     else
       ''
+    end
+  end
+  
+  private
+  
+  def heading_for_show(show, options = {})
+    if show.heading_two.blank?
+      show.heading_one
+    elsif options[:full]
+      show.headings
+    else
+      show.heading_two
     end
   end
 end

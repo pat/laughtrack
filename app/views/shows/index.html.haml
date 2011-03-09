@@ -13,15 +13,13 @@
 %table
   %thead
     %tr
-      = sorted_header 'Act', 'act', true
-      = sorted_header 'Show', 'name'
+      = sorted_header 'Show', 'headings'
       = sorted_header 'Sold Out', 'sold_out_percent'
       = sorted_header 'Rating', 'rating'
   %tbody
     - @shows.each do |show|
       %tr
-        %td= link_to act_name(show.act), show
-        %td= link_to_show show
+        %td= link_to_show show, :full => true
         %td= number_to_percentage show.sold_out_percent, :precision => 0
         %td= number_with_precision show.rating, :precision => 2
 

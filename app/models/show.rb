@@ -30,8 +30,9 @@ class Show < ActiveRecord::Base
   after_create :add_act_keyword
   
   define_index do
-    indexes name,                  :sortable => true
-    indexes act.name, :as => :act, :sortable => true
+    indexes name,                                         :sortable => true
+    indexes act.name,                   :as => :act,      :sortable => true
+    indexes [heading_one, heading_two], :as => :headings, :sortable => true
     
     has sold_out_percent, rating, tweet_count, featured, festival_id
     has confirmed_tweet_count, unconfirmed_tweet_count
@@ -64,6 +65,10 @@ class Show < ActiveRecord::Base
   
   def confirmed?
     status == 'confirmed'
+  end
+  
+  def headings
+    [heading_one, heading_two].reject(&:blank?).join(' ')
   end
   
   def act_name
