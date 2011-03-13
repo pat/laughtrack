@@ -30,11 +30,14 @@ module Importers
       festival.shows.each do |show|
         db.execute(performances_sql(show.micf_id)) do |perf_row|
           happens_at = Time.zone.at(perf_row[0]) + 31.years + 1.day
-          if show.performances.where(:happens_at => happens_at).count == 0
+          performance = show.performances.where(:happens_at => happens_at).first
+          if performance.nil?
             show.performances.create(
               :happens_at => happens_at,
               :sold_out   => perf_row[1]
             )
+          else
+            performance.update_attributes(:sold_out => perf_row[1])
           end
         end
       end
