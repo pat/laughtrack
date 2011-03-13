@@ -36,7 +36,7 @@ module Importers
               :happens_at => happens_at,
               :sold_out   => perf_row[1]
             )
-          else
+          elsif !performance.sold_out?
             performance.update_attributes(:sold_out => perf_row[1])
           end
         end
