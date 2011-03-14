@@ -7,4 +7,12 @@ class Festival < ActiveRecord::Base
   validates :ends_on,   :presence => true
   
   scope :latest, order('ends_on DESC')
+  
+  def started?
+    Time.zone.now >= starts_on
+  end
+  
+  def finished?
+    Time.zone.now > ends_on
+  end
 end

@@ -3,19 +3,30 @@
     .wrapper
       .feature
         .pad
-          %h5 Tonight's Hot Shows
-          %ul.tonight
-            - @tonight.each do |show|
-              %li
-                %h3=show.act_name
-                %h2=link_to show.name, show
-                - if show.performances.next_available
-                  %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
-                %span.rated
-                  = "Rated "+show.rating.to_s
-                %span.sold
-                  = number_to_percentage show.sold_out_percent, :precision => 0
-                  %span.suffix Sold Out
+          - if @tonight.empty?
+            - if festival.finished?
+              %h5 That's a Wrap
+              %p The festival has finished for the year. You'll find us back here ready and raring to go in about 11 months.
+            - elsif festival.started?
+              %h5 Tonight's Hot Shows
+              %p Oddly enough, there are no shows scheduled for tonight.
+            - else
+              %h5 Coming Soon
+              %p The festival hasn't started yet - but when it does, there'll be plenty to see here!
+          - else
+            %h5 Tonight's Hot Shows
+            %ul.tonight
+              - @tonight.each do |show|
+                %li
+                  %h3=show.act_name
+                  %h2=link_to show.name, show
+                  - if show.performances.next_available
+                    %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
+                  %span.rated
+                    = "Rated "+show.rating.to_s
+                  %span.sold
+                    = number_to_percentage show.sold_out_percent, :precision => 0
+                    %span.suffix Sold Out
       .calendar
         .head
           = link_to "&raquo;".html_safe, {:params => {:date => @calendar_date.next_month.strftime("%Y-%m")}}, :title => @calendar_date.next_month.strftime('%B'), :class => "next_month"
