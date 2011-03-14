@@ -114,6 +114,17 @@ dd          { margin-left: 1.5em;}
     font-size:0.833em;
   }
 
+#nav {
+  clear: both;
+  margin: 0 auto;
+  padding: 0;
+  width: 960px;
+}
+
+#nav ul li {
+  display: inline;
+}
+
 #feature {clear:both;margin: 0 0 2em 0;padding: 0 0;}
   #feature .feature {float: left;width: 630px;background: url(/images/bg-feature.gif) repeat left top;}
     #feature .feature .pad {padding: 20px 30px;}

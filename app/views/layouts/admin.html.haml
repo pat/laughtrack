@@ -1,0 +1,49 @@
+!!!
+%html
+  %head
+    %title= title
+    %link{ :href => "/favicon.ico", :rel => "Shortcut Icon" }
+    = stylesheet_link_tag 'reset', 'formtastic', 'layout', 'formtastic_changes', 'layout_changes'
+  %body
+    #header
+      .wrapper
+        %h1= link_to 'LaughTrack', '/'
+        = form_tag '/admin/shows', :method => :get, :class => 'search' do
+          %label{:for => 'query'}
+          = text_field_tag 'query', params[:query], :autocomplete => "off"
+          %input{:type => 'submit', :value => 'Search', :class => 'submit'}
+    #nav
+      %h2 LaughTrack Administration
+      %ul
+        %li= link_to 'Shows', [:admin, :shows]
+        %li= link_to 'Performers', [:admin, :performers]
+        %li= link_to 'Unclassified Tweets', [:unclassified, :admin, :tweets]
+        %li= link_to 'Unconfirmed Tweets', [:unconfirmed, :admin, :tweets]
+        %li= link_to 'Confirmed Tweets', [:confirmed, :admin, :tweets]
+    
+    #breadcrumbs
+      .wrapper
+        = yield :breadcrumbs
+        
+    = yield :feature
+    
+    #content
+      .wrapper
+        - flash.each do |key, message|
+          %p{:class => key.to_s}= message
+        
+        = yield
+    #footer
+      .wrapper
+        Copyright &copy;
+        = link_to "LaughTrack", "/"
+        = "/"
+        = link_to "Pat Allan", "http://freelancing-gods.com"
+        2010
+        
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/class.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/jquery.tipsy.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/laughtrack.js", :type => "text/javascript"}
+    
+    = yield :footer
