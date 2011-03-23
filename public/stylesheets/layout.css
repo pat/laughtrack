@@ -153,7 +153,7 @@ dd          { margin-left: 1.5em;}
     #content .popular h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #content .popular h2 a, #content .popular h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
       #content .popular h2 a, #content .popular h2 a:visited,
-      #content .popular h2 a:hover, #content .popular h2 a:visited:hover {background: url(/images/titles-popular-shows.gif) no-repeat bottom left;}
+      #content .popular h2 a:hover, #content .popular h2 a:visited:hover {background: url(/images/titles-popular-shows.gif) no-repeat bottom left; width: 100%;}
     #content .popular .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-popular.gif) repeat top left;overflow:hidden;}
       #content .popular .shows ol {margin: 0;padding: 0;}
         #content .popular .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
@@ -163,7 +163,7 @@ dd          { margin-left: 1.5em;}
     #content .quality h2 {margin: 0;padding: 0;border: 0;text-indent: -20000em;background: transparent;font-size:1px;}
       #content .quality h2 a, #content .quality h2 a:visited {display: block;width: 273px;height: 52px;color: #fff;text-indent: -20000em;overflow: hidden;}
       #content .quality h2 a, #content .quality h2 a:visited,
-      #content .quality h2 a:hover, #content .quality h2 a:visited:hover {background: url(/images/titles-quality-shows.gif) no-repeat bottom left;}
+      #content .quality h2 a:hover, #content .quality h2 a:visited:hover {background: url(/images/titles-quality-shows.gif) no-repeat bottom left; width: 100%;}
     #content .quality .shows {margin: 1em 0;padding: 20px 30px;background: url(/images/bg-quality.gif) repeat top left;overflow:hidden;}
       #content .quality .shows ol {margin: 0;padding: 0;}
         #content .quality .shows ol li {clear:both;margin: 1em 0;padding: 1em 0;background: url(/images/bg-dots.gif) repeat-x left bottom;}
