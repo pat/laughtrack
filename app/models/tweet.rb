@@ -6,6 +6,7 @@ class Tweet < ActiveRecord::Base
   before_validation :set_show_from_keyword, :on => :create
   before_validation :set_classification,    :on => :create
   before_validation :set_ignore,            :on => :create
+  before_validation :set_show,              :on => :create
   
   scope :confirmed,    where(:confirmed => true)
   scope :unconfirmed,  where(:confirmed => false)
@@ -13,7 +14,7 @@ class Tweet < ActiveRecord::Base
   scope :negative,     where(:classification => 'negative')
   scope :unclassified, where('classification IS NULL')
   
-  attr_accessor :json, :autoignore
+  attr_accessor :json, :autoignore, :created_at_to_s
   
   def self.import(url, show_id)
     match = url.match /\/(\w+)\/statuse?s?\/(\d+)/
@@ -30,6 +31,13 @@ class Tweet < ActiveRecord::Base
   
   def ignored?
     ignore?
+  end
+  
+  def serializable_hash(options = {})
+    options ||= {}
+    options[:methods] ||= []
+    options[:methods] <<  :created_at_to_s
+    super options
   end
   
   private
@@ -88,5 +96,9 @@ class Tweet < ActiveRecord::Base
     end if autoignore
     
     true
+  end
+  
+  def set_show
+    self.show = keyword.show if show.nil? && !keyword.nil?
   end
 end

@@ -39,7 +39,7 @@ tweetList = Class.create({
   nextTweets: function(per_page) {
     this.loadShowTweets(this.show_id, per_page);
     for (i=0;i<this.tweets.length;i++) {
-      this.addTweet(this.tweets[i]);
+      this.addTweet(this.tweets[i].tweet);
       this.last_tweet_displayed++;
     }
     this.showHidden();
@@ -50,7 +50,7 @@ tweetList = Class.create({
       .attr({
         style: "display: none",
         "class": "hidden "+tweet.classification,
-        id: "tweet_"+tweet.id
+        id: "tweet_"+tweet.tweet_id
       })
       .append($('<span/>').attr({ 
           "class": "review_rating",
@@ -70,9 +70,9 @@ tweetList = Class.create({
       .append($('<a/>')
         .attr({
           "class": "when",
-          href: "http://twitter.com/"+tweet.from_user+"/status/"+tweet.id
+          href: "http://twitter.com/"+tweet.from_user+"/status/"+tweet.tweet_id
           })
-        .html(tweet.created_at+" ago")
+        .html(tweet.created_at_to_s+" ago")
       )
       .appendTo("#"+this.list_id)
   },

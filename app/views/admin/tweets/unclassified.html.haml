@@ -10,11 +10,11 @@
       %th Negative
       %th Ignore
   %tbody
-    - @docs.each do |doc|
+    - @tweets.each do |tweet|
       %tr
         %td
-          = render :partial => 'shared/tweet', :locals => {:tweet => doc}
-          = link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id), :class => 'show'
-        %td= link_to "Positive", positive_admin_tweet_path(doc._id)
-        %td= link_to "Negative", negative_admin_tweet_path(doc._id)
-        %td= link_to "Ignore", ignore_admin_tweet_path(doc._id)
+          = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
+          = link_to tweet.show.name, edit_admin_show_path(tweet.show_id), :class => 'show'
+        %td= link_to "Positive", positive_admin_tweet_path(tweet.id)
+        %td= link_to "Negative", negative_admin_tweet_path(tweet.id)
+        %td= link_to "Ignore", ignore_admin_tweet_path(tweet.id)

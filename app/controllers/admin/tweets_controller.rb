@@ -2,8 +2,8 @@ class Admin::TweetsController < Admin::ApplicationController
   expose(:tweet) { Tweet.find params[:id] }
   
   def unclassified
-    @total = Tweet.unconfirmed.count
-    @docs  = Tweet.unclassified.limit(20)
+    @total  = Tweet.unconfirmed.count
+    @tweets = Tweet.unclassified.limit(20)
   end
   
   def unconfirmed
