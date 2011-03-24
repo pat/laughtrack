@@ -1,12 +1,16 @@
+%p
+  Total:
+  = @total
+
 %table.unclassified
   %thead
     %tr
       %th Tweet
       %th Classification
   %tbody
-    - @docs.each do |doc|
+    - @tweets.each do |tweet|
       %tr
         %td
-          = doc.text
-          = link_to Show.find(doc.show_id).name, edit_admin_show_path(doc.show_id), :class => 'show'
-        %td= doc.classification
+          = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
+          = link_to tweet.show.name, edit_admin_show_path(tweet.show_id), :class => 'show'
+        %td= tweet.classification

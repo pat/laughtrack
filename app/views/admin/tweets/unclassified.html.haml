@@ -15,6 +15,6 @@
         %td
           = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
           = link_to tweet.show.name, edit_admin_show_path(tweet.show_id), :class => 'show'
-        %td= link_to "Positive", positive_admin_tweet_path(tweet.id)
-        %td= link_to "Negative", negative_admin_tweet_path(tweet.id)
-        %td= link_to "Ignore", ignore_admin_tweet_path(tweet.id)
+        %td= link_to "Positive", [:positive, :admin, tweet]
+        %td= link_to "Negative", [:negative, :admin, tweet]
+        %td= link_to "Ignore",   [:ignore,   :admin, tweet]
