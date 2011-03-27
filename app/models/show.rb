@@ -36,6 +36,14 @@ class Show < ActiveRecord::Base
     
     has sold_out_percent, rating, tweet_count, featured, festival_id
     has confirmed_tweet_count, unconfirmed_tweet_count
+    has 'MIN(performances.happens_at)',
+      :as   => :first_performance,
+      :type => :datetime
+    has 'MAX(performances.happens_at)',
+      :as   => :last_performance,
+      :type => :datetime
+    
+    join performances
   end
   
   def self.update_tweet_counts

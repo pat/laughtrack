@@ -10,7 +10,8 @@
       %th= link_to 'Sold Out', order_params('sold_out_percent')
       %th= link_to 'Rating', order_params('rating')
       %th= link_to 'Tweets', order_params('unconfirmed_tweet_count')
-      %th= link_to 'Feature', order_params('featured')
+      %th= link_to 'Starts', order_params('first_performance')
+      %th= link_to 'Finishes', order_params('last_performance')
   %tbody
     - shows.each do |show|
       %tr
@@ -18,12 +19,9 @@
         %td= number_to_percentage show.sold_out_percent, :precision => 0
         %td= number_with_precision show.rating, :precision => 2
         %td
-          = "(#{show.confirmed_tweet_count})"
-          = show.tweet_count
-        %td
-          - if show.featured
-            = link_to 'Unfeature', unfeature_admin_show_path(show)
-          - else
-            = link_to 'Feature', feature_admin_show_path(show)
+          = "(#{show.confirmed_tweet_count || 0})"
+          = show.tweet_count || 0
+        %td= Time.at(show.sphinx_attributes['first_performance']).strftime('%B %d')
+        %td= Time.at(show.sphinx_attributes['last_performance']).strftime('%B %d')
 
 = will_paginate shows
