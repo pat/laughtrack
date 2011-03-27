@@ -1,6 +1,8 @@
 require 'net/http'
 
 class Show < ActiveRecord::Base
+  Statuses = %w( pending confirmed )
+  
   belongs_to :festival
   belongs_to :act
   has_many   :performances, :order => 'happens_at ASC'
@@ -10,7 +12,6 @@ class Show < ActiveRecord::Base
   
   validates :festival, :presence => true
   validates :name,     :presence => true
-  validates :act,      :presence => true, :if => :confirmed?
   validates :micf_id,  :presence => true, :uniqueness => true
   
   scope :limited,       limit(5)

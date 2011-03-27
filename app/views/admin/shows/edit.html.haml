@@ -1,10 +1,10 @@
-%h2= show.name
+%h2= show.headings
 
 = semantic_form_for [:admin, show] do |form|
   = form.inputs do
-    = form.input :name
     = form.input :act_name
-    = form.input :url
+    = form.input :url, :hint => show_url(show)
+    = form.input :status, :as => :select, :collection => Show::Statuses
   = form.buttons do
     = form.commit_button 'Save'
 
@@ -22,7 +22,7 @@
   = form.buttons do
     = form.commit_button 'Add Keyword'
 
-%h3 Latest Tweets
+%h3 Latest Unconfirmed Tweets
 
 %table
   %thead

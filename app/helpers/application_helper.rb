@@ -74,6 +74,14 @@ module ApplicationHelper
     end
   end
   
+  def show_url(show)
+    if show.url.blank?
+      nil
+    else
+      link_to('View', show.url)
+    end
+  end
+  
   private
   
   def heading_for_show(show, options = {})

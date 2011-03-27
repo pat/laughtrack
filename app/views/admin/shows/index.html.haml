@@ -12,6 +12,7 @@
       %th= link_to 'Tweets', order_params('unconfirmed_tweet_count')
       %th= link_to 'Starts', order_params('first_performance')
       %th= link_to 'Finishes', order_params('last_performance')
+      %th Status
   %tbody
     - shows.each do |show|
       %tr
@@ -21,7 +22,8 @@
         %td
           = "(#{show.confirmed_tweet_count || 0})"
           = show.tweet_count || 0
-        %td= Time.at(show.sphinx_attributes['first_performance']).strftime('%B %d')
-        %td= Time.at(show.sphinx_attributes['last_performance']).strftime('%B %d')
+        %td= Time.at(show.sphinx_attributes['first_performance']).strftime('%b %d')
+        %td= Time.at(show.sphinx_attributes['last_performance']).strftime('%b %d')
+        %td= show.status.titleize
 
 = will_paginate shows
