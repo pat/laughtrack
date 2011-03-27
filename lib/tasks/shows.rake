@@ -26,4 +26,21 @@ namespace :shows do
   task :histories => :environment do
     Show.write_histories
   end
+  
+  desc 'Clean up acts and keywords'
+  task :clean_up => :environment do
+    Show.all.each do |show|
+      show.act_name = show.act_name.gsub(/\s+–$/, '')
+      show.act_name = show.act_name.gsub(/\sin$/, '')
+      show.act_name = show.act_name.gsub(/:$/, '')
+      show.save
+      
+      show.keywords.each do |keyword|
+        keyword.words = keyword.words.gsub(/\s+–"$/, '"')
+        keyword.words = keyword.words.gsub(/\sin"$/, '"')
+        keyword.words = keyword.words.gsub(/:"$/, '"')
+        keyword.save
+      end
+    end
+  end
 end
