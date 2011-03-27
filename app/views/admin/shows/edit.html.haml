@@ -64,7 +64,9 @@
       %tr
         %td= performance.happens_at.strftime('%a %B %d')
         %td= performance.happens_at.strftime('%H:%M')
-        %td= performance_sold_out_link performance
+        %td
+          = performance.sold_out? ? 'Yes' : 'No'
+          = performance_sold_out_link performance
         %td= link_to "Delete", [:delete, :admin, show, performance]
 
 %h3 Add a Performance
