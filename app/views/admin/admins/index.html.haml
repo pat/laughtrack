@@ -1,0 +1,18 @@
+%table
+  %thead
+    %tr
+      %th Email
+      %th Status
+  %tbody
+    - admins.each do |admin|
+      %tr
+        %td= admin.email
+        %td= admin.invited? ? 'Invited' : 'Active'
+
+%h3 Invite an Admin
+
+= semantic_form_for [:invite, :admin, admin] do |form|
+  = form.inputs do
+    = form.input :email
+  = form.buttons do
+    = form.commit_button 'Invite'

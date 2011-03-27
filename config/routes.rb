@@ -42,6 +42,10 @@ Laughtrack::Application.routes.draw do
         get :unclassified, :unconfirmed, :confirmed
       end
     end
+    
+    resources :admins, :only => :index do
+      collection { post :invite }
+    end
   end
   
   match '/popular' => 'shows#index', :as => :popular,

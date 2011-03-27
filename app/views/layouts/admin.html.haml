@@ -17,9 +17,11 @@
       %ul
         %li= link_to 'Shows', [:admin, :shows]
         %li= link_to 'Performers', [:admin, :performers]
+        %li= link_to 'Administrators', [:admin, :admins]
         %li= link_to 'Unclassified Tweets', [:unclassified, :admin, :tweets]
         %li= link_to 'Unconfirmed Tweets', [:unconfirmed, :admin, :tweets]
         %li= link_to 'Confirmed Tweets', [:confirmed, :admin, :tweets]
+        %li= link_to 'Sign Out', destroy_admin_session_path
     
     #breadcrumbs
       .wrapper

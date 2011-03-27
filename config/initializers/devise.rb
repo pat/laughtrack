@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "please-change-me@config-initializers-devise.com"
+  config.mailer_sender = "pat@freelancing-gods.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -48,6 +48,11 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   config.pepper = "add491222630ce1154cd0083ef43f7167e901b1bd930ad6f97197695ce9bdfc920307c87929ba04b15a4ea14a814a3b97cf9af6de3e8ba334d975e19888f5f59"
 
+  # ==> Configuration for :invitable
+  # Time interval where the invitation token is valid (default: 0).
+  # If invite_for is 0 or nil, the invitation will never expire.
+  # config.invite_for = 2.weeks
+  
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is nil.
