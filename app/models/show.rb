@@ -43,6 +43,9 @@ class Show < ActiveRecord::Base
     has 'MAX(performances.happens_at)',
       :as   => :last_performance,
       :type => :datetime
+    has 'COUNT(DISTINCT performances.id)',
+      :as   => :performance_count,
+      :type => :integer
     
     join performances
   end

@@ -20,7 +20,8 @@ class ShowsController < ApplicationController
       :page      => params[:page],
       :include   => :act,
       :sort_mode => sort_mode,
-      :order     => order
+      :order     => order,
+      :without   => {:performance_count => 0}
   end
   
   def show
