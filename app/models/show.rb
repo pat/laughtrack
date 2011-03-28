@@ -24,7 +24,7 @@ class Show < ActiveRecord::Base
   scope :still_showing, joins(:performances).
     group("shows.id").having("MAX(happens_at) > NOW()")
   scope :tonight,       lambda {
-    where(["DATE(performances.happens_at) = ?", Time.zone.now.today]).
+    where(["DATE(performances.happens_at) = ?", Time.zone.now.to_date]).
     joins(:performances)
   }
   
