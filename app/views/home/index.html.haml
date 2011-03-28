@@ -18,8 +18,9 @@
             %ul.tonight
               - @tonight.each do |show|
                 %li
-                  %h3=show.act_name
-                  %h2=link_to show.name, show
+                  - unless show.heading_two.blank?
+                    %h3= show.heading_one
+                  %h2= link_to_show show
                   - if show.performances.next_available
                     %span.happens_at= "Tonight" + show.performances.next_available.happens_at.to_formatted_s(:show_time)
                   %span.rated
