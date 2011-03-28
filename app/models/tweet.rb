@@ -46,12 +46,16 @@ class Tweet < ActiveRecord::Base
     return if json.nil?
     
     self.tweet_id          = json['id_str']
-    self.to_user_id        = json['to_user_id_str']
-    self.from_user_id      = json['from_user_id_str']
-    self.profile_image_url = json['profile_image_url']
+    self.to_user_id        = json['to_user_id_str'] ||
+                             json['in_reply_to_user_id_str']
+    self.from_user_id      = json['from_user_id_str'] ||
+                             json['user']['id_str']
+    self.profile_image_url = json['profile_image_url'] ||
+                             json['user']['profile_image_url']
     self.source            = json['source']
     self.text              = json['text']
-    self.from_user         = json['from_user']
+    self.from_user         = json['from_user'] ||
+                             json['user']['screen_name']
     self.raw               = json.to_s
     self.created_at        = json['created_at']
   end
