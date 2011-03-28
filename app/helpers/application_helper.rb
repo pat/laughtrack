@@ -56,7 +56,7 @@ module ApplicationHelper
   end
   
   def tweet_link(tweet)
-    "http://twitter.com/#{tweet.from_user}/status/#{tweet.id.to_i}"
+    "http://twitter.com/#{tweet.from_user}/status/#{tweet.tweet_id}"
   end
   
   def sorted_header(label, key, default = false)
