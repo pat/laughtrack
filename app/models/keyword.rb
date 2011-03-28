@@ -6,8 +6,11 @@ class Keyword < ActiveRecord::Base
   
   validates_presence_of :show, :words
   
+  scope :oldest_imports,
+    order("coalesce(imported_at, timestamp '2001-01-01 00:00') ASC")
+  
   def self.import_oldest
-    Keyword.limit(100).order('imported_at ASC').each do |keyword|
+    Keyword.limit(100).oldest_imports.each do |keyword|
       keyword.import
     end
   end
