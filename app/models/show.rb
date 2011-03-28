@@ -177,15 +177,15 @@ class Show < ActiveRecord::Base
   end
   
   def smart_positive_count
-    tweets.positive.confirmed.count.inject(0.0) do |count, tweet|
-      count + 1
-    end
+    tweets.positive.confirmed.count #.inject(0.0) do |count, tweet|
+      # count + 1
+    # end
   end
   
   def smart_confirmed_tweet_count
-    tweets.confirmed.count.inject(0.0) do |count, object|
-      count + 1
-    end
+    tweets.confirmed.count #.inject(0.0) do |count, object|
+      # count + 1
+    # end
   end
   
   def add_scraped_performance(day, times)
