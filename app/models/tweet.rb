@@ -8,11 +8,11 @@ class Tweet < ActiveRecord::Base
   before_validation :set_ignore,            :on => :create
   before_validation :set_show,              :on => :create
   
-  scope :confirmed,    where(:confirmed => true)
-  scope :unconfirmed,  where(:confirmed => false)
-  scope :positive,     where(:classification => 'positive')
-  scope :negative,     where(:classification => 'negative')
-  scope :unclassified, where('classification IS NULL')
+  scope :confirmed,    where(:confirmed => true,  :ignore => false)
+  scope :unconfirmed,  where(:confirmed => false, :ignore => false)
+  scope :positive,     where(:classification => 'positive', :ignore => false)
+  scope :negative,     where(:classification => 'negative', :ignore => false)
+  scope :unclassified, where('classification IS NULL AND ignore = ?', false)
   
   attr_accessor :json, :autoignore, :created_at_to_s
   
