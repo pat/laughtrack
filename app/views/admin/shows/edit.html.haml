@@ -45,7 +45,7 @@
 
 %h3 Import a Tweet
 
-= form_tag import_tweets_admin_show_path(show), :method => :post do
+= form_tag import_tweet_admin_show_path(show), :method => :post do
   %label{:for => 'url'} URL
   = text_field_tag :url, params[:url]
   %input{:type => 'submit', :value => 'Import'}

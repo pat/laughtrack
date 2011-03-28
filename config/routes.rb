@@ -18,7 +18,7 @@ Laughtrack::Application.routes.draw do
     resources :shows do
       member do
         get  :feature, :unfeature, :clear_tweets
-        post :import_tweets
+        post :import_tweet
       end
       
       resources :performances do
