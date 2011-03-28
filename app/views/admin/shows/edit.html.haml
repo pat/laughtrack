@@ -37,9 +37,9 @@
       %tr
         %td= render :partial => 'shared/tweet', :locals => {:tweet => tweet}
         %td= tweet.classification
-        %td= link_to "Positive", positive_admin_tweet_path(tweet._id)
-        %td= link_to "Negative", negative_admin_tweet_path(tweet._id)
-        %td= link_to "Ignore", ignore_admin_tweet_path(tweet._id)
+        %td= link_to "Positive", positive_admin_tweet_path(tweet.id)
+        %td= link_to "Negative", negative_admin_tweet_path(tweet.id)
+        %td= link_to "Ignore", ignore_admin_tweet_path(tweet.id)
 
 = link_to "Clear All Tweets", clear_tweets_admin_show_path(show)
 
