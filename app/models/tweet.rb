@@ -1,9 +1,11 @@
 class Tweet < ActiveRecord::Base
   belongs_to :show
   belongs_to :keyword
+  belongs_to :reviewer
   
   before_validation :set_from_json,         :on => :create  
   before_validation :set_show_from_keyword, :on => :create
+  before_validation :set_reviewer,          :on => :create
   before_validation :set_classification,    :on => :create
   before_validation :set_ignore,            :on => :create
   before_validation :set_show,              :on => :create
@@ -62,6 +64,10 @@ class Tweet < ActiveRecord::Base
   
   def set_show_from_keyword
     self.show_id ||= keyword.show_id
+  end
+  
+  def set_reviewer
+    self.reviewer ||= Reviewer.find_or_create_by_username(from_user)
   end
   
   def set_classification

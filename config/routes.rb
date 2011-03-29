@@ -14,6 +14,8 @@ Laughtrack::Application.routes.draw do
     end
   end
   
+  resources :reviewers
+  
   namespace :admin do
     resources :shows do
       member do

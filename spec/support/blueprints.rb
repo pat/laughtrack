@@ -38,6 +38,10 @@ Performer.blueprint do
   country { 'Australia' }
 end
 
+Reviewer.blueprint do
+  username { "tweeter_#{serial_number}" }
+end
+
 Show.blueprint do
   festival    { object.festival || Festival.latest.first || Festival.make! }
   name        { "Show #{serial_number}" }

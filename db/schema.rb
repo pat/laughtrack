@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327044357) do
+ActiveRecord::Schema.define(:version => 20110329004320) do
 
   create_table "acts", :force => true do |t|
     t.string   "name"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(:version => 20110327044357) do
     t.datetime "updated_at"
   end
 
+  create_table "reviewers", :force => true do |t|
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviewers", ["username"], :name => "index_reviewers_on_username"
+
   create_table "reviews", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "show_id"
@@ -148,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20110327044357) do
     t.text     "raw"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "reviewer_id"
   end
 
   add_index "tweets", ["classification"], :name => "index_tweets_on_classification"
@@ -155,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20110327044357) do
   add_index "tweets", ["from_user_id"], :name => "index_tweets_on_from_user_id"
   add_index "tweets", ["ignore"], :name => "index_tweets_on_ignore"
   add_index "tweets", ["keyword_id"], :name => "index_tweets_on_keyword_id"
+  add_index "tweets", ["reviewer_id"], :name => "index_tweets_on_reviewer_id"
   add_index "tweets", ["show_id"], :name => "index_tweets_on_show_id"
   add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id"
 

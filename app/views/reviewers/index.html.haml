@@ -1,0 +1,18 @@
+- content_for :breadcrumbs do
+  %ol
+    %li= link_to 'Home', '/'
+
+%h2 Top Reviewers
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Reviews
+  %tbody
+    - reviewers.each do |reviewer|
+      %tr
+        %td= reviewer.username
+        %td= reviewer.tweet_count || 0
+
+-# = will_paginate @performances
