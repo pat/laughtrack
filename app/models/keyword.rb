@@ -16,20 +16,22 @@ class Keyword < ActiveRecord::Base
   end
   
   def import
-    if outside_window?
-      update_attributes(:imported_at => Time.now)
-      return
-    end
+    Exceptional.rescue("Importing keyword #{id} - #{words}") do
+      if outside_window?
+        update_attributes(:imported_at => Time.now)
+        return
+      end
     
-    logger.debug "IMPORTING #{words}"
-    url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
-    JSON.load(open(url))['results'].each do |tweet|
-      next if tweet_stored? tweet['id_str']
+      logger.debug "IMPORTING #{words}"
+      url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
+      JSON.load(open(url))['results'].each do |tweet|
+        next if tweet_stored? tweet['id_str']
       
-      tweets.create :json => tweet, :autoignore => true
-    end
+        tweets.create :json => tweet, :autoignore => true
+      end
     
-    update_attributes(:imported_at => Time.now)
+      update_attributes(:imported_at => Time.now)
+    end
   end
   
   private
