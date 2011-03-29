@@ -34,7 +34,7 @@ class ShowsController < ApplicationController
     @show    = festival.shows.find params[:id]
     respond_to do |format|
       format.json { 
-        render :json => @show.tweets.confirmed.collect { |tweet|
+        render :json => @show.tweets.confirmed.order('created_at DESC').collect { |tweet|
           tweet.text            = twitify(tweet.text)
           tweet.created_at_to_s = time_ago_in_words(tweet.created_at)
           tweet
