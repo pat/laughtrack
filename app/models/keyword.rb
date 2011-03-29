@@ -23,7 +23,7 @@ class Keyword < ActiveRecord::Base
       end
     
       logger.debug "IMPORTING #{words}"
-      url = "http://search.twitter.com/search.json?q=#{ CGI.escape words }"
+      url = "http://search.twitter.com/search.json?rpp=200&q=#{ CGI.escape words }"
       JSON.load(open(url))['results'].each do |tweet|
         next if tweet_stored? tweet['id_str']
       
