@@ -4,6 +4,6 @@ class ReviewersController < ApplicationController
       select('reviewers.*, COUNT(DISTINCT tweets.id) AS tweet_count').
       where('tweets.confirmed = ?', true).
       group('reviewers.id, reviewers.username, reviewers.created_at, reviewers.updated_at').
-      order('COUNT(DISTINCT tweets.id) DESC')
+      order('COUNT(DISTINCT tweets.id) DESC, LOWER(username) ASC')
   }
 end
