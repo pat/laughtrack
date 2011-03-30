@@ -24,7 +24,10 @@ class Keyword < ActiveRecord::Base
     
       logger.debug "IMPORTING #{words}"
       url = "http://search.twitter.com/search.json?rpp=200&q=#{ CGI.escape words }"
-      JSON.load(open(url))['results'].each do |tweet|
+      json = Nestful.get url,
+        :format => :json,
+        :headers => {'User-Agent' => 'laughtrack.com.au'}
+      json['results'].each do |tweet|
         next if tweet_stored? tweet['id_str']
       
         tweets.create :json => tweet, :autoignore => true

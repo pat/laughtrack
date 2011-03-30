@@ -24,7 +24,10 @@ class Tweet < ActiveRecord::Base
     id    = match[2].to_i
     
     api = "http://api.twitter.com/1/statuses/user_timeline.json?count=200&screen_name=#{user}"
-    tweet = JSON.load(open(api)).detect { |hash|
+    json = Nestful.get api,
+      :format => :json,
+      :headers => {'User-Agent' => 'laughtrack.com.au'}
+    tweet = json.detect { |hash|
       hash['id'] == id
     }
     
