@@ -48,7 +48,7 @@ class Keyword < ActiveRecord::Base
   def outside_window?
     return false if show.performances.empty?
     
-    Date.today.to_time < show.performances.first.happens_at ||
+    Time.zone.now < show.performances.first.happens_at ||
     show.performances.last.happens_at < 5.days.ago
   end
 end
