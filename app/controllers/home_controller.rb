@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @rated             = festival.shows.rated.limited
     @tonight           = festival.shows.tonight.rated.popular.available.very_limited
     @recent_tweets     = recent_tweets
-    @calendar_date     = Time.parse("#{params[:date]}-01") || Time.now
+    @calendar_date     = Time.parse("#{params[:date]}-01") || Time.zone.now
     @performance_dates = Performance.
       where(:happens_at => @calendar_date..(@calendar_date+1.month)).
       group_by { |performance| performance.happens_at.to_date }
