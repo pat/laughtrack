@@ -1,6 +1,9 @@
 test:
   port: 9313
+  morphology: stem_en
 cucumber:
-  port: 9313
+  port: 9314
+  morphology: stem_en
 production:
   version: 1.10-beta
+  morphology: stem_en
