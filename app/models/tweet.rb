@@ -89,7 +89,7 @@ class Tweet < ActiveRecord::Base
   
   def set_ignore
     self.ignore = case text
-    when /Win free tickets to over \d\d/i, /\bRT\b/
+    when /Win free tickets to over \d\d/i, /^RT\b/
       true
     when /#micf/i, /#laughtrack/i, /@laughtrack_au/i
       false
