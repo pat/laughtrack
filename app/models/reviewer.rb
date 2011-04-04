@@ -8,7 +8,7 @@ class Reviewer < ActiveRecord::Base
   end
   
   def name
-    json['name']
+    json['name'] || username
   end
   
   private
@@ -18,5 +18,7 @@ class Reviewer < ActiveRecord::Base
       :format  => :json,
       :headers => {'User-Agent' => 'laughtrack.com.au'},
       :params  => {:screen_name => username}
+  rescue
+    @json ||= {}
   end
 end
