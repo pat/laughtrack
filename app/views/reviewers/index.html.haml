@@ -12,7 +12,7 @@
   %tbody
     - reviewers.each do |reviewer|
       %tr
-        %td= reviewer.username
+        %td= link_to reviewer.username, reviewer_path(reviewer.username)
         %td= reviewer.tweet_count || 0
 
 -# = will_paginate @performances

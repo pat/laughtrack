@@ -6,4 +6,5 @@ class ReviewersController < ApplicationController
       group('reviewers.id, reviewers.username, reviewers.created_at, reviewers.updated_at').
       order('COUNT(DISTINCT tweets.id) DESC, LOWER(username) ASC')
   }
+  expose(:reviewer) { Reviewer.where(:username => params[:id]).first }
 end
