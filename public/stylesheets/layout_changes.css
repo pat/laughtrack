@@ -232,7 +232,7 @@ div.calendar table tbody .today a:hover { color: #ffffff; }
   font-weight: bold;
   color: #ffffff;
 }
-#content .shows ol.twitter_stream li a.when {
+#content .shows ol.twitter_stream li .when {
   display: block;
   text-align: right;
   font-size: 0.9em;

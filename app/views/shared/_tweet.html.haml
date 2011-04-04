@@ -4,3 +4,5 @@
   = link_to tweet.from_user, "http://www.twitter.com/#{tweet.from_user}", :target => "_blank", :class => "from_user"
   = twitify(tweet.text)
   = link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_link(tweet), :class => "when", :title => "View this review on Twitter.com"
+  - if defined?(display_show) && display_show
+    = link_to "for #{tweet.show.name}", tweet.show, :class => "when"

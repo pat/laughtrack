@@ -3,9 +3,11 @@
     %li= link_to 'Home', '/'
     %li= link_to 'Reviewers', :reviewers
 
-%h2= reviewer.username
+%h2
+  = reviewer.name
+  = "(#{reviewer.username})"
 
 .shows
   %ol.twitter_stream
     - reviewer.tweets.confirmed.order('created_at DESC').each do |tweet|
-      = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
+      = render :partial => 'shared/tweet', :locals => {:tweet => tweet, :display_show => true}

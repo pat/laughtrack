@@ -6,4 +6,17 @@ class Reviewer < ActiveRecord::Base
   def tweet_count
     read_attribute(:tweet_count).to_i
   end
+  
+  def name
+    json['name']
+  end
+  
+  private
+  
+  def json
+    @json ||= Nestful.get "https://api.twitter.com/1/users/show.json",
+      :format  => :json,
+      :headers => {'User-Agent' => 'laughtrack.com.au'},
+      :params  => {:screen_name => username}
+  end
 end
