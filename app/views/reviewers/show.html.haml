@@ -7,5 +7,5 @@
 
 .shows
   %ol.twitter_stream
-    - reviewer.tweets.order('created_at DESC').each do |tweet|
+    - reviewer.tweets.confirmed.order('created_at DESC').each do |tweet|
       = render :partial => 'shared/tweet', :locals => {:tweet => tweet}
