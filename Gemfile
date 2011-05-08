@@ -19,7 +19,8 @@ gem 'rest-client',      '1.2.0',  :require => 'rest_client'
 gem 'sqlite3',          '1.3.3'
 gem 'statistics2',      '0.54'
 gem 'thinking-sphinx',  '2.0.2'
-gem 'flying-sphinx',    '0.4.4'
+gem 'flying-sphinx',
+  :git => 'git://github.com/flying-sphinx/flying-sphinx.git'
 gem 'throne',           '0.0.6'
 gem 'will_paginate',    '2.3.15'
 

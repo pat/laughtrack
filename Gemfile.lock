@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/flying-sphinx/flying-sphinx.git
+  revision: c9b0f55c60a57d485237c6af9e5df3da88ebd8de
+  specs:
+    flying-sphinx (0.4.4)
+      httparty (~> 0.6.1)
+      json (~> 1.4.6)
+      net-ssh (~> 2.0.23)
+      thinking-sphinx
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -70,11 +80,6 @@ GEM
       rspec (>= 1.2.0)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    flying-sphinx (0.4.4)
-      httparty (~> 0.6.1)
-      json (~> 1.4.6)
-      net-ssh (~> 2.0.23)
-      thinking-sphinx
     formtastic (1.2.3)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
@@ -185,7 +190,7 @@ DEPENDENCIES
   devise_invitable (= 0.3.6)
   fakeweb (= 1.3.0)
   fakeweb-matcher (= 1.2.2)
-  flying-sphinx (= 0.4.4)
+  flying-sphinx!
   formtastic (= 1.2.3)
   haml (= 3.0.25)
   json (= 1.4.6)
