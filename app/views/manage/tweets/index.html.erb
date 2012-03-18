@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Pending Tweets</h1>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><%= link_to "Pending (#{pending_tweets.count})", [:manage, :tweets] %></li>
+  <li><%= link_to "Unclassified (#{unclassified_tweets.count})", [:unclassified, :manage, :tweets] %></li>
+  <li><%= link_to "Detached (#{detached_tweets.count})", [:detached, :manage, :tweets] %></li>
+</ul>
+
+
+<%= form_tag [:bulk_update, :manage, :tweets], :method => :put do %>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Who</th>
+        <th>What</th>
+        <th>When</th>
+        <th>Wait</th>
+        <th>Ignore</th>
+        <th>Keep</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pending_tweets.each do |tweet| %>
+      <tr>
+        <td>
+          <%= link_to "@#{tweet.from_user}",
+            "https://twitter.com/#{tweet.from_user}" %>
+        </td>
+        <td><%= auto_link tweet.linked_text %></td>
+        <td><%= time_ago_in_words tweet.created_at %> ago</td>
+        <td><%= radio_button_tag("action_#{tweet.id}", 'wait', true) %></td>
+        <td><%= radio_button_tag("action_#{tweet.id}", 'ignore') %></td>
+        <td><%= radio_button_tag("action_#{tweet.id}", 'keep') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+  </div>
+<% end %>

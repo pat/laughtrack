@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap_and_overrides
+ *= require_self
+ *= require_tree .
+*/
+
+/* Boostrap Overloads */
+
+.home .navbar {
+  margin-bottom: 0;
+}
+
+.home .navbar-inner {
+  padding: 0;
+}
+
+.home .navbar .container {
+  width: 100%;
+}
+
+.home form.navbar-search {
+  width: 20%;
+  text-align: center;
+}
+
+.home form.navbar-search input.search-query {
+  width: 80% !important;
+}
+
+ul#show_list {
+  margin: 0;
+  padding: 0;
+
+  display: block;
+  width: 20%;
+  float: right;
+  background-color: pink;
+  list-style: none;
+}
+
+section#latest_tweet {
+  display: block;
+  width: 80%;
+  float: right;
+  text-align: center;
+  padding-top: 20px;
+}

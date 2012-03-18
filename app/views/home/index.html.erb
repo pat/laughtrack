@@ -1,0 +1,7 @@
+<%= content_for :list do %>
+  <ul id="show_list">
+    <% shows.each do |show| %>
+    <li><%= show.heading %></li>
+    <% end %>
+  </ul>
+<% end %>

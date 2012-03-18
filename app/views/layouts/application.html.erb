@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LaughTrack</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="home">
+  <header>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <form class="navbar-search">
+            <input class="search-query" type="search" placeholder="search">
+          </form>
+
+          <a class="brand" href="#">LaughTrack</a>
+
+          <ul class="nav pull-right">
+            <li><a href="#">About</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Dashboard', [:manage, :dashboard] %>
+              <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign In', '/users/auth/twitter' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="latest_tweet" class="container">
+    <% if notice.present? %>
+      <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="alert alert-error">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </section>
+
+  <%= yield :list %>
+</body>
+</html>
