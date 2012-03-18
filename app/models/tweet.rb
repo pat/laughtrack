@@ -15,7 +15,7 @@ class Tweet < ActiveRecord::Base
   scope :detached,     where('classification IS NOT NULL and show_id IS NULL')
 
   def self.import!
-    params = {:rpp => 100, :q => '#micf'}.to_query
+    params = {:rpp => 200, :q => '#micf'}.to_query
     json = Nestful.get "#{IMPORT_URL}?#{params}", :format => :json,
       :headers => {'User-Agent' => 'laughtrack.com.au'}
 
