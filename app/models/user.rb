@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ALLOWED_USERS = %( pat laughtrack_au )
+  ALLOWED_USERS = %( pat laughtrack_au markbrown4 )
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable,
   # :database_authenticatable, :registerable, :recoverable, :rememberable,
