@@ -17,6 +17,7 @@ group :assets do
   gem 'uglifier',                '>= 1.0.3'
   gem 'twitter-bootstrap-rails', '2.0.3'
   gem 'chosen-rails',            '0.9.8'
+  gem 'compass-rails',           '1.0.1'
 end
 
 group :development, :test do

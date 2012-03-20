@@ -1,7 +1,10 @@
 <%= content_for :list do %>
   <ul id="show_list">
     <% shows.each do |show| %>
-    <li><%= show.heading %></li>
+    <li><a href="#">
+      <b>10</b>
+      <%= show.heading %>
+    </a></li>
     <% end %>
   </ul>
 <% end %>
