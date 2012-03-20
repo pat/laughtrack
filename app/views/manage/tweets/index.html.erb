@@ -34,7 +34,7 @@
         </td>
         <td><%= auto_link tweet.linked_text %></td>
         <td><%= time_ago_in_words tweet.created_at %> ago</td>
-        <td><%= radio_button_tag("action_#{tweet.id}", 'wait', true) %></td>
+        <td><%= radio_button_tag("action_#{tweet.id}", 'wait') %></td>
         <td><%= radio_button_tag("action_#{tweet.id}", 'ignore') %></td>
         <td><%= radio_button_tag("action_#{tweet.id}", 'keep') %></td>
       </tr>
