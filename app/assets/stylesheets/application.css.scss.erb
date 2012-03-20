@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap_and_overrides
+ *= require_self
+ *= require_tree .
+*/
+
+/* Boostrap Overloads */
+
+@import "_common";
+$font-serif: Georgia,"Times New Roman",serif;
+$font-sans: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+$blue: #519FC0;
+
+.home .navbar {
+  margin-bottom: 0;
+}
+
+.home .navbar-inner {
+  padding: 0 20px 0 30px;
+}
+
+body {
+ background: #EAE1C6;
+ color: #555; 
+}
+
+[placeholder] { color: #999 !important }
+
+.navbar .brand {
+  float: none;
+  background: url(<%= asset_path 'logo.png' %>) no-repeat 0 0;
+  height: 40px;
+  width: 112px;
+  text-indent: -9999px;
+  margin: 0 auto;
+  padding: 0;
+}
+.navbar .nav > li > a {
+  font-weight: bold;
+}
+.home form.navbar-search {
+  width: 330px;
+  text-align: center;
+}
+.navbar-search .search-query, .navbar-search .search-query:hover {
+  background: #fff url(<%= asset_path 'search.png' %>) no-repeat 96% 1px;
+  border: 1px solid #fff;
+  width: 330px;
+}
+
+#shows {
+  direction: rtl;
+  overflow: auto;
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  width: 397px;
+  background: url(<%= asset_path 'bg-feature.gif' %>);
+  border-right: 3px solid rgba(#000,.05);
+  #show_list {
+    direction: ltr;
+    list-style: none;
+    margin: 0;
+    padding: 20px 0 60px;
+  }
+  li {
+    position: relative;
+    border-bottom: 1px solid #EAE4D3;
+    &:last-child {
+      border: none;
+    }
+  }
+  a {
+    color: #333;
+    display: block;
+    padding: 7px 60px 7px 20px;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+    font: 14px/18px $font-sans;
+    &:hover {
+      color: #000;
+      background: rgba(#fff, .7);
+      text-decoration: none;
+    }
+  }
+  .active { border-color: $blue }
+  .active a {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 2px solid $blue;
+    border-top: 1px solid #ddd;
+    font-size: 20px;
+    padding: 15px 60px 15px 20px;
+  }
+  b {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -10px;
+    color: $blue;
+    font-weight: bold;
+    float: right;
+    font-size: 16px;
+    text-shadow: 0 2px 1px #fff;
+  }
+}
+
+#content {
+  list-style: none;
+  position: absolute;
+  overflow: auto;
+  top: 40px;
+  bottom: 0;
+  right: 0;
+  left: 400px;
+  padding: 20px 20px 5px;
+  background: url(<%= asset_path 'bg-feature.gif' %>);
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  a {
+    color: #333;
+    display: block;
+    padding: 20px 40px;
+    &:hover { text-decoration: none }
+  }
+  li {
+    background: #fff;
+    border: 1px solid;
+    border-color: rgba(#000,.1) rgba(#000,.15) rgba(#000,.2);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 20px rgba(#000,.1);
+  }
+  strong {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  time, .handle { color: #999 }
+  time { font-size: 12px }
+  img {
+    border-radius: 5px;
+    float: left;
+    margin-right: 10px;
+  }
+  .content {
+    margin-left: 58px;
+  }
+  p {
+    font: 14px/18px $font-sans;
+  }
+  .show {
+    background: #fff;
+    border: 1px solid rgba(#000,.1);
+    border-bottom: 3px solid $blue;
+    font: 22px/28px $font-sans;
+    @include border-top-radius(10px);
+    a { color: #000 }
+    .score {
+      color: $blue;
+      font-weight: bold;
+      float: right;
+    }
+  }
+  .feature {
+    border-color: transparent rgba(#000,.1) rgba(#000,.2);
+    border-top: none;
+    @include border-top-radius(0);
+    strong {
+      display: block;
+    }
+    .content {
+      margin: 0;
+    }
+    p {
+      clear: left;
+      margin-top: 10px;
+      font: 22px/28px $font-serif;
+    }
+  }
+}
+.show, #tweets {
+  max-width: 800px;
+  margin: 0 auto;
+}
