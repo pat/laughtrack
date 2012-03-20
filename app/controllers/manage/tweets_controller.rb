@@ -1,7 +1,7 @@
 class Manage::TweetsController < Manage::ApplicationController
-  expose(:pending_tweets)      { Tweet.pending }
-  expose(:unclassified_tweets) { Tweet.unclassified }
-  expose(:detached_tweets)     { Tweet.detached }
+  expose(:pending_tweets)      { Tweet.pending.order(:created_at) }
+  expose(:unclassified_tweets) { Tweet.unclassified.order(:created_at) }
+  expose(:detached_tweets)     { Tweet.detached.order(:created_at) }
 
   def bulk_update
     params.keys.collect { |key|

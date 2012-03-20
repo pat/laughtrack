@@ -11,11 +11,12 @@ gem 'nokogiri',               '1.5.2'
 gem 'rinku',                  '1.5.1', :require => 'rails_rinku'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'jquery-rails', '2.0.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',              '~> 3.2.3'
+  gem 'coffee-rails',            '~> 3.2.1'
+  gem 'jquery-rails',            '2.0.1'
+  gem 'uglifier',                '>= 1.0.3'
   gem 'twitter-bootstrap-rails', '2.0.3'
+  gem 'chosen-rails',            '0.9.8'
 end
 
 group :development, :test do

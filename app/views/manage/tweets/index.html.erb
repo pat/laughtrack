@@ -11,7 +11,7 @@
 
 <%= form_tag [:bulk_update, :manage, :tweets], :method => :put do %>
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
   </div>
 
   <table class="table table-bordered">
@@ -28,12 +28,7 @@
     <tbody>
       <% pending_tweets.each do |tweet| %>
       <tr>
-        <td>
-          <%= link_to "@#{tweet.from_user}",
-            "https://twitter.com/#{tweet.from_user}" %>
-        </td>
-        <td><%= auto_link tweet.linked_text %></td>
-        <td><%= time_ago_in_words tweet.created_at %> ago</td>
+        <%= render 'tweet_cells', :tweet => tweet %>
         <td><%= radio_button_tag("action_#{tweet.id}", 'wait') %></td>
         <td><%= radio_button_tag("action_#{tweet.id}", 'ignore') %></td>
         <td><%= radio_button_tag("action_#{tweet.id}", 'keep') %></td>
@@ -43,6 +38,6 @@
   </table>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
   </div>
 <% end %>
