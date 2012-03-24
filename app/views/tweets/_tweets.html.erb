@@ -1,6 +1,6 @@
 <% if tweets.empty? && defined?(the_show) %>
   <div class="well">
-    <p>There are no tweets logged for this show.</p>
+    <p>There are no tweets logged for <%= the_show.heading %>.</p>
   </div>
 <% elsif tweets.empty? %>
   <div class="well">
