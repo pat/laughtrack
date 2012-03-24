@@ -1,0 +1,21 @@
+<% if tweets.empty? %>
+  <div class="well">
+    <p>There are no tweets logged for this show.</p>
+  </div>
+<% else %>
+  <ul id="tweets">
+    <% tweets.each do |tweet| %>
+    <li class="feature tweet">
+      <div class="tweet-box">
+        <%= image_tag tweet.profile_image_url, :alt => tweet.from_user %>
+        <div class="content">
+          <strong><%= tweet.from_user %></strong>
+          <span class="handle"><%= tweet.from_user %></span>
+          <p><%= tweet.linked_text %></p>
+          <time><%= time_ago_in_words tweet.created_at %> ago</time>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

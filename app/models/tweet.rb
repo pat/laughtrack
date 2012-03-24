@@ -13,6 +13,11 @@ class Tweet < ActiveRecord::Base
   scope :pending,      where(:ignore => false, :confirmed => false)
   scope :unclassified, where(:confirmed => true, :classification => nil)
   scope :detached,     where('classification IS NOT NULL and show_id IS NULL')
+  scope :confirmed,    where(:confirmed => true, :ignore => false)
+  scope :classified,   where('classification IS NOT NULL')
+  scope :positive,     where(:classification => 'positive')
+  scope :negative,     where(:classification => 'negative')
+  scope :visible,      confirmed.classified
 
   def self.import!
     params = {:rpp => 200, :q => '#micf'}.to_query
@@ -26,6 +31,7 @@ class Tweet < ActiveRecord::Base
 
   def attach_to(show_id)
     update_attribute :show_id, show_id
+    show.update_score!
   end
 
   def confirm!

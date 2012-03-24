@@ -26,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <% pending_tweets.each do |tweet| %>
+      <% pending_tweets[0..99].each do |tweet| %>
       <tr>
         <%= render 'tweet_cells', :tweet => tweet %>
         <td><%= radio_button_tag("action_#{tweet.id}", 'wait') %></td>

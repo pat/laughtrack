@@ -5,9 +5,10 @@ body {
 
 [placeholder] { color: #999 !important }
 
+
 tr.active {
   background-color: #F5E5D0;
-}
+
 
 #shows {
   direction: rtl;
@@ -79,7 +80,7 @@ tr.active {
     list-style: none;
     padding: 0;
   }
-  a {
+  .tweet-box {
     color: #333;
     display: block;
     padding: 20px 40px;

@@ -6,6 +6,8 @@ Laughtrack::Application.routes.draw do
       :as => :destroy_user_session
   end
 
+  resources :shows, :only => [:show]
+
   namespace :manage do
     match '/' => 'home#index', :as => :dashboard
     resources :shows
