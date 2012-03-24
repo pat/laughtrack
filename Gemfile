@@ -11,6 +11,9 @@ gem 'nokogiri',               '1.5.2'
 gem 'rinku',                  '1.5.1', :require => 'rails_rinku'
 gem 'statistics2',            '0.54'
 gem 'thinking-sphinx',        '2.0.11'
+gem 'flying-sphinx',
+  :git => 'git://github.com/flying-sphinx/flying-sphinx.git',
+  :ref => '49bfed5'
 
 group :assets do
   gem 'sass-rails',              '~> 3.2.3'
