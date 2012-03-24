@@ -39,6 +39,10 @@ class Show < ActiveRecord::Base
     tweets.confirmed.positive.count
   end
 
+  def to_param
+    "#{id}-#{heading[0..15]}"
+  end
+
   def update_score!
     self.score = Wilson.new(
       positive_count, confirmed_count

@@ -1,13 +1,9 @@
 <%= content_for :list do %>
   <ul id="show_list">
-    <% shows.each do |show| %>
-    <li>
-      <%= link_to show do %>
-        <b><%= show.score.to_i %></b>
-        <%= show.heading %>
-      <% end %>
-    </li>
-    <% end %>
+    <li><a href="#">
+      <b><%= show.score.to_i %></b>
+      <%= show.heading %>
+    </a></li>
   </ul>
 <% end %>
 
