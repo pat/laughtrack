@@ -7,12 +7,16 @@ $(document).ready(function() {
     jQuery.pjax({
       url:       form.attr('action') + '?' + form.serialize(),
       container: '#shows',
-      timeout:   2000
+      timeout:   3000
     });
     return false;
   });
 
-  $('#shows a').pjax('#main-content').live('click', function() {
+
+  $('#shows a').pjax({
+    container: '#main-content',
+    timeout:   2000
+  }).live('click', function() {
     var list_item = $(this).parent('li');
     list_item.siblings().removeClass('featured');
     list_item.addClass('featured');
