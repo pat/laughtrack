@@ -1,0 +1,30 @@
+.home .navbar {
+  margin-bottom: 0;
+}
+
+.home .navbar-inner {
+  padding: 0 20px 0 30px;
+}
+
+.navbar .brand {
+  float: none;
+  background: image-url('logo_small.png') 0 0 no-repeat;
+  height: 40px;
+  width: 112px;
+  text-indent: -9999px;
+  margin: 0 auto;
+  padding: 0;
+}
+.navbar .nav > li > a {
+  font-weight: bold;
+}
+.home form.navbar-search {
+  width: 330px;
+  text-align: center;
+}
+.navbar-search .search-query, .navbar-search .search-query:hover {
+  background: #fff image-url('search.png') no-repeat 96% 1px;
+  border: 1px solid #fff;
+  width: 330px;
+}
+

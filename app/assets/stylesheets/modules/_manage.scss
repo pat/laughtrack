@@ -1,34 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require bootstrap_and_overrides
- *= require chosen
- *= require_self
- *= require_tree .
-*/
-
-/* Boostrap Overloads */
-
-@import "_common";
-$font-serif: Georgia,"Times New Roman",serif;
-$font-sans: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
-$blue: #519FC0;
-
-.home .navbar {
-  margin-bottom: 0;
-}
-
-.home .navbar-inner {
-  padding: 0 20px 0 30px;
-}
-
 body {
  background: #EAE1C6;
  color: #555;
@@ -36,26 +5,8 @@ body {
 
 [placeholder] { color: #999 !important }
 
-.navbar .brand {
-  float: none;
-  background: url(<%= asset_path 'logo.png' %>) no-repeat 0 0;
-  height: 40px;
-  width: 112px;
-  text-indent: -9999px;
-  margin: 0 auto;
-  padding: 0;
-}
-.navbar .nav > li > a {
-  font-weight: bold;
-}
-.home form.navbar-search {
-  width: 330px;
-  text-align: center;
-}
-.navbar-search .search-query, .navbar-search .search-query:hover {
-  background: #fff url(<%= asset_path 'search.png' %>) no-repeat 96% 1px;
-  border: 1px solid #fff;
-  width: 330px;
+tr.active {
+  background-color: #F5E5D0;
 }
 
 #shows {
@@ -66,7 +17,7 @@ body {
   bottom: 0;
   left: 0;
   width: 397px;
-  background: url(<%= asset_path 'bg-feature.gif' %>);
+  background: image-url('bg-feature.gif');
   border-right: 3px solid rgba(#000,.05);
   #show_list {
     direction: ltr;
@@ -123,7 +74,7 @@ body {
   right: 0;
   left: 400px;
   padding: 20px 20px 5px;
-  background: url(<%= asset_path 'bg-feature.gif' %>);
+  background: image-url('bg-feature.gif');
   ul {
     list-style: none;
     padding: 0;
