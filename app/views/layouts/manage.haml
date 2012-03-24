@@ -5,16 +5,17 @@
     = stylesheet_link_tag    'application', :media => 'all'
     = csrf_meta_tags
   %body.manage
-    .navbar
-      .navbar-inner
-        .container
-          = link_to 'LaughTrack', [:manage, :dashboard], :class => 'brand'
-          %ul.nav
-            %li= link_to 'Shows', [:manage, :shows]
-            %li= link_to 'Tweets', [:manage, :tweets]
-            %li= link_to 'Users', '#'
-          %ul.nav.pull-right
-            %li= link_to 'Sign Out', destroy_user_session_path
+    %header
+      .navbar
+        .navbar-inner
+          .container
+            = link_to 'LaughTrack', [:manage, :dashboard], :class => 'brand'
+            %ul.nav
+              %li= link_to 'Shows', [:manage, :shows]
+              %li= link_to 'Tweets', [:manage, :tweets]
+              %li= link_to 'Users', '#'
+            %ul.nav.pull-right
+              %li= link_to 'Sign Out', destroy_user_session_path
     .container
       .span12
         = render 'shared/flash_messages'

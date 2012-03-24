@@ -7,21 +7,24 @@
     = csrf_meta_tags
   %body.home
     %header
-      .navbar.navbar-fixed-top
+      #brand= link_to image_tag('logo.png', :alt => 'laughtrack logo'), root_path
+      .navbar
         .navbar-inner
-          = link_to 'LaughTrack', root_path, :class => 'brand'
-          %ul.nav.pull-right
-            %li= link_to 'About', '#'
-            - if user_signed_in?
-              %li= link_to 'Dashboard', [:manage, :dashboard]
-              %li= link_to 'Sign Out', destroy_user_session_path
-            - else
-              %li= link_to 'Sign In', '/users/auth/twitter'
-          %form.navbar-search{:action => "/", :method => "get"}
-            %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}
+          .container
+            %ul.nav
+              %li= link_to 'About', '#'
+              - if user_signed_in?
+                %li= link_to 'Dashboard', [:manage, :dashboard]
+                %li= link_to 'Sign Out', destroy_user_session_path
+              - else
+                %li= link_to 'Sign In', '/users/auth/twitter'
+            %form.navbar-search{:action => "/", :method => "get"}
+              %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}
     #content
       = render 'shared/flash_messages'
-      #main-content
+
+      %section#main
         = yield
-    %section#shows.container
-      = yield :list
+
+      %section#shows
+        = yield :list

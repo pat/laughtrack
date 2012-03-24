@@ -1,0 +1,40 @@
+body {
+ background: #f6f6f6;
+ color: $body;
+}
+
+a:hover { text-decoration: none; }
+
+[placeholder] { color: #999; }
+
+tr.active { background: rgba(#888, 0.1); }
+
+#main {
+  @include span(8);
+  float: left;
+  margin: 40px 20px;
+}
+
+#shows {
+  @include span(3.5);
+  float: right;
+  border-left: 2px solid rgba(#000,.05);
+
+  ul#shows_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      &:hover { background: rgba(#888, 0.1);}
+      a {
+        display:block;
+        padding: 5px 12px;
+        color: $body;
+        border-bottom: 2px solid rgba(#000,.05);
+      }
+      strong { color: $blue;}
+    }
+  }
+}
+
