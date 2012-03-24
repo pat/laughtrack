@@ -10,8 +10,8 @@
 <header>
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <form class="navbar-search">
-        <input class="search-query" type="search" placeholder="Search for a show">
+      <form class="navbar-search" action="/" method="get">
+        <input class="search-query" type="search" placeholder="Search for a show" name="query">
       </form>
       <ul class="nav pull-right">
         <li><a href="#">About</a></li>
@@ -64,7 +64,7 @@
         </div>
       </a>
     </li>
-    
+
   <!-- <li class="featured tweet">
         <% if notice.present? %>
           <div class="alert alert-success">

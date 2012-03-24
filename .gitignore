@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore Sphinx files
+config/*.sphinx.conf
+db/sphinx
+log/searchd.*.pid
