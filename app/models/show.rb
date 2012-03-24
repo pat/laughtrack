@@ -40,7 +40,7 @@ class Show < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{heading[0..15]}"
+    "#{id}-#{heading[0..15].strip.gsub(/[\s\-_]+/, '-')}"
   end
 
   def update_score!
