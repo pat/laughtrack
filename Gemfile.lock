@@ -43,6 +43,9 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.7)
     arel (3.0.2)
+    asset_sync (0.3.1)
+      activemodel
+      fog
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     chosen-rails (0.9.8)
@@ -72,6 +75,7 @@ GEM
       warden (~> 1.1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
+    excon (0.12.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
     faraday (0.7.6)
@@ -80,6 +84,17 @@ GEM
       rack (~> 1.1)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
+    fog (1.3.0)
+      builder
+      excon (~> 0.12.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.1)
     fssm (0.2.8.1)
     hashie (1.2.0)
     hike (1.2.1)
@@ -105,6 +120,8 @@ GEM
     multipart-post (1.1.5)
     nestful (0.0.8)
       activesupport (>= 3.0.0.beta)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
     nokogiri (1.5.2)
     oauth (0.4.5)
@@ -161,6 +178,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
+    ruby-hmac (0.4.0)
     sass (3.1.15)
     sass-rails (3.2.4)
       railties (~> 3.2.0)
@@ -197,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asset_sync (= 0.3.1)
   chosen-rails (= 0.9.8)
   coffee-rails (~> 3.2.1)
   compass-rails (= 1.0.1)
