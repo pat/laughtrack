@@ -5,6 +5,7 @@ gem 'pg'
 
 gem 'devise',                 '2.0.4'
 gem 'decent_exposure',        '1.0.2'
+gem 'haml',                   '3.1.4'
 gem 'omniauth-twitter',       '0.0.8'
 gem 'nestful',                '0.0.8'
 gem 'nokogiri',               '1.5.2'

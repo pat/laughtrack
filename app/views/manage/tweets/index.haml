@@ -1,0 +1,29 @@
+.page-header
+  %h1 Pending Tweets
+
+%ul.nav.nav-tabs
+  %li.active= link_to "Pending (#{pending_tweets.count})", [:manage, :tweets]
+  %li= link_to "Unclassified (#{unclassified_tweets.count})", [:unclassified, :manage, :tweets]
+  %li= link_to "Detached (#{detached_tweets.count})", [:detached, :manage, :tweets]
+
+= form_tag [:bulk_update, :manage, :tweets], :method => :put do
+  .form-actions
+    %button.btn.btn-primary{:type => "submit"} Save Changes
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Who
+        %th What
+        %th When
+        %th Wait
+        %th Ignore
+        %th Keep
+    %tbody
+      - pending_tweets[0..99].each do |tweet|
+        %tr
+          = render 'tweet_cells', :tweet => tweet
+          %td= radio_button_tag("action_#{tweet.id}", 'wait')
+          %td= radio_button_tag("action_#{tweet.id}", 'ignore')
+          %td= radio_button_tag("action_#{tweet.id}", 'keep')
+  .form-actions
+    %button.btn.btn-primary{:type => "submit"} Save Changes

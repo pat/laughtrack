@@ -1,0 +1,16 @@
+.page-header
+  %h1 Detached Tweets
+
+%ul.nav.nav-tabs
+  %li= link_to "Pending (#{pending_tweets.count})", [:manage, :tweets]
+  %li= link_to "Unclassified (#{unclassified_tweets.count})", [:unclassified, :manage, :tweets]
+  %li.active= link_to "Detached (<span id=\"tweet-counter\">#{detached_tweets.count}</span>)".html_safe, [:detached, :manage, :tweets]
+
+- detached_tweets.each do |tweet|
+  .attach-tweet{:id => "tweet-#{tweet.id}"}
+    %p @#{tweet.from_user}: #{auto_link tweet.linked_text}
+
+    = form_for tweet, :url => [:attach, :manage, tweet], :method => :put, :html => {:class => 'form-inline'} do |form|
+      = form.label :show_id
+      = form.collection_select :show_id, Show.order_by_headings, :id, :heading, {}, 'data-placeholder' => "Select a show...", :id => "tweet-select-#{tweet.id}"
+      %button.btn{:type => "submit"} Attach
