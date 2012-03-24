@@ -9,6 +9,7 @@ gem 'omniauth-twitter',       '0.0.8'
 gem 'nestful',                '0.0.8'
 gem 'nokogiri',               '1.5.2'
 gem 'rinku',                  '1.5.1', :require => 'rails_rinku'
+gem 'statistics2',            '0.54'
 
 group :assets do
   gem 'sass-rails',              '~> 3.2.3'

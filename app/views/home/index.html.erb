@@ -2,7 +2,7 @@
   <ul id="show_list">
     <% shows.each do |show| %>
     <li><a href="#">
-      <b>10</b>
+      <b><%= show.score.to_i %></b>
       <%= show.heading %>
     </a></li>
     <% end %>

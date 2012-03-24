@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316131942) do
+ActiveRecord::Schema.define(:version => 20120324001003) do
 
   create_table "shows", :force => true do |t|
     t.string   "heading_one"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20120316131942) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "heading"
+    t.float    "score"
   end
+
+  add_index "shows", ["score"], :name => "index_shows_on_score"
 
   create_table "tweets", :force => true do |t|
     t.string   "tweet_id"
