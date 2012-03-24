@@ -11,6 +11,15 @@ GIT
       riddle (>= 1.5.0)
       thinking-sphinx
 
+GIT
+  remote: git://github.com/rumblelabs/asset_sync.git
+  revision: 1edb3622d7dfb0f8b8dd9929d19e16d2fca3553c
+  ref: 1edb3622d7
+  specs:
+    asset_sync (0.3.1)
+      activemodel
+      fog
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -43,9 +52,6 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.7)
     arel (3.0.2)
-    asset_sync (0.3.1)
-      activemodel
-      fog
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     chosen-rails (0.9.8)
@@ -215,7 +221,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asset_sync (= 0.3.1)
+  asset_sync!
   chosen-rails (= 0.9.8)
   coffee-rails (~> 3.2.1)
   compass-rails (= 1.0.1)

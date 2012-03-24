@@ -23,7 +23,9 @@ group :assets do
   gem 'twitter-bootstrap-rails', '2.0.3'
   gem 'chosen-rails',            '0.9.8'
   gem 'compass-rails',           '1.0.1'
-  gem 'asset_sync',              '0.3.1'
+  gem 'asset_sync',
+    :git => 'git://github.com/rumblelabs/asset_sync.git',
+    :ref => '1edb3622d7'
 end
 
 group :development, :test do
