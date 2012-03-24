@@ -2,7 +2,7 @@
 %html{:lang => "en"}
   %head
     %title LaughTrack
-    = stylesheet_link_tag    'application', :media => 'all'
+    = stylesheet_link_tag 'application', :media => 'all'
     = csrf_meta_tags
   %body.manage
     %header
@@ -16,8 +16,7 @@
               %li= link_to 'Users', '#'
             %ul.nav.pull-right
               %li= link_to 'Sign Out', destroy_user_session_path
-    .container
-      .span12
-        = render 'shared/flash_messages'
-        = yield
+    #content
+      = render 'shared/flash_messages'
+      = yield
     = javascript_include_tag 'application'
