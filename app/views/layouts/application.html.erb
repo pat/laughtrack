@@ -27,62 +27,21 @@
   </div>
 </header>
 <div id="content">
-  <div class="show">
-    <a href="#"><span class="score">10</span>#ShitMickNevenSays</a>
-  </div>
-  <ul id="tweets">
-    <li class="feature tweet">
-      <a href="/#!/chriscoyier/status/181844159878012928">
-        <img alt="Chris Coyier" src="https://twimg0-a.akamaihd.net/profile_images/1668225011/Gravatar2_normal.png">
-        <div class="content">
-          <strong>Chris Coyier</strong>
-          <span class="handle">@chriscoyier</span>
-          <p>I find it so bizarre that joining a "club" has been the standard way to sell WordPress themes.</p>
-          <time>7:46 AM - 20 Mar 12</time>
-        </div>
-      </a>
-    </li>
-    <li class="tweet">
-      <a href="/#!/chriscoyier/status/181844159878012928">
-        <img alt="Chris Coyier" src="https://twimg0-a.akamaihd.net/profile_images/1668225011/Gravatar2_normal.png">
-        <div class="content">
-          <strong>Chris Coyier</strong>
-          <span class="handle">@chriscoyier</span>
-          <p>I find it so bizarre that joining a "club" has been the standard way to sell WordPress themes.</p>
-          <time>7:46 AM - 20 Mar 12</time>
-        </div>
-      </a>
-    </li>
-    <li class="tweet">
-      <a href="/#!/chriscoyier/status/181844159878012928">
-        <img alt="Chris Coyier" src="https://twimg0-a.akamaihd.net/profile_images/1668225011/Gravatar2_normal.png">
-        <div class="content">
-          <strong>Chris Coyier</strong>
-          <span class="handle">@chriscoyier</span>
-          <p>I find it so bizarre that joining a "club" has been the standard way to sell WordPress themes.</p>
-          <time>7:46 AM - 20 Mar 12</time>
-        </div>
-      </a>
-    </li>
+  <% if notice.present? %>
+    <div class="alert alert-success">
+      <a class="close" data-dismiss="alert">×</a>
+      <%= notice %>
+    </div>
+  <% end %>
 
-  <!-- <li class="featured tweet">
-        <% if notice.present? %>
-          <div class="alert alert-success">
-            <a class="close" data-dismiss="alert">×</a>
-            <%= notice %>
-          </div>
-        <% end %>
+  <% if alert.present? %>
+    <div class="alert alert-error">
+      <a class="close" data-dismiss="alert">×</a>
+      <%= alert %>
+    </div>
+  <% end %>
 
-        <% if alert.present? %>
-          <div class="alert alert-error">
-            <a class="close" data-dismiss="alert">×</a>
-            <%= alert %>
-          </div>
-        <% end %>
-
-        <%= yield %>
-      </li> -->
-  </ul>
+  <%= yield %>
 </div>
 <section id="shows" class="container">
   <%= yield :list %>

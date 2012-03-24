@@ -17,6 +17,7 @@ class Tweet < ActiveRecord::Base
   scope :classified,   where('classification IS NOT NULL')
   scope :positive,     where(:classification => 'positive')
   scope :negative,     where(:classification => 'negative')
+  scope :visible,      confirmed.classified
 
   def self.import!
     params = {:rpp => 200, :q => '#micf'}.to_query
