@@ -1,28 +1,4 @@
 <%= content_for :list do %>
-  <ul id="show_list">
-    <% shows.each do |show| %>
-    <li>
-      <%= link_to show do %>
-        <b><%= show.score.to_i %></b>
-        <%= show.heading %>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
+  <%= render :partial => 'shows/shows', :object => shows, :locals => {:featured => nil} %>
 <% end %>
-
-<ul id="tweets">
-  <% tweets.each do |tweet| %>
-  <li class="feature tweet">
-    <div class="tweet-box">
-      <%= image_tag tweet.profile_image_url, :alt => tweet.from_user %>
-      <div class="content">
-        <strong><%= tweet.from_user %></strong>
-        <span class="handle"><%= tweet.from_user %></span>
-        <p><%= tweet.linked_text %></p>
-        <time><%= time_ago_in_words tweet.created_at %> ago</time>
-      </div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+<%= render :partial => 'tweets/tweets', :object => tweets %>

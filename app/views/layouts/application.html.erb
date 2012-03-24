@@ -11,7 +11,7 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <form class="navbar-search" action="/" method="get">
-        <input class="search-query" type="search" placeholder="Search for a show" name="query">
+        <input class="search-query" type="search" placeholder="Search for a show" name="query" value="<%= params[:query] %>">
       </form>
       <ul class="nav pull-right">
         <li><a href="#">About</a></li>
@@ -22,7 +22,7 @@
           <li><%= link_to 'Sign In', '/users/auth/twitter' %></li>
         <% end %>
       </ul>
-      <a class="brand" href="#">LaughTrack</a>
+      <%= link_to 'LaughTrack', root_path, :class => 'brand' %>
     </div>
   </div>
 </header>
@@ -41,7 +41,9 @@
     </div>
   <% end %>
 
-  <%= yield %>
+  <div id="main-content">
+    <%= yield %>
+  </div>
 </div>
 <section id="shows" class="container">
   <%= yield :list %>
