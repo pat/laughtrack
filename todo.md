@@ -1,7 +1,5 @@
 - .featured show different styling
 
-- show headings: ellipsis
-
 - sidebar full height when limited results
 
 - active state for nav links
@@ -10,7 +8,7 @@
 
 - ask pat about:
 -- search field when managing content
--- do we want to scrape any other info about the show to display with the show tweets?
 -- dynamic search should update not only the #shows_list but also the tweets area
+-- dynamic search field: retain value when focus is off field
 -- larger version of user avatar?
 -- link to original tweet on twitter?

@@ -7,6 +7,6 @@ module ApplicationHelper
   end
 
   def show_heading(show)
-    content_tag(:h4, show.heading_one) + content_tag(:p, show.heading_two)
+    content_tag(:h4, truncate(show.heading_one)) + content_tag(:p, truncate(show.heading_two))
   end
 end
