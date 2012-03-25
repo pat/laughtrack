@@ -11,3 +11,8 @@
 
 - tweets styling
 
+- active state for nav links
+
+- ask pat about:
+-- search field when managing content
+-- do we want to scrape any other info about the show to display with the show tweets?

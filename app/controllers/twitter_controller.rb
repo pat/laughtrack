@@ -13,6 +13,6 @@ class TwitterController < Devise::OmniauthCallbacksController
   private
 
   def after_sign_in_path_for(resource)
-    [:manage, :dashboard]
+    manage_tweets_path
   end
 end

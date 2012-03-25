@@ -1,16 +1,14 @@
 Laughtrack::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => 'twitter'} do
-    get 'sign_in',  :to => 'devise/sessions#new',
-      :as => :new_user_session
-    get 'sign_out', :to => 'devise/sessions#destroy',
-      :as => :destroy_user_session
+    get 'sign_in',  :to => 'devise/sessions#new', :as => :new_user_session
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
   resources :shows, :only => [:show]
   match '/about' => 'home#about', :as => :about
 
   namespace :manage do
-    match '/' => 'home#index', :as => :dashboard
+    match '/' => 'tweets#index', :as => :manage
     resources :shows
     resources :tweets do
       collection do
