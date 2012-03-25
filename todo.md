@@ -2,8 +2,6 @@
 
 - sidebar full height when limited results
 
-- active state for nav links
-
 - larger type in tweets
 
 - ask pat about:

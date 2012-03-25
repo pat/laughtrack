@@ -21,10 +21,7 @@ $(document).ready(function() {
   if (!jQuery.support.pjax)
     return;
 
-  $('.about a').pjax({
-    container: '#main .container',
-    timeout:   2000
-  });
+
 
   $('body.home #shows a').pjax({
     container: '#main .container',

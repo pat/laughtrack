@@ -19,11 +19,11 @@
       #navbar
         .navbar-inner
           %ul
-            %li.about= link_to 'About', :about
+            %li.about= link_to 'About', :about, :class => 'about'
             - if user_signed_in?
-              %li= link_to 'Shows', [:manage, :shows]
-              %li= link_to 'Tweets', [:manage, :tweets]
-              %li= link_to 'Users', '#'
+              %li= link_to 'Shows', [:manage, :shows], :class => 'shows'
+              %li= link_to 'Tweets', [:manage, :tweets], :class => 'tweets'
+              %li= link_to 'Users', '#', :class => 'users'
 
           %form.navbar-search{:action => "/", :method => "get"}
             %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}

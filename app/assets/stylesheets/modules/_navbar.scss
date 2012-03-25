@@ -77,3 +77,11 @@ header {
     }
   }
 }
+
+// Active state for nav links
+body.home.about a.about,
+body.shows.index a.shows,
+body.tweets.index a.tweets,
+body.tweets.unclassified a.tweets,
+body.tweets.detached a.tweets,
+body.users.index a.users { background: rgba(0, 0, 0, 0.1); }
