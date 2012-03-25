@@ -1,33 +1,50 @@
 ul#tweets { @include reset_list;
   li.tweet {
+    position: relative;
+    min-height: 120px;
     margin-bottom: 1.5em;
     color: $base_brown;
+    background: whiteSmoke;
+    @include box-shadow(#aaa 2px 2px 2px);
 
-    img {
-      float: left;
-      @include box-shadow(#aaa 2px 2px 5px);
+    img { @include box-shadow(#222 2px 2px 5px); }
+
+    .tweet-credit {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 15%;
+      padding: 2%;
+      text-align: right;
+      color: #fff;
+      text-shadow: 1px 1px 1px #222;
+      background: rgba($base_brown, 0.95);
+      @include box-shadow(#222 -5px 0 8px inset);
+
+      p {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 1px;
+      }
     }
 
     .tweet-content {
-      padding: 20px;
-      border-radius: 5px;
-      @include box-shadow(#aaa 2px 2px 2px);
-      background: #fff;
-      margin-left: 75px;
-      position: relative;
+      float: left;
+      padding: 2% 2% 2% 21%;
 
-      &:after {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        border-left: 0;
-        border-right: 10px solid #fff;
-        border-bottom: 10px solid transparent;
-        border-top: 10px solid transparent;
-        top: 8px;
-        left: -9px;
+      p {
+        font-size: 21px;
+        line-height: 24px;
       }
+
     }
-    span.time { font-style: italic; }
+    .time {
+      position: absolute;
+      bottom: 0;
+      right: 7px;
+      color: #e5e5e5;
+      font-style: italic;
+    }
   }
 }

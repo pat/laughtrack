@@ -8,12 +8,13 @@
   %ul#tweets
     - tweets.each do |tweet|
       %li[tweet]
-        = image_tag tweet.profile_image_url, :alt => tweet.from_user
-        .tweet-content
-          %p.text= tweet.linked_text
+        .tweet-credit
+          = image_tag tweet.profile_image_url, :alt => tweet.from_user
           %p.credit
             %strong @#{tweet.from_user}
             - if tweet.show
               on #{tweet.show.heading}
-            %span.time #{time_ago_in_words tweet.created_at} ago
+        .tweet-content
+          %p.text= tweet.linked_text
+          %p.time #{time_ago_in_words tweet.created_at} ago
 
