@@ -1,6 +1,7 @@
 ul#tweets { @include reset_list;
   li.tweet {
     position: relative;
+    overflow: hidden;
     min-height: 120px;
     margin-bottom: 1.5em;
     color: $base_brown;
@@ -16,6 +17,7 @@ ul#tweets { @include reset_list;
       bottom: 0;
       width: 15%;
       padding: 2%;
+      overflow: hidden;
       text-align: right;
       color: #fff;
       text-shadow: 1px 1px 1px #222;
@@ -34,17 +36,21 @@ ul#tweets { @include reset_list;
       padding: 2% 2% 2% 21%;
 
       p {
-        font-size: 21px;
-        line-height: 24px;
+        position: relative;
+        z-index: 10;
+        font: 22px/28px $font-serif;
       }
 
-    }
-    .time {
-      position: absolute;
-      bottom: 0;
-      right: 7px;
-      color: #e5e5e5;
-      font-style: italic;
+      p.time {
+        position: absolute;
+        bottom: -7px;
+        right: 7px;
+        z-index: 0;
+        color: #ddd;
+        font-size: 18px;
+        font-style: italic;
+      }
+
     }
   }
 }
