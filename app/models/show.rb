@@ -10,11 +10,6 @@ class Show < ActiveRecord::Base
   scope :order_by_headings, order('heading ASC')
   scope :order_by_score,    order('score DESC')
 
-  define_index do
-    indexes heading, :sortable => true
-    has score
-  end
-
   def self.import!
     params   = {
       :lastDataUpdate => 5.months.ago.to_s(:db),
