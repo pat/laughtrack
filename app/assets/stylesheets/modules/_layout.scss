@@ -8,15 +8,22 @@
   .container { width: auto; padding: 0 20px; }
 }
 
-#shows { @include span(3); }
+#shows { @include span(3); float:right;}
 
 
 
+// Responsive layout: adjustments to several elements in narrower widths
+@media (max-width: 979px) {
+  header div#brand { bottom: -15px; }
+}
 
-// Responsive layout
 @media (max-width: 767px) {
   #brand { display: none; }
-  header div#navbar ul { margin-left: 0; }
+  header div#navbar {
+    ul { margin-left: 0; }
+    form.navbar-search { width: 35%; }
+  }
+
 
   // GRID & CONTAINERS
   // -----------------

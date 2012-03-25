@@ -7,14 +7,13 @@
 
 - sidebar full height when limited results
 
-- logo position in various widths
-
-- tweets styling
-
 - active state for nav links
 
-- hairline space at the right edge of #shows_list
+- larger type in tweets
 
 - ask pat about:
 -- search field when managing content
 -- do we want to scrape any other info about the show to display with the show tweets?
+-- dynamic search should update not only the #shows_list but also the tweets area
+-- larger version of user avatar?
+-- link to original tweet on twitter?

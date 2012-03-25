@@ -13,8 +13,8 @@ header {
     @include span(2.8);
     position: absolute;
     z-index: 2000;
-    top: -10px;
-    left: 5px;
+    bottom: -35px;
+    left: 0;
 
     img { width: 100%; }
     a { display: block; // so the whole logo area is clickable
