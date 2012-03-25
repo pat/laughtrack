@@ -27,7 +27,7 @@ $(document).ready(function() {
   });
 
   $('body.home #shows a').pjax({
-    container: '#main',
+    container: '#main .container',
     timeout:   2000
   }).live('click', function() {
     var list_item = $(this).parent('li');
