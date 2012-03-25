@@ -12,8 +12,7 @@
         .tweet-content
           %p.text= tweet.linked_text
           %p.credit
-            %strong= tweet.from_user
-            %span.handle (@#{tweet.from_user})
+            %strong @#{tweet.from_user}
             - if tweet.show
               on #{tweet.show.heading}
             %span.time #{time_ago_in_words tweet.created_at} ago
