@@ -9,3 +9,5 @@ a:hover { text-decoration: none; background: rgba(0, 0, 0, 0.1); }
 [placeholder] { color: #999; }
 
 tr.active { background: rgba(222, 222, 222, 0.1); }
+
+body.about .sidebar { display: none; }
