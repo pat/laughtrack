@@ -1,9 +1,12 @@
+- if defined?(the_show)
+  %h2 Tweets for #{the_show.heading}
+
 - if tweets.empty? && defined?(the_show)
-  .well
-    %p There are no tweets logged for #{ the_show.heading }.
+  %p There are no tweets logged for #{ the_show.heading }.
+
 - elsif tweets.empty?
-  .well
-    %p There are no tweets logged for this show.
+  %p There are no tweets logged.
+
 - else
   %ul#tweets
     - tweets.each do |tweet|
