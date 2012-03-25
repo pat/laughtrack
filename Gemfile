@@ -26,6 +26,12 @@ group :assets do
   gem 'compass-rails',           '1.0.1'
 end
 
+group :assets, :production do
+  gem 'asset_sync',
+    :git => 'git://github.com/rumblelabs/asset_sync.git',
+    :ref => '1edb3622d7'
+end
+
 group :development, :test do
   gem 'rspec-rails', '2.8.1'
 end
