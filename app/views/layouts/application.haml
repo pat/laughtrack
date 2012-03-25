@@ -8,6 +8,7 @@
   %body{:class => "#{controller_name} #{action_name}"}
     %header
       #brand= link_to image_tag('logo.png', :alt => 'laughtrack logo', :title => 'LaughTrack home page'), root_path
+
       #user_nav
         %ul
           - if user_signed_in?
@@ -26,6 +27,7 @@
               %li= link_to 'Users', '#'
           %form.navbar-search{:action => "/", :method => "get"}
             %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}
+
     #content.row-fluid
       %section#main
         .container
