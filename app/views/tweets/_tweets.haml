@@ -1,4 +1,7 @@
-- if tweets.empty?
+- if tweets.empty? && defined?(the_show)
+  .well
+    %p There are no tweets logged for #{ the_show.heading }.
+- elsif tweets.empty?
   .well
     %p There are no tweets logged for this show.
 - else
