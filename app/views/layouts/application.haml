@@ -19,7 +19,7 @@
       #navbar
         .navbar-inner
           %ul
-            %li= link_to 'About', '#'
+            %li.about= link_to 'About', :about
             - if user_signed_in?
               %li= link_to 'Dashboard', [:manage, :dashboard]
               %li= link_to 'Shows', [:manage, :shows]
