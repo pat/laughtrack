@@ -26,10 +26,11 @@
               %li= link_to 'Users', '#'
           %form.navbar-search{:action => "/", :method => "get"}
             %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}
-    #content
+    #content.row-fluid
       %section#main
-        = render 'shared/flash_messages'
-        = yield
+        .container
+          = render 'shared/flash_messages'
+          = yield
 
-      %section#shows
+      %section.sidebar#shows
         = yield :list

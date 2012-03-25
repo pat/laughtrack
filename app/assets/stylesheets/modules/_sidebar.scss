@@ -1,0 +1,51 @@
+#shows {
+  background: $base_brown;
+  @include box-shadow(#222 5px 0 8px inset);
+
+  h3 {
+    padding: 10px 0 10px 10px;
+    color: $cream;
+    text-shadow: 1px 1px 1px #222;
+    background: $dark_brown;
+    @include background-image(linear-gradient($not_so_dark_brown, $dark_brown));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  ul#shows_list {
+    @include reset_list;
+
+    li {
+      h4, p {
+        display: inline;
+        font-size: 12px;
+        color: #ddd;
+        text-shadow: 1px 1px 1px #222;
+      }
+      p {
+        margin-left: 3px;
+        font-style: italic;
+      }
+
+      strong { // votes number
+        display: block;
+        float: right;
+        margin: 0 10px 0 15px; // a bit of space between number and text
+        line-height: 40px; // vertical align
+        font-size: 30px;
+        font-weight: normal;
+        color: $cream;
+      }
+
+      a {
+        display: block;
+        height: 40px;
+        overflow: hidden; // incase show heading is extremely long
+        padding: 5px 12px;
+        color: #ddd;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(150, 150, 150, 0.2);
+      }
+    }
+  }
+}
+

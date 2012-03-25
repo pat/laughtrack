@@ -4,6 +4,7 @@ $font-serif: Georgia,"Times New Roman",serif;
 $font-sans: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
 $body: #555;
+$bkg: #f9f9f9;
 
 $blue: #519FC0;
 $laugh_cyan: #57a2c2;
@@ -23,7 +24,11 @@ $column: 6.382978723%;
 $gutter: 2.127659574%;
 
 // Use this mixin to set the width of n columns
-@mixin span($n) { width: $column * $n + $gutter * ($n - 1); }
+@mixin span($n) {
+  width: $column * $n + $gutter * ($n - 1);
+  float: left;
+  margin-left: $gutter;
+}
 
 @mixin reset_list {
   list-style: none;

@@ -1,6 +1,11 @@
 header {
-  display: block;
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 85px;
+  z-index: 100;
+  background: $bkg;
 
   ul { @include reset_list; }
 
@@ -9,7 +14,7 @@ header {
     position: absolute;
     z-index: 2000;
     top: -10px;
-    left: 10px;
+    left: 5px;
 
     img { width: 100%; }
     a { display: block; // so the whole logo area is clickable
@@ -18,23 +23,29 @@ header {
   }
 
   #user_nav {
-    float: right;
-    margin: 5px 10px 0 0;
+    position: absolute;
+    top: 5px;
+    right: 10px;
 
     a { color: #999;
       &:hover { background: none; color: $blue; }
     }
   }
 
-  #navbar { margin: 40px 0 0;
+  #navbar {
     .navbar-inner {
-      overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
       @include background-image(linear-gradient($laugh_magenta, $dark_magenta));
+      @include box-shadow(rgba(0,0,0,0.3) 0 3px 3px);
     }
 
     ul {
       float: left;
-      margin-left: 23%;
+      margin-left: 24%;
 
       li a {
         display: block;
@@ -44,16 +55,23 @@ header {
         font-size: 16px;
         letter-spacing: 1px;
         line-height: 30px;
+        text-shadow: 1px 1px 1px $dark_magenta;
       }
     }
 
-    form.navbar-search { float: right; margin: 6px 5px 6px 0; @include span(3.3);}
+    form.navbar-search {
+      @include span(2.7);
+      float: right;
+      margin: 5px 10px;
+      padding: 0;
+      border: none;
+
+      .search-query {
+        background: #fff image-url('search.png') no-repeat 98% 1px;
+        border: 1px solid #fff;
+        width: 100%;
+        padding: 4px 7px;
+      }
+    }
   }
-
-}
-
-.navbar-search .search-query, .navbar-search .search-query:hover {
-  background: #fff image-url('search.png') no-repeat 96% 1px;
-  border: 1px solid #fff;
-  width: 100%;
 }
