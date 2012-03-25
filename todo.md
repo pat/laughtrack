@@ -5,5 +5,9 @@
 -- bigger
 -- elipsis
 
--- sidebar full height when limited results
+- sidebar full height when limited results
+
+- logo position in various widths
+
+- tweets styling
 
