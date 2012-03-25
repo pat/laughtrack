@@ -1,9 +1,6 @@
 - .featured show different styling
 
-- show headings:
--- 2 lines
--- bigger
--- ellipsis
+- show headings: ellipsis
 
 - sidebar full height when limited results
 

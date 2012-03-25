@@ -1,7 +1,7 @@
 %ul#shows_list
   %h3 Current Shows
   - shows.each do |show|
-    %li{:class => "#{'featured' if featured == show}"}[show]
+    %li{:class => "#{'featured' if featured == show}", :title => show.heading }[show]
       = link_to show do
         %strong= show.score.to_i
         = show_heading(show)
