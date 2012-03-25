@@ -4,12 +4,19 @@ $font-serif: Georgia,"Times New Roman",serif;
 $font-sans: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
 $body: #555;
+
 $blue: #519FC0;
 $laugh_cyan: #57a2c2;
+$light_blue: #57a2c2;
+
 $laugh_magenta: #e8188d;
 $dark_magenta: #c1135b;
-$light_blue: #57a2c2;
 $pink: #f8badd;
+
+$base_brown: #3d3a34;
+$dark_brown: #24221e;
+$not_so_dark_brown: #2b2926;
+$cream: #cec3ae;
 
 
 $column: 6.382978723%;
@@ -17,3 +24,9 @@ $gutter: 2.127659574%;
 
 // Use this mixin to set the width of n columns
 @mixin span($n) { width: $column * $n + $gutter * ($n - 1); }
+
+@mixin resetlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
