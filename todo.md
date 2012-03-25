@@ -1,7 +1,5 @@
 - .featured show different styling
 
-- sidebar full height when limited results
-
 - larger type in tweets
 
 - ask pat about:

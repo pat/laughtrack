@@ -8,7 +8,13 @@
   .container { width: auto; padding: 0 20px; }
 }
 
-#shows { @include span(3); float:right;}
+#shows {
+  @include column(3);
+  position: absolute;
+  top: 85px;
+  bottom: 0;
+  right: 0;
+}
 
 
 
@@ -35,6 +41,7 @@
 
   // Make all columns even
   #main, #shows {
+    position: static;
     float: none;
     display: block;
     width: auto;

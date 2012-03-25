@@ -24,8 +24,12 @@ $column: 6.382978723%;
 $gutter: 2.127659574%;
 
 // Use this mixin to set the width of n columns
-@mixin span($n) {
+@mixin column($n) {
   width: $column * $n + $gutter * ($n - 1);
+}
+
+@mixin span($n) {
+  @include column($n);
   float: left;
   margin-left: $gutter;
 }
