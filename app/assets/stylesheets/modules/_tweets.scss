@@ -1,6 +1,7 @@
 ul#tweets { @include reset_list;
   li.tweet {
     margin-bottom: 1.5em;
+    color: $base_brown;
 
     img {
       float: left;
