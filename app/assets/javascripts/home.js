@@ -22,7 +22,7 @@ $(document).ready(function() {
     return;
 
   $('.about a').pjax({
-    container: '#main',
+    container: '#main .container',
     timeout:   2000
   });
 
