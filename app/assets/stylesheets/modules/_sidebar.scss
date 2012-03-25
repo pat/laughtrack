@@ -15,6 +15,7 @@
     @include reset_list;
 
     li {
+      &.featured { @include background-image(linear-gradient(#3F7E8F, #2E5D69, #254F55)); }
       h4, p {
         font-size: 14px;
         color: #ddd;

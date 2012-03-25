@@ -1,5 +1,3 @@
-- .featured show different styling
-
 - larger type in tweets
 
 - ask pat about:
