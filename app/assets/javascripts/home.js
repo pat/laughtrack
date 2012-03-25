@@ -13,8 +13,8 @@ $(document).ready(function() {
   });
 
 
-  $('#shows a').pjax({
-    container: '#main-content',
+  $('body.home #shows a').pjax({
+    container: '#main',
     timeout:   2000
   }).live('click', function() {
     var list_item = $(this).parent('li');
