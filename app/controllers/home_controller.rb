@@ -11,4 +11,10 @@ class HomeController < ApplicationController
       :object => shows,
       :locals => {:featured => nil}
   end
+
+  def about
+    return unless pjax?
+
+    render :partial => 'home/about'
+  end
 end

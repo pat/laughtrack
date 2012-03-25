@@ -12,7 +12,7 @@
         .navbar-inner
           .container
             %ul.nav
-              %li= link_to 'About', '#'
+              %li.about= link_to 'About', :about
               - if user_signed_in?
                 %li= link_to 'Dashboard', [:manage, :dashboard]
                 %li= link_to 'Sign Out', destroy_user_session_path

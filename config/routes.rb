@@ -7,6 +7,7 @@ Laughtrack::Application.routes.draw do
   end
 
   resources :shows, :only => [:show]
+  match '/about' => 'home#about', :as => :about
 
   namespace :manage do
     match '/' => 'home#index', :as => :dashboard
