@@ -1,0 +1,32 @@
+ul#tweets { @include reset_list;
+  li.tweet {
+    margin-bottom: 1.5em;
+
+    img {
+      float: left;
+      @include box-shadow(#aaa 2px 2px 5px);
+    }
+
+    .tweet-content {
+      padding: 20px;
+      border-radius: 5px;
+      @include box-shadow(#aaa 2px 2px 2px);
+      background: #fff;
+      margin-left: 75px;
+      position: relative;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        border-left: 0;
+        border-right: 10px solid #fff;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent;
+        top: 8px;
+        left: -9px;
+      }
+    }
+    span.time { font-style: italic; }
+  }
+}

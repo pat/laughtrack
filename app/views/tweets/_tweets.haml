@@ -7,11 +7,14 @@
 - else
   %ul#tweets
     - tweets.each do |tweet|
-      %li.feature.tweet
-        .tweet-box
-          = image_tag tweet.profile_image_url, :alt => tweet.from_user
-          .content
+      %li[tweet]
+        = image_tag tweet.profile_image_url, :alt => tweet.from_user
+        .tweet-content
+          %p.text= tweet.linked_text
+          %p.credit
             %strong= tweet.from_user
-            %span.handle= tweet.from_user
-            %p= tweet.linked_text
-            %time #{time_ago_in_words tweet.created_at} ago
+            %span.handle (@#{tweet.from_user})
+            - if tweet.show
+              on #{tweet.show.heading}
+            %span.time #{time_ago_in_words tweet.created_at} ago
+

@@ -1,5 +1,6 @@
 body { color: $body; background: $bkg; }
 
+p { font-size: 16px; line-height: 21px; }
 a:hover { text-decoration: none; background: rgba(0, 0, 0, 0.1); }
 
 [placeholder] { color: #999; }

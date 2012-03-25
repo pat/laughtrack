@@ -1,11 +1,13 @@
 #content { margin-top: 85px; }
 
-body.home #main {
+#main {
   @include span(9);
   margin-left: 0;
+  padding-top: 48px;
+
+  .container { width: auto; padding: 0 20px; }
 }
 
-#main { padding-top: 48px; } // a bit of distance between header and #content
 #shows { @include span(3); }
 
 
