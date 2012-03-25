@@ -1,0 +1,11 @@
+// admin side styling
+
+body.shows.index {
+
+}
+
+body.tweets {
+  &.index, &.unclassified, &.detached {
+
+  }
+}

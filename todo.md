@@ -3,7 +3,7 @@
 - show headings:
 -- 2 lines
 -- bigger
--- elipsis
+-- ellipsis
 
 - sidebar full height when limited results
 
