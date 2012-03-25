@@ -25,7 +25,7 @@ $gutter: 2.127659574%;
 // Use this mixin to set the width of n columns
 @mixin span($n) { width: $column * $n + $gutter * ($n - 1); }
 
-@mixin resetlist {
+@mixin reset_list {
   list-style: none;
   margin: 0;
   padding: 0;

@@ -1,4 +1,9 @@
 header {
+  display: block;
+  overflow: hidden;
+
+  ul { @include reset_list; }
+
   #brand {
     @include span(2.8);
     position: absolute;
@@ -7,17 +12,42 @@ header {
     left: 10px;
 
     img { width: 100%; }
+    a { display: block; // so the whole logo area is clickable
+      &:hover { background: none; }
+    }
   }
 
+  #user_nav {
+    float: right;
+    margin: 5px 10px 0 0;
 
-  .navbar { margin: 25px 0 0;
-    .navbar-inner { @include background-image(linear-gradient($laugh_magenta, $dark_magenta)); }
+    a { color: #999;
+      &:hover { background: none; color: $blue; }
+    }
+  }
 
-    ul.nav { margin-left: 245px;
-      li a { color: #fff; letter-spacing: 1px; }
+  #navbar { margin: 40px 0 0;
+    .navbar-inner {
+      overflow: hidden;
+      @include background-image(linear-gradient($laugh_magenta, $dark_magenta));
     }
 
-    form.navbar-search { float: right; margin: 6px 0; @include span(3.3);}
+    ul {
+      float: left;
+      margin-left: 23%;
+
+      li a {
+        display: block;
+        width: auto;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 30px;
+      }
+    }
+
+    form.navbar-search { float: right; margin: 6px 5px 6px 0; @include span(3.3);}
   }
 
 }

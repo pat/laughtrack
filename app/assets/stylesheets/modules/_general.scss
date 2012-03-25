@@ -27,7 +27,7 @@ tr.active { background: rgba(222, 222, 222, 0.1); }
   }
 
   ul#shows_list {
-    @include resetlist;
+    @include reset_list;
 
     li {
       h4, p {
