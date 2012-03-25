@@ -5,7 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body{:class => "#{controller_name} #{action_name}"}
+  %body{:class => "#{user_signed_in? ? 'manage' : 'public'} #{controller_name} #{action_name}"}
     %header
       #brand= link_to image_tag('logo.png', :alt => 'laughtrack logo', :title => 'LaughTrack home page'), root_path
 
@@ -19,12 +19,14 @@
       #navbar
         .navbar-inner
           %ul
-            %li= link_to 'About', '#'
             - if user_signed_in?
               %li= link_to 'Dashboard', [:manage, :dashboard]
               %li= link_to 'Shows', [:manage, :shows]
               %li= link_to 'Tweets', [:manage, :tweets]
               %li= link_to 'Users', '#'
+            - else
+              %li= link_to 'About', '#'
+
           %form.navbar-search{:action => "/", :method => "get"}
             %input.search-query{:name => "query", :placeholder => "Search for a show", :type => "search", :value => params[:query]}
 
