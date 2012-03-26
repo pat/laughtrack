@@ -9,4 +9,6 @@ a { color: $laugh_cyan;
 
 [placeholder] { color: #999; }
 
-body.about .sidebar { display: none; }
+body.about {
+  form.navbar-search, .sidebar { display: none; }
+}

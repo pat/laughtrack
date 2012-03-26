@@ -6,10 +6,11 @@
   %li.active= link_to "Detached (<span id=\"tweet-counter\">#{detached_tweets.count}</span>)".html_safe, [:detached, :manage, :tweets]
 
 - detached_tweets.each do |tweet|
-  .attach-tweet{:id => "tweet-#{tweet.id}"}
+  .attach-tweet[tweet]
     %p @#{tweet.from_user}: #{auto_link tweet.linked_text}
 
     = form_for tweet, :url => [:attach, :manage, tweet], :method => :put, :html => {:class => 'form-inline'} do |form|
       = form.label :show_id
-      = form.collection_select :show_id, Show.order_by_headings, :id, :heading, {}, 'data-placeholder' => "Select a show...", :id => "tweet-select-#{tweet.id}"
+      = form.collection_select :show_id, Show.order_by_headings, :id, :heading, { :include_blank => true },
+        :id => "tweet-select-#{tweet.id}", :class => 'chosen', :'data-placeholder' => 'Select a show...'
       %button.btn{:type => "submit"} Attach
