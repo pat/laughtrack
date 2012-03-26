@@ -18,6 +18,5 @@
             - if tweet.show
               on #{tweet.show.heading}
         .tweet-content
-          %p.text= tweet.linked_text
+          %p.text= auto_link tweet.linked_text
           %p.time #{time_ago_in_words tweet.created_at} ago
-
