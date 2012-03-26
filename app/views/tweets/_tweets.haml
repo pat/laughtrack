@@ -2,8 +2,6 @@
   %h2 Tweets for #{the_show.heading}
 
 - if tweets.empty? && defined?(the_show)
-  .page-header
-    %h2= the_show.heading
   %p There are no tweets logged yet. Have you tweeted one that we've missed? #{ link_to 'Let us know!', 'https://twitter.com/laughtrack_au' }
 - elsif tweets.empty?
   %p There are no tweets logged at all. Don't expect to see much until the Festival's underway!
