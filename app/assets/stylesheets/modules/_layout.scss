@@ -1,13 +1,13 @@
 #content {
   position: relative;
-  margin-top: 85px;
+  margin-top: 85px; // space for the header/navbar section
 }
 
 #main {
   @include span(9);
   margin-left: 0;
   margin-right: 23.404%;
-  padding-top: 48px;
+  padding-top: 48px; // align with first show, and give space for logo hanging down
 
   .container { width: auto; padding: 0 20px; }
 }
@@ -29,14 +29,11 @@
 
 @media (max-width: 767px) {
   #brand { display: none; }
+
   header div#navbar {
     ul { margin-left: 0; }
     form.navbar-search { width: 25%; }
   }
-
-
-  // GRID & CONTAINERS
-  // -----------------
 
   // Remove width from containers
   .container { width: auto; padding: 0 20px; }

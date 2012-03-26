@@ -6,3 +6,4 @@
 -- dynamic search field: retain value when focus is off field
 -- link to original tweet on twitter?
 -- when window is narrow and clicking a show link, window should scroll back up
+-- detached view: are the select menus supposed to be chosen fields?

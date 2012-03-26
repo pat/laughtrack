@@ -1,10 +1,11 @@
 // admin side styling
 
 body.shows.index {
-
+  .sidebar { display: none; }
 }
 
 body.tweets {
   &.index, &.unclassified, &.detached {
+    .sidebar { display: none; }
   }
 }

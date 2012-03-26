@@ -1,49 +1,53 @@
-#shows {
+@mixin sidebar_bkg {
   background: $base_brown;
-  @include box-shadow(#222 5px 0 2px inset);
+  @include box-shadow(rgba(#222, 0.5) 5px 0 2px inset);
+}
+
+@mixin bottom_border { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+#shows {
+  @include sidebar_bkg;
 
   h3 {
     padding: 10px 0 10px 10px;
     color: $cream;
-    text-shadow: 1px 1px 1px #222;
+    @include textshadow;
     background: $dark_brown;
     @include background-image(linear-gradient($not_so_dark_brown, $dark_brown));
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    @include bottom_border;
   }
 
   ul#shows_list {
     @include reset_list;
 
     li {
-      background: $base_brown;
-      @include box-shadow(#222 5px 0 2px inset);
+      @include sidebar_bkg;
+
       &.featured { @include background-image(linear-gradient(#3F7E8F, #2E5D69, #254F55)); }
+
+      a, h4 { color: #ddd; }
+
       h4, p {
         font-size: 14px;
-        color: #ddd;
-        text-shadow: 1px 1px 1px #222;
+        @include textshadow;
       }
-      p {
-        font-style: italic;
-      }
+
+      p { font-style: italic; } // heading_two
 
       strong { // votes number
         display: block;
         float: right;
         margin: 0 10px 0 15px; // a bit of space between number and text
-        line-height: 40px; // vertical align
-        font-size: 30px;
-        font-weight: normal;
+        font: 30px/40px $font-serif;
         color: $cream;
       }
 
       a {
         display: block;
-        height: 40px;
+        height: 40px; // consistent height for all shows
         overflow: hidden; // incase show heading is extremely long
         padding: 5px 12px;
-        color: #ddd;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        @include bottom_border;
         border-top: 1px solid rgba(150, 150, 150, 0.2);
       }
     }

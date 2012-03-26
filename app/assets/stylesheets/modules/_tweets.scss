@@ -1,14 +1,13 @@
 ul#tweets { @include reset_list;
   li.tweet {
     position: relative;
-    overflow: hidden;
     min-height: 120px;
     margin-bottom: 1.5em;
     color: $base_brown;
-    background: whiteSmoke;
-    @include box-shadow(#aaa 2px 2px 2px);
+    background: #fff;
+    @include box-shadow(rgba(#222, 0.5) 2px 2px 2px);
 
-    img { @include box-shadow(#222 2px 2px 5px); }
+    img { @include box-shadow(rgba(#222, 0.5) 2px 2px 5px); }
 
     .tweet-credit {
       position: absolute;
@@ -20,7 +19,7 @@ ul#tweets { @include reset_list;
       overflow: hidden;
       text-align: right;
       color: #fff;
-      text-shadow: 1px 1px 1px #222;
+      @include textshadow;
       background: rgba($base_brown, 0.95);
       @include box-shadow(#222 -5px 0 8px inset);
 
@@ -32,7 +31,6 @@ ul#tweets { @include reset_list;
     }
 
     .tweet-content {
-      float: left;
       padding: 2% 2% 2% 21%;
 
       p {
