@@ -109,6 +109,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
+    newrelic_rpm (3.3.2.1)
     nokogiri (1.5.2)
     oauth (0.4.5)
     omniauth (1.0.3)
@@ -203,6 +204,7 @@ DEPENDENCIES
   haml (= 3.1.4)
   jquery-rails (= 2.0.1)
   nestful (= 0.0.8)
+  newrelic_rpm (= 3.3.2.1)
   nokogiri (= 1.5.2)
   omniauth-twitter (= 0.0.8)
   pg

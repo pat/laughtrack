@@ -8,6 +8,7 @@ gem 'decent_exposure',        '1.0.2'
 gem 'haml',                   '3.1.4'
 gem 'omniauth-twitter',       '0.0.8'
 gem 'nestful',                '0.0.8'
+gem 'newrelic_rpm',           '3.3.2.1', :group => :production
 gem 'nokogiri',               '1.5.2'
 gem 'rinku',                  '1.5.1', :require => 'rails_rinku'
 gem 'statistics2',            '0.54'
