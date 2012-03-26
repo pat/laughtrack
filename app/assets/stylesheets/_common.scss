@@ -3,17 +3,39 @@
 $font-serif: Georgia,"Times New Roman",serif;
 $font-sans: HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
-$body: #555;
+$body: #444;
+$bkg: #e1e1e1;
+
 $blue: #519FC0;
 $laugh_cyan: #57a2c2;
+$light_blue: #c1e6f2;
+
 $laugh_magenta: #e8188d;
 $dark_magenta: #c1135b;
-$light_blue: #57a2c2;
-$pink: #f8badd;
+$pink: #f8dfed;
+
+$base_brown: #3d3a34;
+$dark_brown: #24221e;
+$not_so_dark_brown: #2b2926;
+$cream: #cec3ae;
 
 
 $column: 6.382978723%;
 $gutter: 2.127659574%;
 
 // Use this mixin to set the width of n columns
-@mixin span($n) { width: $column * $n + $gutter * ($n - 1); }
+@mixin column($n) { width: $column * $n + $gutter * ($n - 1); }
+
+@mixin span($n) {
+  @include column($n);
+  float: left;
+  margin-left: $gutter;
+}
+
+@mixin reset_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin textshadow { text-shadow: 1px 1px 1px #222; }

@@ -1,0 +1,52 @@
+#content {
+  position: relative;
+  margin-top: 85px; // space for the header/navbar section
+}
+
+#main {
+  @include span(9);
+  margin-left: 0;
+  margin-right: 23.404%;
+  padding-top: 48px; // align with first show, and give space for logo hanging down
+
+  .container { width: auto; padding: 0 20px; }
+}
+
+#shows {
+  @include column(3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+
+// Responsive layout: adjustments to several elements in narrower widths
+@media (max-width: 979px) {
+  header div#brand { bottom: -15px; }
+}
+
+@media (max-width: 767px) {
+  #brand { display: none; }
+
+  header div#navbar {
+    ul { margin-left: 0; }
+    form.navbar-search { width: 25%; }
+  }
+
+  // Remove width from containers
+  .container { width: auto; padding: 0 20px; }
+  // Fluid rows
+  .row-fluid { width: 100%; }
+
+  // Make all columns even
+  #main, #shows {
+    position: static;
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+}
+

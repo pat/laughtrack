@@ -1,0 +1,54 @@
+ul#tweets { @include reset_list;
+  li.tweet {
+    position: relative;
+    min-height: 120px;
+    margin-bottom: 1.5em;
+    color: $base_brown;
+    background: #fff;
+    @include box-shadow(rgba(#222, 0.5) 2px 2px 2px);
+
+    img { @include box-shadow(rgba(#222, 0.5) 2px 2px 5px); }
+
+    .tweet-credit {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 15%;
+      padding: 2%;
+      overflow: hidden;
+      text-align: right;
+      color: #fff;
+      @include textshadow;
+      background: rgba($base_brown, 0.95);
+      @include box-shadow(#222 -5px 0 8px inset);
+
+      p {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 1px;
+      }
+    }
+
+    .tweet-content {
+      padding: 2% 2% 2% 21%;
+
+      p {
+        position: relative;
+        z-index: 10;
+        font: 22px/28px $font-serif;
+      }
+
+      p.time {
+        position: absolute;
+        bottom: -7px;
+        right: 7px;
+        z-index: 0;
+        color: #ddd;
+        font-size: 18px;
+        font-style: italic;
+      }
+
+    }
+  }
+}

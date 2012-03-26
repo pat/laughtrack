@@ -1,7 +1,6 @@
-.page-header
-  %h1 Pending Tweets
+%h1 Pending Tweets
 
-%ul.nav.nav-tabs
+%ul.nav.nav-pills
   %li.active= link_to "Pending (#{pending_tweets.count})", [:manage, :tweets]
   %li= link_to "Unclassified (#{unclassified_tweets.count})", [:unclassified, :manage, :tweets]
   %li= link_to "Detached (#{detached_tweets.count})", [:detached, :manage, :tweets]

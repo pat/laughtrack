@@ -1,22 +1,25 @@
+- if defined?(the_show)
+  %h2 Tweets for #{the_show.heading}
+
 - if tweets.empty? && defined?(the_show)
   .page-header
     %h2= the_show.heading
-  .well
-    %p There are no tweets logged yet. Have you tweeted one that we've missed? #{ link_to 'Let us know!', 'https://twitter.com/laughtrack_au' }
+  %p There are no tweets logged yet. Have you tweeted one that we've missed? #{ link_to 'Let us know!', 'https://twitter.com/laughtrack_au' }
 - elsif tweets.empty?
-  .well
-    %p There are no tweets logged at all. Don't expect to see much until the Festival's underway!
+  %p There are no tweets logged at all. Don't expect to see much until the Festival's underway!
 - else
   - if defined?(the_show)
     .page-header
       %h2= the_show.heading
   %ul#tweets
     - tweets.each do |tweet|
-      %li.feature.tweet
-        .tweet-box
+      %li[tweet]
+        .tweet-credit
           = image_tag tweet.profile_image_url, :alt => tweet.from_user
-          .content
-            %strong= tweet.from_user
-            %span.handle= tweet.from_user
-            %p= tweet.linked_text
-            %time #{time_ago_in_words tweet.created_at} ago
+          %p.credit
+            %strong @#{tweet.from_user}
+            - if tweet.show
+              on #{tweet.show.heading}
+        .tweet-content
+          %p.text= auto_link tweet.linked_text
+          %p.time #{time_ago_in_words tweet.created_at} ago
