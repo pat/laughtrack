@@ -6,9 +6,6 @@
 - elsif tweets.empty?
   %p There are no tweets logged at all. Don't expect to see much until the Festival's underway!
 - else
-  - if defined?(the_show)
-    .page-header
-      %h2= the_show.heading
   %ul#tweets
     - tweets.each do |tweet|
       %li[tweet]
