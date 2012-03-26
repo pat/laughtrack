@@ -1,5 +1,3 @@
-- sidebar strech full height
-
 - loading tweets with pjax?
 
 - ask pat about:

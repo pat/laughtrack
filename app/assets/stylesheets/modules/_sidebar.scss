@@ -1,6 +1,6 @@
 #shows {
   background: $base_brown;
-  @include box-shadow(#222 5px 0 8px inset);
+  @include box-shadow(#222 5px 0 2px inset);
 
   h3 {
     padding: 10px 0 10px 10px;
@@ -15,6 +15,8 @@
     @include reset_list;
 
     li {
+      background: $base_brown;
+      @include box-shadow(#222 5px 0 2px inset);
       &.featured { @include background-image(linear-gradient(#3F7E8F, #2E5D69, #254F55)); }
       h4, p {
         font-size: 14px;

@@ -1,8 +1,12 @@
-#content { margin-top: 85px; }
+#content {
+  position: relative;
+  margin-top: 85px;
+}
 
 #main {
   @include span(9);
   margin-left: 0;
+  margin-right: 23.404%;
   padding-top: 48px;
 
   .container { width: auto; padding: 0 20px; }
@@ -11,11 +15,9 @@
 #shows {
   @include column(3);
   position: absolute;
-  top: 85px;
+  top: 0;
   bottom: 0;
   right: 0;
-  height: 100%;
-  overflow: auto;
 }
 
 
