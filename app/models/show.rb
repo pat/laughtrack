@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Show < ActiveRecord::Base
-  IMPORT_URL = 'http://comedy.efirst.com.au/iPhone_application/dataUpdate.asp'
+  IMPORT_URL = 'http://comedy.efirst.com.au/iPhone_application/xmlData/dataUpdate.xml'
 
   has_many :tweets
 
@@ -13,12 +13,12 @@ class Show < ActiveRecord::Base
   def self.import!
     params   = {
       :lastDataUpdate => 5.months.ago.to_s(:db),
-      :av             => '3.0.2'
+      :av             => '3.1'
     }.to_query
 
     document = Nokogiri::XML(open("#{IMPORT_URL}?#{params}"))
     document.css('dataUpdate > s').each do |session|
-      heading_one = session.at('p').try(:content) || ''
+      heading_one = session.at('r').try(:content) || ''
       heading_two = session.at('b').try(:content) || ''
 
       Show.find_or_create_by_heading_one_and_heading_two(
